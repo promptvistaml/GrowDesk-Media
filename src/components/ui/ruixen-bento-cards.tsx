@@ -69,7 +69,7 @@ export const PlusCard: React.FC<{
   return (
     <div
       className={cn(
-        "relative border border-dashed border-zinc-700/80 rounded-lg p-6 sm:p-8 bg-[#09090b] min-h-[190px]",
+        "relative border border-solid border-zinc-700/80 rounded-lg p-6 sm:p-8 bg-transparent min-h-[190px]",
         "flex flex-col justify-between group hover:border-zinc-500 transition-colors duration-300",
         className
       )}
@@ -136,7 +136,7 @@ export default function RuixenBentoCards({ className = "" }: { className?: strin
 
             {/* Row 3, Bottom-Right Anchor Text (Right-Aligned Display Block) */}
             <div className="w-full lg:w-[65%] flex flex-col justify-end text-left lg:text-right space-y-4 px-2 lg:pl-10 py-4 lg:py-2">
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal text-white leading-[1.08] tracking-tight">
+              <h2 className="font-serif text-4xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal text-white leading-[1.08] tracking-tight">
                 Built for outcomes.<br />
                 Engineered for<br />
                 scale.
