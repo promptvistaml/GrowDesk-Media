@@ -28,24 +28,24 @@ const FeatureCheckItem: FC<FeatureItemProps> = ({ text }) => {
 
 export const FeaturesAlternatingLayout01 = () => {
   return (
-    <section className="relative flex flex-col gap-14 sm:gap-20 md:gap-28 overflow-hidden bg-white text-neutral-900 py-20 md:py-32 border-t border-neutral-200">
+    <section className="relative flex flex-col gap-12 sm:gap-20 md:gap-28 overflow-hidden bg-white text-neutral-900 py-16 md:py-32 border-t border-neutral-200">
       {/* Header Container */}
-      <div className="mx-auto w-full max-w-[1300px] px-6 md:px-12">
+      <div className="mx-auto w-full max-w-[1300px] px-5 sm:px-8 md:px-12">
         <div className="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
           <span className="text-sm font-semibold tracking-wide text-blue-600">
             Features
           </span>
-          <h2 className="mt-3 font-sans text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-900 leading-[1.15]">
+          <h2 className="mt-3 font-sans text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-900 leading-[1.18]">
             Beautiful analytics to grow smarter
           </h2>
-          <p className="mt-4 text-base sm:text-lg md:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl">
             Powerful, self-serve product and growth analytics to help you convert, engage, and retain more users. Trusted by over 4,000 startups.
           </p>
         </div>
       </div>
 
       {/* Alternating Feature Rows with Metallic Tablet Screen Mockups */}
-      <div className="mx-auto flex w-full max-w-[1300px] flex-col gap-20 md:gap-32 px-6 md:px-12">
+      <div className="mx-auto flex w-full max-w-[1300px] flex-col gap-14 sm:gap-20 md:gap-32 px-5 sm:px-8 md:px-12">
         {/* Row 1: Left Text, Right Metallic Tablet with Composed Bar & Line Dashboard */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-center">
           <div className="lg:col-span-5 space-y-5">

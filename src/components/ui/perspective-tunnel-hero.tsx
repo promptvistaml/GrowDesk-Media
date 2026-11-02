@@ -221,17 +221,17 @@ export default function PerspectiveTunnelHero() {
                 {/* Central Anchor Typography */}
                 <motion.div
                     style={{ scale: titleScale, opacity: titleOpacity }}
-                    className="pointer-events-none z-10 flex flex-col items-center text-center px-6 max-w-2xl"
+                    className="pointer-events-none z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-2xl"
                 >
-                    <p className="text-xs font-medium uppercase tracking-[0.4em] text-neutral-400 mb-4">
+                    <p className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-neutral-400 mb-3 sm:mb-4">
                         BRANDS   •   LEADS   •   FRANCHISES
                     </p>
-                    <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-white">
+                    <h1 className="font-serif text-4xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.98] sm:leading-[0.95] text-white">
                         SCALING
                         <br />
                         BRANDS.
                     </h1>
-                    <p className="mt-4 max-w-[38ch] text-sm sm:text-base font-light text-neutral-400">
+                    <p className="mt-3 sm:mt-4 max-w-[34ch] sm:max-w-[38ch] text-xs sm:text-base font-light text-neutral-400">
                         From brand positioning to daily lead generation. Scroll down to travel through our growth engine
                     </p>
                 </motion.div>

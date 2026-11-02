@@ -452,3 +452,4 @@ const Crosshair: React.FC<CrosshairProps> = ({
 };
 
 export default Crosshair;
+

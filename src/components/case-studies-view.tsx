@@ -71,9 +71,9 @@ export function CaseStudiesView() {
   return (
     <div className="w-full bg-[#000000] text-white">
       {/* 1. Full Viewport Hero + Stats Section (Crisp Ice Blue & Black Brush Canvas - Matches Navbar) */}
-      <section className="relative w-full min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-96px)] flex flex-col justify-between bg-[#F0F5FA] overflow-hidden">
+      <section className="relative w-full min-h-[60vh] sm:min-h-[75vh] lg:min-h-[calc(100vh-96px)] flex flex-col justify-between bg-[#F0F5FA] overflow-hidden">
         {/* Artistic Hand-Drawn Black Brush Stroke Curve */}
-        <div className="absolute right-0 top-0 bottom-0 w-full md:w-3/5 lg:w-[52%] pointer-events-none select-none overflow-hidden z-0">
+        <div className="absolute right-0 top-0 bottom-0 w-full md:w-3/5 lg:w-[52%] pointer-events-none select-none overflow-hidden z-0 opacity-40 sm:opacity-75 lg:opacity-100">
           <img
             src="/images/flight-hero-brush-blue.jpg"
             alt=""
@@ -82,8 +82,8 @@ export function CaseStudiesView() {
         </div>
 
         {/* Top/Middle Area: Editorial Headline & Subtitle */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 pt-16 sm:pt-24 md:pt-28 pb-12 flex-1 flex flex-col justify-center">
-          <div className="max-w-2xl lg:max-w-3xl space-y-6">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 pt-12 sm:pt-20 md:pt-28 pb-12 flex-1 flex flex-col justify-center">
+          <div className="max-w-2xl lg:max-w-3xl space-y-4 sm:space-y-6">
             <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 block">
               Our Work // Impact Ledger
             </span>
@@ -99,7 +99,7 @@ export function CaseStudiesView() {
 
       {/* Interactive Flex Carousel Section (Before "Looking to see something specific?") */}
       <section className="relative w-full overflow-hidden bg-[#F0F5FA] border-b border-blue-200/50">
-        <div style={{ width: '100%', height: '560px', position: 'relative' }}>
+        <div className="w-full h-[400px] sm:h-[480px] md:h-[560px] relative">
           <FlexCarousel
             items={[
               {
@@ -154,19 +154,19 @@ export function CaseStudiesView() {
       </section>
 
       {/* 2. Black Filter Section matching Image 2 */}
-      <section className="bg-[#000000] text-white pt-24 pb-14 px-8 md:px-16 border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start justify-between">
+      <section className="bg-[#000000] text-white pt-14 md:pt-24 pb-10 md:pb-14 px-5 sm:px-8 md:px-16 border-t border-white/10">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-12 items-start justify-between">
           {/* Left: Editorial Headline matching Image 2 */}
           <div className="lg:col-span-7 space-y-4">
-            <h2 className="font-serif text-xl sm:text-xl lg:text-[30px] font-normal leading-[1.14] text-white tracking-tight pb-32">
-              Looking to see something specific? <span className="italic font-normal text-neutral-200">Filter your search.</span>
+            <h2 className="font-serif text-xl sm:text-2xl lg:text-[30px] font-normal leading-[1.18] text-white tracking-tight pb-4 md:pb-24 lg:pb-32">
+              Looking to see something specific? <span className="italic font-normal text-neutral-200 block sm:inline">Filter your search.</span>
             </h2>
 
           </div>
 
           {/* Right: Sleek Outline Filter Box matching Image 2 */}
           <div className="lg:col-span-5 flex lg:justify-end">
-            <div className="w-full max-w-sm border border-neutral-700 bg-black text-white p-6 shadow-2xl rounded-none">
+            <div className="w-full max-w-sm border border-neutral-700 bg-black text-white p-5 sm:p-6 shadow-2xl rounded-none">
               <button
                 type="button"
                 onClick={() => setFilterDropdownOpen(!filterDropdownOpen)}
@@ -212,7 +212,7 @@ export function CaseStudiesView() {
       </section>
 
       {/* 3. Responsive Interactive ChromaGrid Case Studies (Black Theme Work Section) */}
-      <section className="bg-[#000000] text-white pb-28 md:pb-36 px-8 md:px-16">
+      <section className="bg-[#000000] text-white pb-20 md:pb-36 px-5 sm:px-8 md:px-16">
         <div className="max-w-[1400px] mx-auto">
           <ChromaGrid
             items={filteredStudies.map((cs, idx) => {
@@ -234,7 +234,7 @@ export function CaseStudiesView() {
             })}
             reveal="spotlight"
             columns={3}
-            minCardWidth={180}
+            minCardWidth={240}
             gap={16}
             radius={260}
             aspectRatio="16 / 10"

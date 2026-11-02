@@ -90,8 +90,8 @@ export const PlusCard: React.FC<{
 
 export default function RuixenBentoCards({ className = "" }: { className?: string }) {
   return (
-    <section className={cn("bg-[#000000] text-white py-24 md:py-32 px-8 md:px-16 border-t border-b border-white/10", className)}>
-      <div className="max-w-[1300px] mx-auto space-y-8">
+    <section className={cn("bg-[#000000] text-white py-16 md:py-32 px-5 sm:px-8 md:px-16 border-t border-b border-white/10", className)}>
+      <div className="max-w-[1300px] mx-auto space-y-6 sm:space-y-8">
         <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 block">
           Strategic Principles // Growth Architecture
         </span>
