@@ -32,7 +32,7 @@ export default function ServicesPage() {
               <img
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
                 alt="Modern architectural lines at inflection point"
-                className="w-full h-full object-cover grayscale contrast-125 hover:scale-105 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 hover:contrast-100 hover:scale-105 transition-all duration-700 ease-out"
               />
             </div>
           </div>
