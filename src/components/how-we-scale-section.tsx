@@ -77,9 +77,9 @@ function StrategyMeetingScreen() {
    STAGE 2: Viral Reel Production & Sales Spike (iPhone)
    ───────────────────────────────────────────────────────────── */
 function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Slide up the dark-mode analytics sheet gently from 0.32 to 0.44
-  const sheetY = useTransform(scrollYProgress, [0.32, 0.44], ['100%', '0%']);
-  const sheetOpacity = useTransform(scrollYProgress, [0.32, 0.38], [0, 1]);
+  // Slide up the dark-mode analytics sheet gently during Stage 2 active window (0.31 - 0.39)
+  const sheetY = useTransform(scrollYProgress, [0.31, 0.39], ['100%', '0%']);
+  const sheetOpacity = useTransform(scrollYProgress, [0.31, 0.35], [0, 1]);
 
   return (
     <div className="relative size-full bg-neutral-950 text-white overflow-hidden font-sans select-none">
@@ -230,11 +230,11 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
    STAGE 3: Omnichannel Marketing & ROAS Scaling (iPad)
    ───────────────────────────────────────────────────────────── */
 function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Reveal scaling metrics & upward chart gently between 0.60 and 0.74
-  const roasCounter = useTransform(scrollYProgress, [0.60, 0.74], ['3.2x', '4.8x']);
-  const barHeight1 = useTransform(scrollYProgress, [0.60, 0.72], ['45%', '85%']);
-  const barHeight2 = useTransform(scrollYProgress, [0.62, 0.73], ['55%', '95%']);
-  const barHeight3 = useTransform(scrollYProgress, [0.64, 0.74], ['60%', '100%']);
+  // Animate scaling metrics during Stage 3 active window (0.59 - 0.67)
+  const roasCounter = useTransform(scrollYProgress, [0.59, 0.67], ['3.2x', '4.8x']);
+  const barHeight1 = useTransform(scrollYProgress, [0.59, 0.65], ['45%', '85%']);
+  const barHeight2 = useTransform(scrollYProgress, [0.61, 0.66], ['55%', '95%']);
+  const barHeight3 = useTransform(scrollYProgress, [0.63, 0.67], ['60%', '100%']);
 
   return (
     <div className="relative size-full bg-slate-950 text-white overflow-hidden font-sans p-4 sm:p-5 flex flex-col justify-between select-none">
@@ -338,10 +338,10 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
    STAGE 4: Conversion Web Architecture — Client Assembly (MacBook)
    ───────────────────────────────────────────────────────────── */
 function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Animate wireframe blocks snapping into polished high-converting UI gently
-  const wireframeOpacity = useTransform(scrollYProgress, [0.81, 0.91], [1, 0]);
-  const polishedOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1]);
-  const pillScale = useTransform(scrollYProgress, [0.88, 0.98], [0.88, 1]);
+  // Animate wireframe blocks snapping into polished high-converting UI during Stage 4 active window (0.86 - 0.96)
+  const wireframeOpacity = useTransform(scrollYProgress, [0.86, 0.92], [1, 0]);
+  const polishedOpacity = useTransform(scrollYProgress, [0.89, 0.96], [0, 1]);
+  const pillScale = useTransform(scrollYProgress, [0.90, 0.97], [0.88, 1]);
 
   return (
     <div className="relative size-full bg-slate-950 text-white overflow-hidden font-sans select-none flex flex-col justify-between">
@@ -449,62 +449,97 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
 export function HowWeScaleSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Track scroll progress along the 520vh container
+  // Track scroll progress along the 720vh container (expanded runway for gentle transition speed)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
 
-  // Silky smooth spring physics to soften discrete wheel notches and slow down pacing
+  // Smooth, gentle easing spring physics to prevent rushing through transitions
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 45,
-    damping: 20,
-    mass: 0.35,
-    restDelta: 0.0005,
+    stiffness: 60,
+    damping: 24,
+    mass: 0.16,
+    restDelta: 0.0001,
   });
 
   // Vertical scroll progress bar (0% -> 100%)
   const progressBarHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
 
-  // Left Column Stage Opacity & Y Translations - wider, gentler crossfade curves
-  // Stage 1 (0.00 - 0.22)
-  const left1Opacity = useTransform(smoothProgress, [0, 0.16, 0.26], [1, 1, 0]);
-  const left1Y = useTransform(smoothProgress, [0, 0.16, 0.26], [0, 0, -25]);
+  // Shared synchronized milestones with relaxed 14% transition windows:
+  // Transition 1 -> 2: [0.14, 0.28]
+  // Transition 2 -> 3: [0.42, 0.56]
+  // Transition 3 -> 4: [0.70, 0.84]
 
-  // Stage 2 (0.22 - 0.52)
-  const left2Opacity = useTransform(smoothProgress, [0.18, 0.27, 0.45, 0.54], [0, 1, 1, 0]);
-  const left2Y = useTransform(smoothProgress, [0.18, 0.27, 0.45, 0.54], [25, 0, 0, -25]);
+  // Left Column Stage Physical Vertical Scroll Motion
+  // Stage 1 (01 / STRATEGIC ADVISORY)
+  const left1Y = useTransform(smoothProgress, [0, 0.14, 0.28], ['0%', '0%', '-125%']);
+  const left1Opacity = useTransform(smoothProgress, [0, 0.14, 0.28], [1, 1, 0]);
+  const left1Shadow = useTransform(
+    smoothProgress,
+    [0, 0.14, 0.28],
+    ['drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 20px 25px rgba(15,23,42,0.14))']
+  );
 
-  // Stage 3 (0.50 - 0.78)
-  const left3Opacity = useTransform(smoothProgress, [0.46, 0.55, 0.72, 0.81], [0, 1, 1, 0]);
-  const left3Y = useTransform(smoothProgress, [0.46, 0.55, 0.72, 0.81], [25, 0, 0, -25]);
+  // Stage 2 (02 / SHORT-FORM & CONTENT ENGINE)
+  const left2Y = useTransform(smoothProgress, [0.14, 0.28, 0.42, 0.56], ['125%', '0%', '0%', '-125%']);
+  const left2Opacity = useTransform(smoothProgress, [0.14, 0.28, 0.42, 0.56], [0, 1, 1, 0]);
+  const left2Shadow = useTransform(
+    smoothProgress,
+    [0.14, 0.28, 0.42, 0.56],
+    [
+      'drop-shadow(0 20px 25px rgba(15,23,42,0.14))',
+      'drop-shadow(0 0 0 rgba(0,0,0,0))',
+      'drop-shadow(0 0 0 rgba(0,0,0,0))',
+      'drop-shadow(0 20px 25px rgba(15,23,42,0.14))',
+    ]
+  );
 
-  // Stage 4 (0.78 - 1.00)
-  const left4Opacity = useTransform(smoothProgress, [0.73, 0.82, 1.0], [0, 1, 1]);
-  const left4Y = useTransform(smoothProgress, [0.73, 0.82, 1.0], [25, 0, 0]);
+  // Stage 3 (03 / PERFORMANCE MARKETING)
+  const left3Y = useTransform(smoothProgress, [0.42, 0.56, 0.70, 0.84], ['125%', '0%', '0%', '-125%']);
+  const left3Opacity = useTransform(smoothProgress, [0.42, 0.56, 0.70, 0.84], [0, 1, 1, 0]);
+  const left3Shadow = useTransform(
+    smoothProgress,
+    [0.42, 0.56, 0.70, 0.84],
+    [
+      'drop-shadow(0 20px 25px rgba(15,23,42,0.14))',
+      'drop-shadow(0 0 0 rgba(0,0,0,0))',
+      'drop-shadow(0 0 0 rgba(0,0,0,0))',
+      'drop-shadow(0 20px 25px rgba(15,23,42,0.14))',
+    ]
+  );
 
-  // Right Device Morph & Scale Transforms - gradual, cinematic easing
+  // Stage 4 (04 / DIGITAL PRODUCT & WEB)
+  const left4Y = useTransform(smoothProgress, [0.70, 0.84, 1.0], ['125%', '0%', '0%']);
+  const left4Opacity = useTransform(smoothProgress, [0.70, 0.84, 1.0], [0, 1, 1]);
+  const left4Shadow = useTransform(
+    smoothProgress,
+    [0.70, 0.84, 1.0],
+    ['drop-shadow(0 20px 25px rgba(15,23,42,0.14))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))']
+  );
+
+  // Right Device Morph & Scale Transforms - 100% IN LOCKSTEP SYNC with the text stages
   // Device 1: MacBook Titanium (Stage 1)
-  const dev1Scale = useTransform(smoothProgress, [0, 0.16, 0.27], [1, 1, 0.90]);
-  const dev1Opacity = useTransform(smoothProgress, [0, 0.16, 0.27], [1, 1, 0]);
+  const dev1Scale = useTransform(smoothProgress, [0, 0.14, 0.28], [1, 1, 0.92]);
+  const dev1Opacity = useTransform(smoothProgress, [0, 0.14, 0.28], [1, 1, 0]);
 
   // Device 2: iPhone Titanium (Stage 2)
-  const dev2Scale = useTransform(smoothProgress, [0.17, 0.27, 0.45, 0.55], [0.90, 1, 1, 0.90]);
-  const dev2Opacity = useTransform(smoothProgress, [0.17, 0.26, 0.46, 0.55], [0, 1, 1, 0]);
+  const dev2Scale = useTransform(smoothProgress, [0.14, 0.28, 0.42, 0.56], [0.92, 1, 1, 0.92]);
+  const dev2Opacity = useTransform(smoothProgress, [0.14, 0.28, 0.42, 0.56], [0, 1, 1, 0]);
 
   // Device 3: iPad SpaceBlack (Stage 3)
-  const dev3Scale = useTransform(smoothProgress, [0.46, 0.56, 0.72, 0.82], [0.90, 1, 1, 0.90]);
-  const dev3Opacity = useTransform(smoothProgress, [0.46, 0.55, 0.73, 0.82], [0, 1, 1, 0]);
+  const dev3Scale = useTransform(smoothProgress, [0.42, 0.56, 0.70, 0.84], [0.92, 1, 1, 0.92]);
+  const dev3Opacity = useTransform(smoothProgress, [0.42, 0.56, 0.70, 0.84], [0, 1, 1, 0]);
 
   // Device 4: MacBook Midnight (Stage 4)
-  const dev4Scale = useTransform(smoothProgress, [0.73, 0.83, 1.0], [0.90, 1, 1]);
-  const dev4Opacity = useTransform(smoothProgress, [0.73, 0.82, 1.0], [0, 1, 1]);
+  const dev4Scale = useTransform(smoothProgress, [0.70, 0.84, 1.0], [0.92, 1, 1]);
+  const dev4Opacity = useTransform(smoothProgress, [0.70, 0.84, 1.0], [0, 1, 1]);
 
   return (
     <div
       ref={containerRef}
       id="how-we-scale"
-      className="relative h-[520vh] bg-[#F6F9FD]"
+      className="relative h-[720vh] bg-[#F6F9FD]"
     >
       {/* Sticky Full Viewport Wrapper */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center bg-[#F6F9FD] px-8 md:px-16 border-b border-blue-100/60">
@@ -522,12 +557,13 @@ export function HowWeScaleSection() {
         <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center w-full">
           {/* ────────────────────────────────────────────────
               LEFT COLUMN (6 cols): Editorial Typography
+              Full vertical area scroll with dynamic shadows & 60/120fps GPU acceleration
               ──────────────────────────────────────────────── */}
-          <div className="lg:col-span-6 relative min-h-[380px] sm:min-h-[440px] flex items-center">
+          <div className="lg:col-span-6 relative h-[82vh] min-h-[580px] max-h-[740px] flex items-center justify-center overflow-hidden w-full [mask-image:linear-gradient(to_bottom,transparent_0%,black_6%,black_94%,transparent_100%)]">
             {/* Stage 1 Content: Strategic Foundations */}
             <motion.div
-              style={{ opacity: left1Opacity, y: left1Y }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6"
+              style={{ opacity: left1Opacity, y: left1Y, filter: left1Shadow }}
+              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
               <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>01 / STRATEGIC ADVISORY</span>
@@ -552,8 +588,8 @@ export function HowWeScaleSection() {
 
             {/* Stage 2 Content: Viral Reel Production */}
             <motion.div
-              style={{ opacity: left2Opacity, y: left2Y }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6"
+              style={{ opacity: left2Opacity, y: left2Y, filter: left2Shadow }}
+              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
               <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>02 / SHORT-FORM & CONTENT ENGINE</span>
@@ -578,8 +614,8 @@ export function HowWeScaleSection() {
 
             {/* Stage 3 Content: Omnichannel Marketing */}
             <motion.div
-              style={{ opacity: left3Opacity, y: left3Y }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6"
+              style={{ opacity: left3Opacity, y: left3Y, filter: left3Shadow }}
+              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
               <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>03 / PERFORMANCE MARKETING</span>
@@ -604,8 +640,8 @@ export function HowWeScaleSection() {
 
             {/* Stage 4 Content: Conversion Web Architecture */}
             <motion.div
-              style={{ opacity: left4Opacity, y: left4Y }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6"
+              style={{ opacity: left4Opacity, y: left4Y, filter: left4Shadow }}
+              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
               <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>04 / DIGITAL PRODUCT & WEB</span>
@@ -631,14 +667,14 @@ export function HowWeScaleSection() {
 
           {/* ────────────────────────────────────────────────
               RIGHT COLUMN (6 cols): Interactive Hardware Showcase
-              Shared center axis for all device models
+              Shared center axis for all device models & GPU accelerated
               ──────────────────────────────────────────────── */}
-          <div className="lg:col-span-6 relative min-h-[400px] sm:min-h-[480px] md:min-h-[540px] flex items-center justify-center lg:justify-end">
+          <div className="lg:col-span-6 relative h-[82vh] min-h-[580px] max-h-[740px] flex items-center justify-center lg:justify-end">
             <div className="relative w-full max-w-[620px] h-[360px] sm:h-[420px] md:h-[480px] flex items-center justify-center">
               {/* STAGE 1 DEVICE: MacBook Titanium */}
               <motion.div
                 style={{ scale: dev1Scale, opacity: dev1Opacity }}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
                   <LaptopMockupCard variant="titanium">
@@ -650,7 +686,7 @@ export function HowWeScaleSection() {
               {/* STAGE 2 DEVICE: iPhone Titanium with Dynamic Island (Dead-centered with other models) */}
               <motion.div
                 style={{ scale: dev2Scale, opacity: dev2Opacity }}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto scale-105 sm:scale-110">
                   <PhoneMockupCard variant="titanium" showDynamicIsland={true}>
@@ -662,7 +698,7 @@ export function HowWeScaleSection() {
               {/* STAGE 3 DEVICE: iPad SpaceBlack with Front Camera */}
               <motion.div
                 style={{ scale: dev3Scale, opacity: dev3Opacity }}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
                   <IpadMockupCard variant="spaceBlack" showCamera={true}>
@@ -674,7 +710,7 @@ export function HowWeScaleSection() {
               {/* STAGE 4 DEVICE: MacBook Midnight */}
               <motion.div
                 style={{ scale: dev4Scale, opacity: dev4Opacity }}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
                   <LaptopMockupCard variant="midnight">

@@ -49,9 +49,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const displayMainMessage = mainMessage ?? (
     <span className="inline-flex items-center gap-2">
       Let&apos;s talk!
-      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 text-blue-600 border border-blue-200">
-        <Mic className="w-4 h-4" />
-      </span>
     </span>
   );
   const [formData, setFormData] = React.useState({
