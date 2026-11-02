@@ -4,7 +4,7 @@ import { MessageCircle } from 'lucide-react';
 
 export function WhatsAppFloatingWidget() {
   const whatsappUrl =
-    "https://wa.me/?text=Hello%20GrowDesk%20Media,%20I'm%20visiting%20your%20website%20and%20would%20like%20to%20inquire%20about%20growth%20services.";
+    "https://wa.me/919406031522?text=Hello%20GrowDesk%20Media,%20I'm%20visiting%20your%20website%20and%20would%20like%20to%20inquire%20about%20growth%20services.";
 
   return (
     <aside aria-label="WhatsApp quick contact" className="fixed bottom-6 right-6 z-50">

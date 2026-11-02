@@ -33,15 +33,16 @@ interface ContactSectionProps {
 }
 
 const defaultSocialLinks = [
-  { id: '1', name: 'WhatsApp', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg', href: 'https://wa.me/?text=Hello%20GrowDesk%20Media' },
-  { id: '2', name: 'Instagram', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg', href: 'https://instagram.com/growdeskmedia' },
-  { id: '3', name: 'LinkedIn', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg', href: '#linkedin' },
+  { id: '1', name: 'WhatsApp', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg', href: 'https://wa.me/919406031522?text=Hello%20GrowDesk%20Media' },
+  { id: '2', name: 'Instagram', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg', href: 'https://www.instagram.com/growdeskmedia/' },
+  { id: '3', name: 'Facebook', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg', href: 'https://www.facebook.com/profile.php?id=61591647995131' },
+  { id: '4', name: 'LinkedIn', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg', href: 'https://www.linkedin.com/company/145189822/' },
 ];
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   title = "We can turn your commercial growth targets into reality.",
   mainMessage,
-  contactEmail = "advisory@growdeskmedia.com",
+  contactEmail = "growdeskmedia@gmail.com",
   socialLinks = defaultSocialLinks,
   onSubmit,
 }) => {
@@ -131,11 +132,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             </p>
           </div>
 
-          <div className="space-y-2 border-t border-neutral-200 pt-6">
-            <p className="font-mono text-xs uppercase tracking-wider text-neutral-400">Direct Email</p>
-            <a href={`mailto:${contactEmail}`} className="text-sm font-mono text-neutral-900 hover:opacity-60 transition-opacity">
-              {contactEmail}
-            </a>
+          <div className="space-y-3 border-t border-neutral-200 pt-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-neutral-400">Direct Email</p>
+                <a href={`mailto:${contactEmail}`} className="text-sm font-mono text-neutral-900 hover:text-blue-600 transition-colors">
+                  {contactEmail}
+                </a>
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-neutral-400">Direct Phone / WhatsApp</p>
+                <a href="tel:+919406031522" className="text-sm font-mono text-neutral-900 hover:text-blue-600 transition-colors">
+                  +91 94060 31522
+                </a>
+              </div>
+            </div>
 
             <div className="flex items-center space-x-3 pt-3">
               <span className="font-mono text-xs uppercase text-neutral-400">CHANNELS:</span>

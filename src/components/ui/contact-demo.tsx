@@ -6,7 +6,7 @@ const DemoContactSection: React.FC = () => {
     <main className="min-h-screen bg-[#F6F9FD]">
       <ContactSection
         title="We can turn your commercial growth targets into reality."
-        contactEmail="advisory@growdeskmedia.com"
+        contactEmail="growdeskmedia@gmail.com"
       />
     </main>
   );

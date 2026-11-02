@@ -18,7 +18,7 @@ export function ContactSection() {
             </p>
 
             <div className="pt-6 font-mono text-xs text-neutral-400 space-y-2">
-              <div>ENCRYPTED DISPATCH: advisory@flightpr.com</div>
+              <div>ENCRYPTED DISPATCH: growdeskmedia@gmail.com</div>
               <div>LOCATIONS: NEW YORK // LOS ANGELES // AUSTIN</div>
             </div>
           </div>

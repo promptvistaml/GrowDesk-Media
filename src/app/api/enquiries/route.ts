@@ -44,7 +44,7 @@ export async function POST(request: Request) {
       `*Timestamp:* ${newLead.createdAt}`
     );
 
-    const whatsappRedirectUrl = `https://wa.me/?text=${encodedText}`;
+    const whatsappRedirectUrl = `https://wa.me/919406031522?text=${encodedText}`;
 
     return NextResponse.json({
       success: true,

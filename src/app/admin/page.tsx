@@ -309,7 +309,7 @@ export default function AdminPage() {
                       <td className="py-3.5 px-4 text-right">
                         <div className="flex items-center justify-end gap-2">
                           <a
-                            href={`https://wa.me/?text=Hello%20${encodeURIComponent(
+                            href={`https://wa.me/919406031522?text=Hello%20${encodeURIComponent(
                               lead.fullName
                             )},%20this%20is%20GrowDesk%20Media%20following%20up%20on%20your%20inquiry.`}
                             target="_blank"
