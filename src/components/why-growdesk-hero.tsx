@@ -1,29 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
-import Crosshair from '@/components/Crosshair';
-
 export function WhyGrowDeskHero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <section
-      ref={containerRef}
-      className="relative bg-[#F0F5FA] text-[#000000] pt-14 pb-16 md:pt-32 md:pb-36 px-5 sm:px-8 md:px-16 overflow-hidden"
-    >
-      {/* Precision Crosshair effect scoped specifically to Why GrowDesk */}
-      <Crosshair
-        containerRef={containerRef}
-        color="#1E63FF"
-        thickness={1}
-        opacity={0.8}
-        smoothing={0.3}
-        targetEffect="lock"
-        targetSelector="a, button, img, [data-crosshair-target]"
-        showCoordinates
-        clickPulse
-      />
-
+    <section className="relative bg-[#F0F5FA] text-[#000000] pt-14 pb-16 md:pt-32 md:pb-36 px-5 sm:px-8 md:px-16 overflow-hidden">
       <div className="relative z-10 max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
         {/* Left Column / Editorial Statement */}
         <div className="lg:col-span-7 space-y-6 sm:space-y-8">
@@ -57,4 +36,3 @@ export function WhyGrowDeskHero() {
     </section>
   );
 }
-
