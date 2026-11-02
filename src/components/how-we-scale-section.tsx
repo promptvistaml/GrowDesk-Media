@@ -631,13 +631,14 @@ export function HowWeScaleSection() {
 
           {/* ────────────────────────────────────────────────
               RIGHT COLUMN (6 cols): Interactive Hardware Showcase
+              Shared center axis for all device models
               ──────────────────────────────────────────────── */}
           <div className="lg:col-span-6 relative min-h-[400px] sm:min-h-[480px] md:min-h-[540px] flex items-center justify-center lg:justify-end">
-            <div className="relative w-full flex items-center justify-center lg:justify-end">
+            <div className="relative w-full max-w-[620px] h-[360px] sm:h-[420px] md:h-[480px] flex items-center justify-center">
               {/* STAGE 1 DEVICE: MacBook Titanium */}
               <motion.div
                 style={{ scale: dev1Scale, opacity: dev1Opacity }}
-                className="absolute inset-0 flex items-center justify-center lg:justify-end pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
                 <div className="pointer-events-auto">
                   <LaptopMockupCard variant="titanium">
@@ -646,10 +647,10 @@ export function HowWeScaleSection() {
                 </div>
               </motion.div>
 
-              {/* STAGE 2 DEVICE: iPhone Titanium with Dynamic Island */}
+              {/* STAGE 2 DEVICE: iPhone Titanium with Dynamic Island (Dead-centered with other models) */}
               <motion.div
                 style={{ scale: dev2Scale, opacity: dev2Opacity }}
-                className="absolute inset-0 flex items-center justify-center lg:justify-end pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
                 <div className="pointer-events-auto scale-105 sm:scale-110">
                   <PhoneMockupCard variant="titanium" showDynamicIsland={true}>
@@ -661,7 +662,7 @@ export function HowWeScaleSection() {
               {/* STAGE 3 DEVICE: iPad SpaceBlack with Front Camera */}
               <motion.div
                 style={{ scale: dev3Scale, opacity: dev3Opacity }}
-                className="absolute inset-0 flex items-center justify-center lg:justify-end pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
                 <div className="pointer-events-auto">
                   <IpadMockupCard variant="spaceBlack" showCamera={true}>
@@ -673,7 +674,7 @@ export function HowWeScaleSection() {
               {/* STAGE 4 DEVICE: MacBook Midnight */}
               <motion.div
                 style={{ scale: dev4Scale, opacity: dev4Opacity }}
-                className="absolute inset-0 flex items-center justify-center lg:justify-end pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
                 <div className="pointer-events-auto">
                   <LaptopMockupCard variant="midnight">
