@@ -192,7 +192,7 @@ export default function PerspectiveTunnelHero() {
         <div ref={containerRef} className="relative h-[300vh] w-full bg-black">
             {/* Pinned Sticky Viewport: Remains firmly fixed at top-0 until 300vh completes */}
             <div
-                className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black text-white select-none flex items-center justify-center border-b border-white/10"
+                className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black text-white select-none flex items-center justify-center "
                 style={{
                     perspective: stage.isMobile ? "900px" : "1200px",
                     transformStyle: "preserve-3d",

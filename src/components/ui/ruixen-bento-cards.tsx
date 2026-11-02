@@ -69,7 +69,7 @@ export const PlusCard: React.FC<{
   return (
     <div
       className={cn(
-        "relative border border-solid border-zinc-700/80 rounded-lg p-6 sm:p-8 bg-transparent min-h-[190px]",
+        "relative border border-solid border-zinc-700/80  p-6 sm:p-8 bg-transparent min-h-[190px]",
         "flex flex-col justify-between group hover:border-zinc-500 transition-colors duration-300",
         className
       )}

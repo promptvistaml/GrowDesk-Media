@@ -75,7 +75,7 @@ export const LaptopMockupCard = forwardRef<
       {/* Laptop Display Lid (Chamfered edge + brushed metal border reflection) */}
       <div
         className={cn(
-          "w-[340px] sm:w-[460px] md:w-[540px] lg:w-[600px] xl:w-[640px]",
+          "w-[320px] sm:w-[420px] md:w-[480px] lg:w-[520px] xl:w-[560px]",
           "relative overflow-hidden rounded-t-[20px] p-[2.5px] pb-0 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)]",
           frame.sheen,
         )}
@@ -114,7 +114,7 @@ export const LaptopMockupCard = forwardRef<
       {/* Laptop Base (Anodized Aluminum Unibody with Precision Thumb Scoop) */}
       <div
         className={cn(
-          "relative h-4 sm:h-5 md:h-5.5 lg:h-6 w-[380px] sm:w-[520px] md:w-[610px] lg:w-[680px] xl:w-[720px]",
+          "relative h-4 sm:h-5 md:h-5.5 lg:h-6 w-[360px] sm:w-[480px] md:w-[550px] lg:w-[590px] xl:w-[630px]",
           "rounded-b-[18px] shadow-[0_15px_35px_rgba(0,0,0,0.35),0_30px_70px_rgba(0,0,0,0.2)] p-[1.5px] pt-0",
           frame.baseLip,
         )}

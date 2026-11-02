@@ -32,7 +32,7 @@ function NeuroNoiseStats({
     <section
       data-slot="neuro-noise-stats"
       className={cn(
-        "relative flex w-full flex-col gap-12 bg-black px-6 py-24 text-white md:px-12 lg:px-20 border-b border-white/10 select-none",
+        "relative flex w-full flex-col gap-12 bg-black px-6 py-24 text-white md:px-12 lg:px-20  select-none",
         className,
       )}
       style={style}

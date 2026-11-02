@@ -1,6 +1,6 @@
 import PerspectiveTunnelHero from "@/components/ui/perspective-tunnel-hero";
+import { HowWeScaleSection } from "@/components/how-we-scale-section";
 import NeuroNoiseStats from "@/components/ui/neuro-noise-stats";
-import { FlightManifesto } from "@/components/flight-manifesto";
 import { FlightClients } from "@/components/flight-clients";
 import { FlightTestimonials } from "@/components/flight-testimonials";
 import { FlightAiEra } from "@/components/flight-ai-era";
@@ -14,7 +14,7 @@ export default function Home() {
       {/* 3D Perspective Tunnel Hero Sequence */}
       <PerspectiveTunnelHero />
 
-      {/* Metrics Section: Displayed right after */}
+      {/* Metrics Impact Section: Directly after landing page hero */}
       <NeuroNoiseStats
         eyebrow=""
         title="Impact built around measurable business outcomes"
@@ -26,8 +26,9 @@ export default function Home() {
         ]}
       />
 
-      <FlightManifesto />
-      <div className="h-8 sm:h-12 md:h-16 bg-[#F6F9FD] w-full" />
+      {/* Sticky Scroll-Jacked About Us / How We Scale Brands Section */}
+      <HowWeScaleSection />
+
       <FlightClients />
       <FlightTestimonials />
       <FlightAiEra />
