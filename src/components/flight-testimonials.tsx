@@ -52,10 +52,10 @@ export function FlightTestimonials() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#F2EFE9] text-[#000000] py-32 md:py-44 px-6 sm:px-12 select-none border-t border-b border-neutral-300">
+    <section className="relative overflow-hidden bg-[#F0F5FA] text-[#000000] py-32 md:py-44 px-6 sm:px-12 select-none border-t border-b border-blue-200/60">
       {/* Background Organic Abstract Shapes */}
       <svg
-        className="pointer-events-none absolute left-0 top-0 w-80 md:w-[480px] h-auto text-[#E6E1D7] select-none z-0"
+        className="pointer-events-none absolute left-0 top-0 w-80 md:w-[480px] h-auto text-[#E0ECF8] select-none z-0"
         viewBox="0 0 500 250"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ export function FlightTestimonials() {
       </svg>
 
       <svg
-        className="pointer-events-none absolute right-0 top-0 bottom-0 w-[45vw] max-w-[650px] h-full text-[#EAE6DD] select-none z-0"
+        className="pointer-events-none absolute right-0 top-0 bottom-0 w-[45vw] max-w-[650px] h-full text-[#E7F0FA] select-none z-0"
         viewBox="0 0 600 600"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"

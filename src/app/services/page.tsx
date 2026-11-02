@@ -42,12 +42,12 @@ export default function ServicesPage() {
       {/* 2. Interactive "What we do" Horizontal Accordion / Vertical Tabs (Pure Black #000000) */}
       <FlightVerticalTabs />
 
-      {/* 3. The Runway / Strategic Process Framework (Lightened Alabaster Canvas blending seamlessly into white footer) */}
-      <section id="framework" className="relative overflow-hidden bg-[#FFFFFF] text-[#000000] pt-24 pb-28 md:pt-36 md:pb-36 px-8 md:px-16 border-t border-neutral-200">
+      {/* 3. The Runway / Strategic Process Framework (Crisp Ice Blue Canvas blending seamlessly into white footer) */}
+      <section id="framework" className="relative overflow-hidden bg-[#F6F9FD] text-[#000000] pt-24 pb-28 md:pt-36 md:pb-36 px-8 md:px-16 border-t border-blue-100">
         {/* Background Graphic Artwork: Lightened opacity with multiply blend */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
           <img
-            src="/images/runway-banner.jpg"
+            src="/images/runway-banner-blue.jpg"
             alt=""
             className="w-full h-full object-cover object-center opacity-40 mix-blend-multiply"
           />
@@ -71,13 +71,13 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            {/* View Selected Work outline button styled after receipts button */}
+            {/* View Selected Work boxy sliding hover button */}
             <div className="shrink-0">
               <Link
                 href="/case-studies"
-                className="inline-block border border-black bg-white/60 hover:bg-black hover:text-white text-neutral-900 px-7 py-3 text-[11px] font-mono uppercase tracking-[0.2em] transition-all duration-200 backdrop-blur-xs"
+                className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-8 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium shadow-sm transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
               >
-                View Selected Work →
+                <span className="relative z-10">View Selected Work →</span>
               </Link>
             </div>
           </div>

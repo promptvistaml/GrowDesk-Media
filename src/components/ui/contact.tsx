@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { MessageCircle, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, CheckCircle2, Mic } from 'lucide-react';
 
 interface ContactSectionProps {
   /**
@@ -16,7 +16,7 @@ interface ContactSectionProps {
   /**
    * The subtitle or main message for the introductory part.
    */
-  mainMessage?: string;
+  mainMessage?: React.ReactNode;
   /**
    * The contact email to display.
    */
@@ -40,11 +40,19 @@ const defaultSocialLinks = [
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   title = "We can turn your commercial growth targets into reality.",
-  mainMessage = "Let's talk! 👋",
+  mainMessage,
   contactEmail = "advisory@growdeskmedia.com",
   socialLinks = defaultSocialLinks,
   onSubmit,
 }) => {
+  const displayMainMessage = mainMessage ?? (
+    <span className="inline-flex items-center gap-2">
+      Let&apos;s talk!
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 text-blue-600 border border-blue-200">
+        <Mic className="w-4 h-4" />
+      </span>
+    </span>
+  );
   const [formData, setFormData] = React.useState({
     name: '',
     email: '',
@@ -108,7 +116,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   ];
 
   return (
-    <section id="connect" className="relative w-full overflow-hidden bg-[#FBF9F5] text-black py-24 md:py-36 px-6 sm:px-10 border-t border-neutral-200">
+    <section id="connect" className="relative w-full overflow-hidden bg-[#F6F9FD] text-black py-24 md:py-36 px-6 sm:px-10 border-t border-blue-100">
       {/* Main Content Layout (Clean background without bubble animations or external backgrounds) */}
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Left Side: Statement & Direct Email */}
@@ -149,7 +157,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
         {/* Right Side: Contact Form */}
         <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-xl shadow-lg border border-neutral-200">
-          <h3 className="font-serif text-2xl font-normal text-neutral-900 mb-6">{mainMessage}</h3>
+          <h3 className="font-serif text-2xl font-normal text-neutral-900 mb-6">{displayMainMessage}</h3>
 
           {submitted ? (
             <div className="text-center py-8 space-y-4">

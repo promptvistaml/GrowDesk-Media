@@ -3,10 +3,9 @@ import { ContactSection } from '@/components/ui/contact';
 
 const DemoContactSection: React.FC = () => {
   return (
-    <main className="min-h-screen bg-[#FBF9F5]">
+    <main className="min-h-screen bg-[#F6F9FD]">
       <ContactSection
         title="We can turn your commercial growth targets into reality."
-        mainMessage="Let's talk! 👋"
         contactEmail="advisory@growdeskmedia.com"
       />
     </main>

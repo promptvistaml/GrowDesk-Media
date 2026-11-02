@@ -13,8 +13,8 @@ export default function Home() {
     <main className="min-h-screen flex flex-col bg-[#000000]">
       {/* 3D Perspective Tunnel Hero Sequence */}
       <PerspectiveTunnelHero />
-      
-      {/* Metrics Section: Displayed right after the 3D scroll animation finishes */}
+
+      {/* Metrics Section: Displayed right after */}
       <NeuroNoiseStats
         eyebrow=""
         title="Impact built around measurable business outcomes"
@@ -27,7 +27,7 @@ export default function Home() {
       />
 
       <FlightManifesto />
-      <div className="h-8 sm:h-12 md:h-16 bg-[#FBF9F5] w-full" />
+      <div className="h-8 sm:h-12 md:h-16 bg-[#F6F9FD] w-full" />
       <FlightClients />
       <FlightTestimonials />
       <FlightAiEra />

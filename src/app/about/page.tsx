@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/footer';
 import RuixenBentoCards from '@/components/ui/ruixen-bento-cards';
+import { FeaturesAlternatingLayout01 } from '@/components/ui/features-alternating-layout';
 
 export const metadata: Metadata = {
   title: 'Why GrowDesk | Strategic Growth & Narrative Advisory',
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="min-h-screen flex flex-col bg-[#000000] text-white">
-      {/* 1. Hero Section (Warm Alabaster Canvas #FAFBF6 matching Flight PR & Case Studies) */}
-      <section className="bg-[#FAFBF6] text-[#000000] pt-20 pb-24 md:pt-32 md:pb-36 px-8 md:px-16 overflow-hidden">
+      {/* 1. Hero Section (Crisp Ice Blue Canvas #F0F5FA matching Flight PR & Case Studies) */}
+      <section className="bg-[#F0F5FA] text-[#000000] pt-20 pb-24 md:pt-32 md:pb-36 px-8 md:px-16 overflow-hidden">
         <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column / Editorial Statement */}
           <div className="lg:col-span-7 space-y-8">
@@ -49,12 +50,15 @@ export default function AboutPage() {
       {/* 2. Core Philosophy & Strategic Principles Bento Cards (Pure Black Theme #000000) */}
       <RuixenBentoCards />
 
-      {/* 3. Brand Ethos Quote & Runway Framework Canvas (Lightened Alabaster Canvas blending seamlessly into white footer) */}
+      {/* 3. Alternating Features Showcase: Beautiful analytics to grow smarter */}
+      <FeaturesAlternatingLayout01 />
+
+      {/* 4. Brand Ethos Quote & Runway Framework Canvas */}
       <section className="relative overflow-hidden bg-[#FFFFFF] text-[#000000] pt-24 pb-28 md:pt-36 md:pb-36 px-8 md:px-16 border-t border-neutral-200">
         {/* Background Graphic Artwork: Lightened opacity with multiply blend matching other pages */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
           <img
-            src="/images/runway-banner.jpg"
+            src="/images/runway-banner-blue.jpg"
             alt=""
             className="w-full h-full object-cover object-center opacity-40 mix-blend-multiply"
           />
@@ -77,15 +81,15 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Link
               href="/case-studies"
-              className="inline-block border border-black bg-white/70 hover:bg-black hover:text-white text-neutral-900 px-7 py-3 text-[11px] font-mono uppercase tracking-[0.2em] transition-all duration-200 backdrop-blur-xs"
+              className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-8 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium shadow-sm transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
             >
-              View Selected Work →
+              <span className="relative z-10">View Selected Work →</span>
             </Link>
             <Link
               href="/services"
-              className="inline-block border border-neutral-300 bg-white/50 hover:border-black text-neutral-700 hover:text-black px-7 py-3 text-[11px] font-mono uppercase tracking-[0.2em] transition-all duration-200 backdrop-blur-xs"
+              className="relative inline-block overflow-hidden rounded-none border border-neutral-300 bg-white/60 text-neutral-800 px-7 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white hover:border-black backdrop-blur-xs"
             >
-              Explore What We Do →
+              <span className="relative z-10">Explore What We Do →</span>
             </Link>
           </div>
         </div>

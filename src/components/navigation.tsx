@@ -16,11 +16,11 @@ export function Navigation() {
   const isLightPage = isServices || isOurWork || isAbout;
 
   const linkClass = isLightPage
-    ? "text-[10px] tracking-normal text-neutral-700 hover:text-black transition-opacity font-normal"
-    : "text-[10px] tracking-normal text-white/90 hover:text-white transition-opacity font-normal";
+    ? "relative text-[10px] tracking-normal text-neutral-700 hover:text-black transition-colors font-normal py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#1E63FF] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-250 after:origin-left"
+    : "relative text-[10px] tracking-normal text-white/90 hover:text-white transition-colors font-normal py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#1E63FF] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-250 after:origin-left";
 
   const headerBg = (isOurWork || isAbout)
-    ? "bg-[#FAFBF6] text-[#000000]"
+    ? "bg-[#F0F5FA] text-[#000000]"
     : isServices
     ? "bg-[#FFFFFF] text-[#000000]"
     : "bg-[#000000] text-white";
@@ -37,13 +37,13 @@ export function Navigation() {
         <nav className="hidden md:flex items-center gap-12 lg:gap-16">
           <Link
             href="/about"
-            className={`${linkClass} ${isAbout ? "border-b border-black pb-0.5 text-black font-medium" : ""}`}
+            className={`${linkClass} ${isAbout ? "after:scale-x-100 font-medium" : ""}`}
           >
             Why GrowDesk
           </Link>
           <Link
             href="/services"
-            className={`${linkClass} ${isServices ? "border-b border-black pb-0.5 text-black font-medium" : ""}`}
+            className={`${linkClass} ${isServices ? "after:scale-x-100 font-medium" : ""}`}
           >
             What We Do
           </Link>
@@ -60,7 +60,7 @@ export function Navigation() {
         <div className="flex items-center gap-12 lg:gap-16 ml-auto md:ml-0">
           <Link
             href="/case-studies"
-            className={`hidden md:inline-block ${linkClass} ${isOurWork ? "border-b border-black pb-0.5 text-black font-medium" : ""}`}
+            className={`hidden md:inline-block ${linkClass} ${isOurWork ? "after:scale-x-100 font-medium" : ""}`}
           >
             Our Work
           </Link>
@@ -93,7 +93,7 @@ export function Navigation() {
       {mobileMenuOpen && (
         <div className={`md:hidden px-8 py-8 flex flex-col gap-6 text-sm tracking-wide ${
           (isOurWork || isAbout)
-            ? "bg-[#FAFBF6] border-t border-neutral-200 text-black"
+            ? "bg-[#F0F5FA] border-t border-neutral-200 text-black"
             : isServices
             ? "bg-[#FFFFFF] border-t border-neutral-200 text-black"
             : "bg-[#000000] border-t border-white/10 text-white"

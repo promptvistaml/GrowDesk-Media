@@ -1,5 +1,6 @@
 "use client";
 
+import LightRays from "@/components/LightRays";
 import {
     motion,
     useScroll,
@@ -197,10 +198,30 @@ export default function PerspectiveTunnelHero() {
                     transformStyle: "preserve-3d",
                 }}
             >
+                {/* Background LightRays */}
+                <div className="absolute inset-0 z-0 pointer-events-auto">
+                    <LightRays
+                        raysOrigin="top-center"
+                        raysColor="#1E63FF"
+                        raysSpeed={1}
+                        lightSpread={0.65}
+                        rayLength={3}
+                        glow={0.7}
+                        haze={0.3}
+                        followMouse
+                        mouseInfluence={0.15}
+                        clickPulse
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    />
+                </div>
+
                 {/* Central Anchor Typography */}
                 <motion.div
                     style={{ scale: titleScale, opacity: titleOpacity }}
-                    className="pointer-events-none z-0 flex flex-col items-center text-center px-6 max-w-2xl"
+                    className="pointer-events-none z-10 flex flex-col items-center text-center px-6 max-w-2xl"
                 >
                     <p className="text-xs font-medium uppercase tracking-[0.4em] text-neutral-400 mb-4">
                         BRANDS   •   LEADS   •   FRANCHISES
