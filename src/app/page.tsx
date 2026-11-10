@@ -26,7 +26,7 @@ export default function Home() {
         ]}
       />
 
-      {/* Sticky Scroll-Jacked About Us / How We Scale Brands Section */}
+      {/* Sticky Scroll-Jacked About Us & Business Pillars Showcase (Same #F6F9FD Background) */}
       <HowWeScaleSection />
 
       <FlightClients />
