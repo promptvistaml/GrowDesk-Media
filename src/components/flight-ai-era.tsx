@@ -17,7 +17,7 @@ export function FlightAiEra() {
   return (
     <section className="bg-[#FFFFFF] text-[#000000] py-28 md:py-40 px-6 border-t border-neutral-100">
       <div className="max-w-4xl mx-auto text-center space-y-12">
-        <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal text-neutral-900 leading-tight">
+        <h2 className="font-sans text-3xl sm:text-5xl md:text-6xl font-bold text-neutral-900 leading-tight">
           In the digital era, noise compounds fast.
 Execution drives outcomes.  
         </h2>

@@ -121,7 +121,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
           <div className="space-y-4">
            
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[46px] font-normal leading-[1.12] text-neutral-900 tracking-tight">
+            <h2 className="font-sans text-3xl sm:text-5xl lg:text-[46px] font-normal leading-[1.12] text-neutral-900 tracking-tight">
               {title}
             </h2>
             <p className="text-sm text-neutral-600 font-light leading-relaxed max-w-md pt-2">

@@ -14,7 +14,10 @@ export default function Home() {
       {/* 3D Perspective Tunnel Hero Sequence */}
       <PerspectiveTunnelHero />
 
-      {/* Metrics Impact Section: Directly after landing page hero */}
+      {/* Client Marquee: Placed directly after landing page hero */}
+      <FlightClients />
+
+      {/* Metrics Impact Section */}
       <NeuroNoiseStats
         eyebrow=""
         title="Impact built around measurable business outcomes"
@@ -29,7 +32,6 @@ export default function Home() {
       {/* Sticky Scroll-Jacked About Us & Business Pillars Showcase (Same #F6F9FD Background) */}
       <HowWeScaleSection />
 
-      <FlightClients />
       <FlightTestimonials />
       <FlightAiEra />
       <Faq05 />

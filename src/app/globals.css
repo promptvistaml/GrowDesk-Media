@@ -15,7 +15,7 @@
   --color-royal-blue: #1E63FF;
   --color-sky-blue: #4FA9FF;
   --color-white: #FFFFFF;
-  --font-serif: var(--font-serif), "Cormorant Garamond", "Times New Roman", Garamond, serif;
+  --font-serif: var(--font-poppins), system-ui, sans-serif;
   --font-sans: var(--font-poppins), system-ui, sans-serif;
 }
 

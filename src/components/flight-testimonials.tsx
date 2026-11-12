@@ -1,151 +1,210 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const testimonials = [
-  {
-    quote: '"You gave us the best possible outcome for our launch. Thank you!"',
-    author: 'VIC FATNANI',
-    title: 'CO-FOUNDER AND GM, ADLINGO (GOOGLE)',
-  },
-  {
-    quote: '"GrowDesk is the best growth and marketing partner for scaling businesses."',
-    author: 'SAHIN BOYDAS',
-    title: 'FOUNDER & CEO, REMOTETEAM.COM (ACQUIRED BY GUSTO)',
-  },
-  {
-    quote: '"A tremendous partner in helping us gain high-intent traction before and after our key expansion. Highly recommended!"',
-    author: 'KATHERINE WINSTON',
-    title: 'HEAD OF MARKETING, PLUNK',
-  },
-  {
-    quote: '"We worked with many marketing agencies before but were never satisfied until working with the GrowDesk leadership team."',
-    author: 'DANA LOBERG',
-    title: 'FOUNDER & CEO, LEO',
-  },
-];
+import React from 'react';
+import Link from 'next/link';
 
 export function FlightTestimonials() {
-  // Page number continuously increments on "next" and decrements on "prev"
-  // so the carousel keeps advancing infinitely in the same direction like a circle.
-  const [[page, direction], setPage] = useState([0, 1]);
-
-  const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection]);
-  };
-
-  // True modulo calculation to cycle through testimonials indefinitely
-  const currentIndex = ((page % testimonials.length) + testimonials.length) % testimonials.length;
-  const current = testimonials[currentIndex];
-
-  const variants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? '100%' : '-100%',
-    }),
-    center: {
-      x: '0%',
-    },
-    exit: (dir: number) => ({
-      x: dir > 0 ? '-100%' : '100%',
-    }),
-  };
-
   return (
-    <section className="relative overflow-hidden bg-[#F0F5FA] text-[#000000] py-32 md:py-44 px-6 sm:px-12 select-none border-t border-b border-blue-200/60">
-      {/* Background Organic Abstract Shapes */}
-      <svg
-        className="pointer-events-none absolute left-0 top-0 w-80 md:w-[480px] h-auto text-[#E0ECF8] select-none z-0"
-        viewBox="0 0 500 250"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M0 0H400C380 40 360 80 280 80C200 80 180 160 100 160C40 160 0 200 0 250V0Z" />
-      </svg>
+    <section className="relative overflow-hidden bg-[#000000] text-white py-24 sm:py-32 md:py-36 px-4 sm:px-6 md:px-8 select-none border-t border-b border-white/10 font-sans">
+      {/* Subtle Ambient Radial Lighting */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-blue-600/10 blur-[150px] rounded-full z-0" />
+      <div className="pointer-events-none absolute top-1/2 right-0 w-[400px] h-[400px] bg-blue-500/5 blur-[140px] rounded-full z-0" />
 
-      <svg
-        className="pointer-events-none absolute right-0 top-0 bottom-0 w-[45vw] max-w-[650px] h-full text-[#E7F0FA] select-none z-0"
-        viewBox="0 0 600 600"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M600 0V600C500 550 420 500 360 380C300 250 450 180 400 60C380 20 450 0 600 0Z" />
-      </svg>
-
-      {/* Main Content Area */}
-      <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
-        {/* Infinite Circular Slider Viewport with comfortable height */}
-        <div className="relative w-full min-h-[220px] sm:min-h-[260px] md:min-h-[300px] flex items-center justify-center overflow-hidden">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={page}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: 'spring', stiffness: 240, damping: 28 },
-              }}
-              className="absolute w-full px-4 sm:px-8 space-y-6 flex flex-col items-center justify-center"
-            >
-              <h2
-                className={`font-serif font-normal text-neutral-900 leading-[1.25] tracking-tight max-w-3xl mx-auto ${
-                  current.quote.length > 80
-                    ? 'text-xl sm:text-3xl md:text-4xl'
-                    : 'text-2xl sm:text-4xl md:text-5xl'
-                }`}
-              >
-                {current.quote}
-              </h2>
-
-              <div className="space-y-1 pt-1">
-                <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-600">
-                  — {current.author}
-                </p>
-                <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 font-light">
-                  {current.title}
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+      <div className="relative z-10 max-w-6xl mx-auto font-sans">
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16 md:mb-20 font-sans">
+      
+          <h2 className="font-sans text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.08] max-w-3xl mx-auto">
+            They trust us to turn<br />
+            bold concepts into real<br />
+            <span className="font-sans italic font-normal text-neutral-300">world wins.</span>
+          </h2>
         </div>
 
-        {/* Minimalist Arrow Navigation Controls */}
-        <div className="flex items-center justify-center gap-10 mt-12 pt-4">
-          <button
-            type="button"
-            onClick={() => paginate(-1)}
-            aria-label="Previous testimonial"
-            className="p-2 text-neutral-800 hover:text-black hover:-translate-x-1 transition-all group cursor-pointer"
-          >
-            <svg
-              className="w-8 h-4 stroke-[1.5]"
-              viewBox="0 0 34 16"
-              fill="none"
-              stroke="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M33 8H1M1 8L8 1M1 8L8 15" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+        {/* 2x2 Bento Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch font-sans">
+          {/* Card 1 (Top Left): Royal Blue Metric Card */}
+          <div className="bg-[#1532f5] rounded-3xl p-8 sm:p-10 flex flex-col justify-between min-h-[440px] shadow-2xl transition-all duration-300 hover:shadow-blue-600/25 hover:scale-[1.01] relative overflow-hidden group font-sans">
+            {/* Top Icon & Title */}
+            <div>
+              {/* Futuristic Wireframe Goggles / Infinity Symbol */}
+              <div className="inline-flex items-center text-white/95 mb-6">
+                <svg
+                  width="46"
+                  height="26"
+                  viewBox="0 0 46 26"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-12 h-auto"
+                >
+                  <rect
+                    x="1.5"
+                    y="1.5"
+                    width="43"
+                    height="23"
+                    rx="11.5"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                  />
+                  <ellipse
+                    cx="14.5"
+                    cy="13"
+                    rx="6.5"
+                    ry="6.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <ellipse
+                    cx="31.5"
+                    cy="13"
+                    rx="6.5"
+                    ry="6.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <line
+                    x1="21"
+                    y1="13"
+                    x2="25"
+                    y2="13"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
 
-          <button
-            type="button"
-            onClick={() => paginate(1)}
-            aria-label="Next testimonial"
-            className="p-2 text-neutral-800 hover:text-black hover:translate-x-1 transition-all group cursor-pointer"
-          >
-            <svg
-              className="w-8 h-4 stroke-[1.5]"
-              viewBox="0 0 34 16"
-              fill="none"
-              stroke="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1 8H33M33 8L26 1M33 8L26 15" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+              <h3 className="text-xl sm:text-2xl font-bold font-sans text-white tracking-tight leading-snug max-w-md">
+                How we drove massive growth across multiple industries
+              </h3>
+
+              {/* Stats List */}
+              <div className="mt-8 space-y-3 sm:space-y-4 text-sm sm:text-base font-medium font-sans text-white/95">
+                <ul className="flex flex-col gap-5 mb-12">
+                        <li className="flex items-center gap-3">
+                            <span className="text-white font-bold text-lg md:text-xl">152</span>
+                            <span className="text-blue-100 font-medium">School admissions in two months</span>
+                        </li>
+                        <li className="flex items-center gap-3">
+                            <span className="text-white font-bold text-lg md:text-xl">45+</span>
+                            <span className="text-blue-100 font-medium">Pharmacy admissions in two months</span>
+                        </li>
+                        <li className="flex items-center gap-3">
+                            <span className="text-white font-bold text-lg md:text-xl">600+</span>
+                            <span className="text-blue-100 font-medium">Student contacts collected</span>
+                        </li>
+                        <li className="flex items-center gap-3">
+                            <span className="text-white font-bold text-lg md:text-xl">2x</span>
+                            <span className="text-blue-100 font-medium">Reported sales / follower growth</span>
+                        </li>
+                    </ul>
+              </div>
+            </div>
+
+            {/* Bottom Link */}
+            <div className="mt-10 pt-4">
+              <Link
+                href="/case-studies"
+                className="inline-flex items-center gap-1.5 text-xs font-sans uppercase tracking-widest text-white/90 group-hover:text-white font-semibold transition-colors"
+              >
+                <span>VIEW PROJECTS</span>
+                <span className="transition-transform group-hover:translate-x-1">&gt;</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 2 (Top Right): Man Testimonial Photo */}
+          <div className="relative rounded-3xl overflow-hidden min-h-[440px] flex flex-col justify-end p-8 sm:p-10 shadow-2xl group transition-all duration-300 hover:scale-[1.01] bg-gradient-to-br from-gray-800 to-[#0c0e12] font-sans">
+            
+            {/* Ambient Gradient to ensure high-contrast readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
+
+            <div className="relative z-10 font-sans">
+              <p className="text-base sm:text-xl font-bold font-sans text-white leading-snug tracking-tight mb-3">
+                &ldquo;Achieved 152 admissions in two months, more than three times our initial benchmark.&rdquo;
+              </p>
+              <p className="text-xs font-sans uppercase tracking-[0.22em] text-neutral-400 font-semibold">
+                GYANODAY VIDYA SANSKAR SCHOOL
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 (Bottom Left): Woman Testimonial Photo */}
+          <div className="relative rounded-3xl overflow-hidden min-h-[440px] flex flex-col justify-end p-8 sm:p-10 shadow-2xl group transition-all duration-300 hover:scale-[1.01] bg-[#0c0e12] font-sans">
+            <img
+              src="/our-work/IMG_2513.jpg"
+              alt="Valentine Guerrico, Co-Founder"
+              className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none select-none"
+              loading="eager" 
+            />
+            {/* Ambient Gradient to ensure high-contrast readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
+
+            <div className="relative z-10 font-sans">
+              <p className="text-base sm:text-xl font-bold font-sans text-white leading-snug tracking-tight mb-3">
+                &ldquo;Built our franchise model from scratch and expanded across multiple cities.&rdquo;
+              </p>
+              <p className="text-xs font-sans uppercase tracking-[0.22em] text-neutral-400 font-semibold">
+                CLEANING KARIGAR, CO-FOUNDER
+              </p>
+            </div>
+          </div>
+
+          {/* Card 4 (Bottom Right): Split Stack of Two Cards */}
+          <div className="flex flex-col gap-6 min-h-[440px] font-sans">
+            {/* Sub-card 4A: Dark Charcoal Challenge Card */}
+            <div className="bg-[#141419] border border-white/5 rounded-3xl p-7 sm:p-9 flex flex-col justify-between flex-1 shadow-2xl transition-all duration-300 hover:scale-[1.01] hover:border-white/10 group font-sans">
+              {/* Script Brand Logo in clean sans bold */}
+              <div>
+                <span className="font-sans font-bold text-2xl sm:text-3xl text-white tracking-tight">
+                  Biriyani and Co.
+                </span>
+                <p className="text-base sm:text-lg font-normal font-sans text-neutral-400 leading-snug mt-6">
+                  Challenge — Scale a small food cart and increase daily production and sales.
+                </p>
+              </div>
+            </div>
+
+            {/* Sub-card 4B: Crisp White Execution Card */}
+            <div className="bg-white text-black rounded-3xl p-7 sm:p-9 flex flex-col justify-between flex-1 shadow-2xl transition-all duration-300 hover:scale-[1.01] group font-sans">
+              <div>
+                {/* Soundwave / Equalizer Bars Icon */}
+                <div className="flex items-center gap-1 text-black mb-4">
+                  <span className="w-1 h-3 bg-black rounded-full" />
+                  <span className="w-1 h-5 bg-black rounded-full" />
+                  <span className="w-1 h-7 bg-black rounded-full" />
+                  <span className="w-1 h-4 bg-black rounded-full" />
+                  <span className="w-1 h-2 bg-black rounded-full" />
+                </div>
+
+                <p className="text-sm sm:text-base font-normal font-sans text-neutral-900 leading-snug">
+                  Marketing and promotional campaigns driving immediate business outcomes.
+                </p>
+
+                {/* Metrics */}
+                <div className="mt-5 space-y-1.5 text-xs sm:text-sm font-medium font-sans text-neutral-700">
+                  <p className="flex items-center gap-1.5">
+                    <span className="text-green-600">↑ 210%</span>
+                    <span>2x Reported Sales Growth</span>
+                  </p>
+                  <p className="flex items-center gap-1.5">
+                    <span className="text-green-600">↑ 15kg</span>
+                    <span>Handi Size increased to 15 kg</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom Link */}
+              <div className="mt-6 pt-2">
+                <Link
+                  href="/case-studies"
+                  className="inline-flex items-center gap-1 text-xs font-sans uppercase tracking-widest text-black font-bold hover:opacity-75 transition-opacity"
+                >
+                  <span>VIEW PROJECTS</span>
+                  <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

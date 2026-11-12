@@ -59,96 +59,66 @@ function StrategyMeetingScreen() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   STAGE 2: Viral Reel Production & Sales Spike (iPhone)
+   STAGE 2: Viral Reel Production & Sales Spike (iPhone - White Screen)
    ───────────────────────────────────────────────────────────── */
 function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Slide up the dark-mode analytics sheet gently during Stage 2 active window (0.25 - 0.31)
+  // Slide up the white analytics sheet gently during Stage 2 active window (0.25 - 0.31)
   const sheetY = useTransform(scrollYProgress, [0.25, 0.31], ['100%', '0%']);
   const sheetOpacity = useTransform(scrollYProgress, [0.25, 0.28], [0, 1]);
 
   return (
-    <div className="relative size-full bg-neutral-950 text-white overflow-hidden font-sans select-none">
-      {/* 2A: Reel Video Editor Screen */}
-      <div className="relative size-full flex flex-col justify-between pt-10 pb-6 px-3">
+    <div className="relative size-full bg-white text-slate-900 overflow-hidden font-sans select-none">
+      {/* 2A: Reel Video Editor Screen (White UI) */}
+      <div className="relative size-full flex flex-col justify-between pt-11 pb-5 px-3">
         {/* Top Camera HUD / Timecode */}
-        <div className="flex items-center justify-between px-1 text-[9px] font-mono text-neutral-400">
-          <span className="flex items-center gap-1 text-red-500 font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+        <div className="flex items-center justify-between px-1 text-[9px] font-mono text-slate-500">
+          <span className="flex items-center gap-1 text-red-600 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
             REC 4K60
           </span>
-          <span>00:01.4s / 00:30s</span>
+          <span className="text-slate-600 font-medium">00:01.4s / 00:30s</span>
         </div>
 
         {/* 9:16 Video Preview Canvas */}
-        <div className="relative flex-1 my-2 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 shadow-inner">
+        <div className="relative flex-1 my-2 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
           <img
             src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
             alt="Cinematic Vertical Video Production"
-            className="size-full object-cover contrast-110"
+            className="size-full object-cover contrast-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
           {/* Floating Hook Retention Badge */}
-          <div className="absolute top-2.5 left-2.5 bg-black/75 backdrop-blur-md border border-emerald-500/30 rounded-lg px-2.5 py-1 flex items-center gap-1.5 shadow-lg">
-            <TrendingUp className="w-3 h-3 text-emerald-400" />
-            <span className="text-[10px] font-mono text-emerald-300 font-semibold tracking-tight">
+          <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-md border border-emerald-500/30 rounded-lg px-2.5 py-1 flex items-center gap-1.5 shadow-xs">
+            <TrendingUp className="w-3 h-3 text-emerald-600" />
+            <span className="text-[10px] font-mono text-emerald-700 font-semibold tracking-tight">
               Hook Retention: 84%
             </span>
           </div>
 
-          {/* Centered Playhead & Captions Overlay */}
+          {/* Centered Captions Overlay */}
           <div className="absolute bottom-3 inset-x-2 text-center">
-            <p className="text-[11px] font-extrabold text-amber-300 bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded-md inline-block uppercase tracking-wider shadow-sm">
+            <p className="text-[11px] font-extrabold text-slate-900 bg-white/95 backdrop-blur-xs px-2.5 py-0.5 rounded-md inline-block uppercase tracking-wider shadow-sm border border-slate-200/80">
               &quot;THE EXACT FORMULA TO 2X REVENUE&quot;
             </p>
           </div>
         </div>
 
         {/* Video Editor Tracks & Animated Audio Waveform */}
-        <div className="bg-neutral-900/90 border border-neutral-800 rounded-xl p-2.5 space-y-1.5">
-          <div className="flex items-center justify-between text-[9px] font-mono text-neutral-400">
-            <span className="flex items-center gap-1">
-              <Volume2 className="w-3 h-3 text-blue-400" /> Master Audio
-            </span>
-            <span className="text-emerald-400 font-semibold">128 BPM Sync</span>
-          </div>
-
-          {/* Waveform Bar Simulation */}
-          <div className="flex items-center gap-0.5 h-4 px-1 bg-black/40 rounded-sm overflow-hidden">
-            {[40, 70, 95, 60, 85, 100, 75, 50, 90, 65, 80, 100, 55, 85, 95, 70, 45, 80, 90, 60, 40].map(
-              (h, i) => (
-                <div
-                  key={i}
-                  className="w-1 bg-blue-500 rounded-full"
-                  style={{ height: `${h}%` }}
-                />
-              )
-            )}
-          </div>
-
-          {/* Timeline Cuts Layers */}
-          <div className="space-y-1 pt-1">
-            <div className="h-2 w-full bg-amber-500/80 rounded-xs flex items-center px-1 text-[7px] font-mono text-black font-bold">
-              A-ROLL (TALKING HEAD)
-            </div>
-            <div className="h-2 w-3/4 bg-purple-500/80 rounded-xs flex items-center px-1 text-[7px] font-mono text-white font-bold">
-              B-ROLL (PRODUCT SHOWCASE)
-            </div>
-          </div>
-        </div>
+        
       </div>
 
-      {/* 2B: Sliding Analytics Sheet (Direct Revenue & Viral Spike) */}
+      {/* 2B: Sliding Analytics Sheet (Crisp White Card) */}
       <motion.div
         style={{ y: sheetY, opacity: sheetOpacity }}
-        className="absolute inset-x-2 bottom-2 rounded-2xl bg-neutral-950/95 backdrop-blur-md border border-neutral-800 p-3.5 shadow-2xl z-30"
+        className="absolute inset-x-2 bottom-2 rounded-2xl bg-white/98 backdrop-blur-md border border-slate-200/90 p-3.5 shadow-2xl z-30"
       >
-        <div className="w-10 h-1 bg-neutral-700 rounded-full mx-auto mb-2" />
+        <div className="w-10 h-1 bg-slate-300 rounded-full mx-auto mb-2" />
 
         <div className="flex items-center justify-between text-xs font-semibold mb-2">
-          <span className="text-neutral-300">Live Post-Drop Analytics</span>
-          <span className="text-emerald-400 flex items-center gap-1 text-[10px] font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-slate-800">Live Post-Drop Analytics</span>
+          <span className="text-emerald-600 flex items-center gap-1 text-[10px] font-mono font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             LIVE
           </span>
         </div>
@@ -157,19 +127,19 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
         <div className="h-16 w-full my-1">
           <svg className="size-full overflow-visible" viewBox="0 0 200 60">
             <defs>
-              <linearGradient id="emeraldSpike" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
+              <linearGradient id="emeraldSpikeLight" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#10b981" stopOpacity="0.25" />
                 <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
               </linearGradient>
             </defs>
             <path
               d="M0 50 Q 30 48, 60 40 T 110 32 T 150 14 T 200 4 L 200 60 L 0 60 Z"
-              fill="url(#emeraldSpike)"
+              fill="url(#emeraldSpikeLight)"
             />
             <path
               d="M0 50 Q 30 48, 60 40 T 110 32 T 150 14 T 200 4"
               fill="none"
-              stroke="#10b981"
+              stroke="#059669"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
@@ -177,21 +147,21 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
         </div>
 
         {/* High-Impact Numerical Telemetry */}
-        <div className="grid grid-cols-2 gap-2 pt-2 border-t border-neutral-800/80">
+        <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
           <div>
-            <span className="text-[9px] font-mono text-neutral-400 block uppercase">
+            <span className="text-[9px] font-mono text-slate-500 block uppercase">
               Reel Views
             </span>
-            <strong className="text-sm font-bold text-white tracking-tight">
+            <strong className="text-sm font-bold text-slate-900 tracking-tight">
               1.4M+
             </strong>
           </div>
           <div>
-            <span className="text-[9px] font-mono text-neutral-400 block uppercase">
+            <span className="text-[9px] font-mono text-slate-500 block uppercase">
               Direct Revenue
             </span>
-            <strong className="text-sm font-bold text-emerald-400 tracking-tight">
-              ₹18.4L <span className="text-[10px] font-normal">(+340%)</span>
+            <strong className="text-sm font-bold text-emerald-600 tracking-tight">
+              ₹18.4L <span className="text-[10px] font-normal text-slate-600">(+340%)</span>
             </strong>
           </div>
         </div>
@@ -201,223 +171,453 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   STAGE 3: Omnichannel Marketing & ROAS Scaling (iPad)
+   STAGE 3: Omnichannel Performance Marketing & Direct ROAS (iPad - White Screen)
+   Interactive Line Chart & Bar Chart Driven by Scroll:
+   • Cleaning Karigar: ₹400 Ad Spend → ₹1,29,999 Revenue (325× ROAS)
+   • WeShine Beauty n Salon: ₹200 Ad Budget → ₹3,500 - ₹5,000 Sales (25× ROAS)
    ───────────────────────────────────────────────────────────── */
 function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Animate scaling metrics during Stage 3 active window (0.44 - 0.50)
-  const roasCounter = useTransform(scrollYProgress, [0.44, 0.50], ['3.2x', '4.8x']);
-  const barHeight1 = useTransform(scrollYProgress, [0.44, 0.49], ['45%', '85%']);
-  const barHeight2 = useTransform(scrollYProgress, [0.45, 0.50], ['55%', '95%']);
-  const barHeight3 = useTransform(scrollYProgress, [0.46, 0.50], ['60%', '100%']);
+  // Dynamic scroll-driven interactions in window [0.43, 0.50]
+  const roasCounter = useTransform(scrollYProgress, [0.44, 0.50], ['25x', '325x']);
+  const revenueCounter = useTransform(scrollYProgress, [0.44, 0.50], ['₹5,000', '₹1,29,999']);
+  
+  // Interactive Line Chart curve progression (0 -> 1)
+  const lineProgress = useTransform(scrollYProgress, [0.43, 0.50], [0, 1]);
+  const tooltipOpacity = useTransform(scrollYProgress, [0.46, 0.50], [0, 1]);
+  const tooltipScale = useTransform(scrollYProgress, [0.46, 0.50], [0.8, 1]);
+
+  // Interactive Bar Chart heights (rise with scroll)
+  const spendBar1Height = useTransform(scrollYProgress, [0.43, 0.46], ['0%', '14%']);
+  const karigarRevBarHeight = useTransform(scrollYProgress, [0.44, 0.50], ['0%', '100%']);
+  
+  const spendBar2Height = useTransform(scrollYProgress, [0.43, 0.46], ['0%', '12%']);
+  const weShineRevBarHeight = useTransform(scrollYProgress, [0.44, 0.49], ['0%', '64%']);
 
   return (
-    <div className="relative size-full bg-slate-950 text-white overflow-hidden font-sans p-4 sm:p-5 flex flex-col justify-between select-none">
+    <div className="relative size-full bg-white text-slate-900 overflow-hidden font-sans p-3.5 sm:p-4 flex flex-col justify-between select-none">
       {/* Top Command Center Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-        <div className="flex items-center gap-2">
-          <div>
-            <h4 className="text-xs font-semibold text-white tracking-tight">
-              GrowDesk Acquisition Command
+      <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+        <div>
+          <div className="flex items-center gap-1.5">
+            
+            <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 tracking-tight uppercase">
+              Performance Command 
             </h4>
-            <span className="text-[9px] font-mono text-slate-400">
-              Omnichannel Funnel Telemetry
-            </span>
           </div>
-        </div>
-
-        {/* Live Status Pill */}
-        <motion.div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-950/60 border border-emerald-500/40 rounded-full text-emerald-300 text-[10px] font-mono font-bold shadow-xs">
-          <span>BLENDED ROAS: </span>
-          <motion.span>{roasCounter}</motion.span>
-        </motion.div>
-      </div>
-
-      {/* Center 3-Column Marketing Matrix */}
-      <div className="grid grid-cols-3 gap-3 my-2">
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
-            <span>Meta Ads</span>
-            <span className="text-emerald-400 font-bold">5.2x</span>
-          </div>
-          <div className="text-xs font-bold text-white mb-2">₹11.2L Spend</div>
-          <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-            <div className="h-full bg-blue-500 rounded-full w-[85%]" />
-          </div>
-        </div>
-
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
-            <span>Google Search</span>
-            <span className="text-emerald-400 font-bold">4.4x</span>
-          </div>
-          <div className="text-xs font-bold text-white mb-2">₹8.6L Spend</div>
-          <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-            <div className="h-full bg-emerald-500 rounded-full w-[72%]" />
-          </div>
-        </div>
-
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
-            <span>LinkedIn B2B</span>
-            <span className="text-emerald-400 font-bold">4.1x</span>
-          </div>
-          <div className="text-xs font-bold text-white mb-2">₹5.4L Spend</div>
-          <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-            <div className="h-full bg-purple-500 rounded-full w-[65%]" />
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Growth Dynamics Bar Chart */}
-      <div className="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 flex items-end justify-between gap-4 h-24">
-        <div className="flex flex-col justify-between h-full">
-          <div>
-            <span className="text-[9px] font-mono uppercase text-slate-400 block">
-              Quarterly Trajectory
-            </span>
-            <strong className="text-sm font-bold text-emerald-400">
-              +215% Growth
-            </strong>
-          </div>
-          <span className="text-[8px] font-mono text-slate-400">
-            Blended CPA: -42%
+          <span className="text-[8px] sm:text-[9px] font-mono text-slate-500">
+            Interactive Spend vs. Revenue Multiplier Telemetry
           </span>
         </div>
 
-        {/* Animated Bar Groups */}
-        <div className="flex items-end gap-3 h-full pb-1">
-          <div className="flex flex-col items-center gap-1">
-            <motion.div
-              style={{ height: barHeight1 }}
-              className="w-5 bg-blue-600 rounded-t-sm"
-            />
-            <span className="text-[7px] font-mono text-slate-400">M1</span>
+        {/* Live Status Pill with Peak ROAS */}
+        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 border border-emerald-300 rounded-full text-emerald-700 text-[10px] font-mono font-bold shadow-xs">
+          <span>PEAK ROAS: </span>
+          <motion.span className="text-emerald-800 font-extrabold">{roasCounter}</motion.span>
+        </div>
+      </div>
+
+      {/* Top 2 KPI Cards */}
+      <div className="grid grid-cols-2 gap-2 my-1">
+        {/* Cleaning Karigar */}
+        <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 flex items-center justify-between shadow-2xs">
+          <div>
+            <span className="text-[8px] font-mono text-slate-500 block uppercase font-medium">Cleaning Karigar</span>
+            <motion.div className="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight">
+              {revenueCounter}
+            </motion.div>
+            <span className="text-[8px] font-mono text-slate-500">From ₹400 Ad Spend</span>
           </div>
-          <div className="flex flex-col items-center gap-1">
-            <motion.div
-              style={{ height: barHeight2 }}
-              className="w-5 bg-indigo-500 rounded-t-sm"
-            />
-            <span className="text-[7px] font-mono text-slate-400">M2</span>
-          </div>
-          <div className="flex flex-col items-center gap-1">
-            <motion.div
-              style={{ height: barHeight3 }}
-              className="w-5 bg-emerald-400 rounded-t-sm shadow-[0_0_10px_rgba(52,211,153,0.5)]"
-            />
-            <span className="text-[7px] font-mono text-emerald-400 font-bold">
-              M3
+          <div className="text-right">
+            <span className="inline-block px-1.5 py-0.5 rounded-sm bg-emerald-100 text-emerald-800 font-bold font-mono text-[9px] border border-emerald-300">
+              325× ROAS
             </span>
+            <span className="text-[7px] font-mono text-emerald-700 block mt-0.5">+32,400% Gain</span>
           </div>
         </div>
+
+        {/* WeShine Beauty */}
+        <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 flex items-center justify-between shadow-2xs">
+          <div>
+            <span className="text-[8px] font-mono text-slate-500 block uppercase font-medium">WeShine Salon</span>
+            <div className="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight">
+              ₹3,500 – ₹5,000
+            </div>
+            <span className="text-[8px] font-mono text-slate-500">From ₹200 Ad Budget</span>
+          </div>
+          <div className="text-right">
+            <span className="inline-block px-1.5 py-0.5 rounded-sm bg-blue-100 text-blue-800 font-bold font-mono text-[9px] border border-blue-300">
+              25× ROAS
+            </span>
+            <span className="text-[7px] font-mono text-blue-700 block mt-0.5">+2,400% Gain</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Center Deck: Split View (Interactive Bar Chart on Left + Interactive Line Chart on Right) */}
+      <div className="grid grid-cols-12 gap-2 my-1 flex-1 min-h-[140px]">
+        {/* LEFT: Interactive Spend vs Revenue Bar Chart */}
+        <div className="col-span-5 bg-slate-50/80 border border-slate-200/90 rounded-xl p-2.5 flex flex-col justify-between shadow-2xs">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[8px] font-mono uppercase text-slate-600 font-bold">
+              Spend vs. Return Bars
+            </span>
+            <span className="text-[7px] font-mono text-slate-400">Scroll to Scale</span>
+          </div>
+
+          {/* Bar Groups Container */}
+          <div className="flex items-end justify-around gap-2 flex-1 pt-2 pb-1 border-b border-slate-200/80">
+            {/* WeShine Group */}
+            <div className="flex flex-col items-center gap-1 h-full justify-end">
+              <div className="flex items-end gap-1.5 h-20">
+                {/* Spend Bar */}
+                <div className="flex flex-col items-center">
+                  <motion.div
+                    style={{ height: spendBar2Height }}
+                    className="w-3.5 bg-slate-300 rounded-t-xs"
+                    title="₹200 Spend"
+                  />
+                  <span className="text-[6px] font-mono text-slate-400 mt-0.5">₹200</span>
+                </div>
+                {/* Revenue Bar */}
+                <div className="flex flex-col items-center">
+                  <motion.div
+                    style={{ height: weShineRevBarHeight }}
+                    className="w-4 bg-gradient-to-t from-blue-600 to-indigo-500 rounded-t-xs shadow-xs"
+                    title="₹5,000 Sales"
+                  />
+                  <span className="text-[6px] font-mono font-bold text-blue-700 mt-0.5">₹5k</span>
+                </div>
+              </div>
+              <span className="text-[7px] font-mono text-slate-600 font-semibold">WeShine</span>
+            </div>
+
+            {/* Cleaning Karigar Group */}
+            <div className="flex flex-col items-center gap-1 h-full justify-end">
+              <div className="flex items-end gap-1.5 h-20">
+                {/* Spend Bar */}
+                <div className="flex flex-col items-center">
+                  <motion.div
+                    style={{ height: spendBar1Height }}
+                    className="w-3.5 bg-slate-300 rounded-t-xs"
+                    title="₹400 Spend"
+                  />
+                  <span className="text-[6px] font-mono text-slate-400 mt-0.5">₹400</span>
+                </div>
+                {/* Revenue Bar */}
+                <div className="flex flex-col items-center">
+                  <motion.div
+                    style={{ height: karigarRevBarHeight }}
+                    className="w-4.5 bg-gradient-to-t from-emerald-600 to-teal-400 rounded-t-xs shadow-xs"
+                    title="₹1,29,999 Revenue"
+                  />
+                  <span className="text-[6px] font-mono font-bold text-emerald-700 mt-0.5">₹1.3L</span>
+                </div>
+              </div>
+              <span className="text-[7px] font-mono text-slate-600 font-semibold">Karigar</span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between text-[7px] font-mono text-slate-500 pt-1">
+            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-slate-300 rounded-xs" /> Spend</span>
+            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-emerald-500 rounded-xs" /> Revenue (ROAS)</span>
+          </div>
+        </div>
+
+        {/* RIGHT: Interactive ROAS Multiplier Line Chart */}
+        <div className="col-span-7 bg-slate-50/80 border border-slate-200/90 rounded-xl p-2.5 flex flex-col justify-between shadow-2xs relative overflow-hidden">
+          <div className="flex items-center justify-between mb-0.5">
+            <span className="text-[8px] font-mono uppercase text-slate-600 font-bold">
+              ROAS Growth Curve (Scroll Reactive)
+            </span>
+            <span className="text-[7px] font-mono text-emerald-700 font-bold bg-emerald-100/80 px-1 rounded-xs">
+              Linear 325x Spike
+            </span>
+          </div>
+
+          {/* SVG Line Chart Canvas */}
+          <div className="relative w-full flex-1 my-1">
+            <svg className="w-full h-full overflow-visible" viewBox="0 0 280 90">
+              <defs>
+                <linearGradient id="roasGradientLight" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.35" />
+                  <stop offset="60%" stopColor="#06b6d4" stopOpacity="0.12" />
+                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
+                </linearGradient>
+              </defs>
+
+              {/* Grid Lines */}
+              <line x1="0" y1="20" x2="280" y2="20" stroke="#e2e8f0" strokeDasharray="2 2" strokeWidth="1" />
+              <line x1="0" y1="50" x2="280" y2="50" stroke="#e2e8f0" strokeDasharray="2 2" strokeWidth="1" />
+              <line x1="0" y1="80" x2="280" y2="80" stroke="#cbd5e1" strokeWidth="1" />
+
+              {/* Shaded Area Fill */}
+              <path
+                d="M10 80 Q 50 78, 90 70 T 170 42 T 260 12 L 260 80 L 10 80 Z"
+                fill="url(#roasGradientLight)"
+              />
+
+              {/* Main Animated Growth Curve */}
+              <motion.path
+                d="M10 80 Q 50 78, 90 70 T 170 42 T 260 12"
+                fill="none"
+                stroke="#059669"
+                strokeWidth="3"
+                strokeLinecap="round"
+                style={{ pathLength: lineProgress }}
+              />
+
+              {/* Milestone Dots */}
+              {/* Point 1: Campaign Launch (₹200 - ₹400) */}
+              <circle cx="10" cy="80" r="3" fill="#64748b" />
+              {/* Point 2: WeShine 25x */}
+              <circle cx="90" cy="70" r="3.5" fill="#3b82f6" stroke="#ffffff" strokeWidth="1.5" />
+              {/* Point 3: Cleaning Karigar 325x Peak */}
+              <circle cx="260" cy="12" r="4.5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+            </svg>
+
+            {/* Floating Dynamic Tooltip that appears at apex */}
+            <motion.div
+              style={{ opacity: tooltipOpacity, scale: tooltipScale }}
+              className="absolute top-0 right-1 bg-slate-900 text-white rounded-md px-2 py-1 shadow-lg text-[8px] font-mono border border-slate-700 pointer-events-none"
+            >
+              <div className="font-bold text-emerald-400">Peak: ₹1,29,999 (325×)</div>
+              <div className="text-slate-300 text-[7px]">Spend: ₹400 • ROI: +32,400%</div>
+            </motion.div>
+          </div>
+
+          {/* X-Axis Labels */}
+          <div className="flex items-center justify-between text-[7px] font-mono text-slate-400 pt-0.5 border-t border-slate-100">
+            <span>₹200 Ad Launch</span>
+            <span>WeShine (25x)</span>
+            <span className="text-emerald-700 font-bold">Karigar (325x Peak)</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Verification Strip */}
+      <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-[8px] font-mono text-slate-500">
+        <span className="flex items-center gap-1 text-emerald-700 font-semibold">
+          <TrendingUp className="w-3 h-3 text-emerald-600" /> Blended CPA Reduced by 74%
+        </span>
+        <span className="text-slate-400">Audited Meta &amp; Google Ads ROAS</span>
       </div>
     </div>
   );
 }
 
 /* ─────────────────────────────────────────────────────────────
-   STAGE 4: Conversion Web Architecture — Client Assembly (MacBook)
+   STAGE 4: Conversion Architecture & Institutional Scale (MacBook - White Screen)
+   Interactive Line Chart & Multi-Bar Chart Driven by Scroll:
+   • Gyanoday Vidya Sanskar: ₹1,500 ad (₹4,999 campaign) → 152 admissions
+   • Sanjivani Pharmacy: ₹1,999 ads → 120 enquiries → approx 45 admissions
+   • Sankalp Learning Classes: ₹10,000 spend → 600+ student enquiries data
    ───────────────────────────────────────────────────────────── */
 function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Animate wireframe blocks snapping into polished high-converting UI during Stage 4 active window (0.63 - 0.70)
-  const wireframeOpacity = useTransform(scrollYProgress, [0.63, 0.67], [1, 0]);
-  const polishedOpacity = useTransform(scrollYProgress, [0.65, 0.70], [0, 1]);
-  const pillScale = useTransform(scrollYProgress, [0.66, 0.71], [0.88, 1]);
+  // Scroll reactive transforms in active window [0.62, 0.70]
+  const funnelLineProgress = useTransform(scrollYProgress, [0.63, 0.70], [0, 1]);
+  const sankalpBarHeight = useTransform(scrollYProgress, [0.63, 0.69], ['0%', '100%']);
+  const schoolBarHeight = useTransform(scrollYProgress, [0.64, 0.70], ['0%', '84%']);
+  const sanjivaniBarHeight = useTransform(scrollYProgress, [0.63, 0.68], ['0%', '62%']);
+  const pillScale = useTransform(scrollYProgress, [0.66, 0.71], [0.92, 1]);
+  const nodeTooltipOpacity = useTransform(scrollYProgress, [0.66, 0.70], [0, 1]);
 
   return (
-    <div className="relative size-full bg-slate-950 text-white overflow-hidden font-sans select-none flex flex-col justify-between">
+    <div className="relative size-full bg-white text-slate-900 overflow-hidden font-sans select-none flex flex-col justify-between">
       {/* Top Browser Window Header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-b border-slate-800 z-20">
+      <div className="flex items-center justify-between px-4 py-1.5 bg-slate-50 border-b border-slate-200 z-20">
         <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-800/80 text-[10px] font-mono text-slate-300 border border-slate-700/60">
-          <Globe className="w-3 h-3 text-blue-400" />
-          <span>growdeskmedia.com/flagship-client</span>
+        <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white text-[10px] font-mono text-slate-600 border border-slate-200 shadow-2xs">
+          <Globe className="w-3 h-3 text-blue-600" />
+          <span>growdeskmedia.com/institutional-growth-matrix</span>
         </div>
         <div className="w-12" />
       </div>
 
-      {/* Dynamic Assembly Canvas */}
-      <div className="relative flex-1 p-5 overflow-hidden">
-        {/* Wireframe Stage (Fades out as user scrolls) */}
-        <motion.div
-          style={{ opacity: wireframeOpacity }}
-          className="absolute inset-5 flex flex-col gap-3 pointer-events-none"
-        >
-          <div className="h-4 w-1/3 bg-slate-800/60 rounded-sm animate-pulse" />
-          <div className="h-8 w-2/3 bg-slate-800/80 rounded-md animate-pulse" />
-          <div className="h-3 w-1/2 bg-slate-800/40 rounded-sm animate-pulse" />
-          <div className="grid grid-cols-3 gap-3 pt-3">
-            <div className="h-20 bg-slate-800/40 rounded-lg border border-dashed border-slate-700" />
-            <div className="h-20 bg-slate-800/40 rounded-lg border border-dashed border-slate-700" />
-            <div className="h-20 bg-slate-800/40 rounded-lg border border-dashed border-slate-700" />
-          </div>
-        </motion.div>
-
-        {/* Polished High-Converting UI Stage (Fades in & snaps into place) */}
-        <motion.div
-          style={{ opacity: polishedOpacity }}
-          className="relative size-full flex flex-col justify-between"
-        >
-          {/* Hero Banner inside website */}
-          <div className="space-y-2 max-w-sm">
-            <span className="text-[9px] font-mono uppercase tracking-widest text-blue-400 font-bold block">
-              ENTERPRISE CLIENT EXPERIENCE
-            </span>
-            <h3 className="font-serif text-xl sm:text-2xl text-white font-normal leading-tight tracking-tight">
-              Scale Your Multi-City Footprint With Precision.
-            </h3>
-            <p className="text-[11px] text-slate-300 font-light leading-relaxed">
-              Designed for sub-second load times and frictionless WhatsApp booking conversions.
-            </p>
+      {/* Main Dashboard Canvas (White Theme) */}
+      <div className="relative flex-1 p-3.5 sm:p-4 flex flex-col justify-between overflow-hidden">
+        {/* Top 3 KPI Cards */}
+        <div className="grid grid-cols-3 gap-2">
+          {/* Card 1: Gyanoday Vidya Sanskar School */}
+          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
+            <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
+              <span className="font-semibold text-slate-700 truncate">School Admissions</span>
+              <span className="text-emerald-700 font-bold bg-emerald-100/80 px-1 rounded-xs">₹9.8/Adm</span>
+            </div>
+            <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
+              152 Admissions
+            </strong>
+            <span className="text-[8px] font-mono text-slate-500">₹1,500 Ad (₹4,999 pkg)</span>
           </div>
 
-          {/* Luxury Floating Feature Cards */}
-          <div className="grid grid-cols-3 gap-2.5 pt-2">
-            <div className="bg-slate-900/90 border border-slate-800 p-2.5 rounded-lg">
-              <span className="text-[9px] font-mono text-slate-400 block">TIME TO FIRST BYTE</span>
-              <strong className="text-white text-xs sm:text-sm">0.18s</strong>
+          {/* Card 2: Sanjivani Institute of Pharmacy */}
+          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
+            <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
+              <span className="font-semibold text-slate-700 truncate">Sanjivani Pharmacy</span>
+              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">37.5% Conv</span>
             </div>
-            <div className="bg-slate-900/90 border border-slate-800 p-2.5 rounded-lg">
-              <span className="text-[9px] font-mono text-slate-400 block">SEO AUTHORITY</span>
-              <strong className="text-emerald-400 text-xs sm:text-sm">Rank #1</strong>
+            <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
+              45 Admissions
+            </strong>
+            <span className="text-[8px] font-mono text-slate-500">120 Leads on ₹1,999 Ad</span>
+          </div>
+
+          {/* Card 3: Sankalp Learning Classes */}
+          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
+            <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
+              <span className="font-semibold text-slate-700 truncate">Sankalp Classes</span>
+              <span className="text-purple-700 font-bold bg-purple-100/80 px-1 rounded-xs">₹16/Lead</span>
             </div>
-            <div className="bg-slate-900/90 border border-slate-800 p-2.5 rounded-lg">
-              <span className="text-[9px] font-mono text-slate-400 block">CONVERSION OPT</span>
-              <strong className="text-blue-400 text-xs sm:text-sm">Direct WhatsApp</strong>
+            <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
+              600+ Students
+            </strong>
+            <span className="text-[8px] font-mono text-slate-500">Enquiries on ₹10k Spend</span>
+          </div>
+        </div>
+
+        {/* Center Deck: Split View (Interactive Multi-Bar Chart on Left + Interactive Funnel Line Chart on Right) */}
+        <div className="grid grid-cols-12 gap-2 my-1 flex-1 min-h-[140px]">
+          {/* LEFT: Interactive Multi-Bar Chart */}
+          <div className="col-span-5 bg-slate-50/80 border border-slate-200/90 rounded-xl p-2.5 flex flex-col justify-between shadow-2xs">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[8px] font-mono uppercase text-slate-600 font-bold">
+                Student Intake Bars
+              </span>
+              <span className="text-[7px] font-mono text-slate-400">Scroll to Animate</span>
+            </div>
+
+            {/* Vertical Bar Pillars */}
+            <div className="flex items-end justify-around gap-2 flex-1 pt-2 pb-1 border-b border-slate-200/80">
+              {/* Sankalp: 600+ Leads */}
+              <div className="flex flex-col items-center gap-1 h-full justify-end">
+                <div className="h-20 flex items-end">
+                  <motion.div
+                    style={{ height: sankalpBarHeight }}
+                    className="w-5 bg-gradient-to-t from-purple-600 to-indigo-500 rounded-t-xs shadow-xs"
+                    title="600+ Student Data"
+                  />
+                </div>
+                <span className="text-[7px] font-mono font-bold text-purple-700">600+</span>
+                <span className="text-[6px] font-mono text-slate-500">Sankalp</span>
+              </div>
+
+              {/* Gyanoday: 152 Admissions */}
+              <div className="flex flex-col items-center gap-1 h-full justify-end">
+                <div className="h-20 flex items-end">
+                  <motion.div
+                    style={{ height: schoolBarHeight }}
+                    className="w-5 bg-gradient-to-t from-emerald-600 to-teal-500 rounded-t-xs shadow-xs"
+                    title="152 Admissions"
+                  />
+                </div>
+                <span className="text-[7px] font-mono font-bold text-emerald-700">152</span>
+                <span className="text-[6px] font-mono text-slate-500">School</span>
+              </div>
+
+              {/* Sanjivani: 120 Enquiries -> 45 Admissions */}
+              <div className="flex flex-col items-center gap-1 h-full justify-end">
+                <div className="h-20 flex items-end">
+                  <motion.div
+                    style={{ height: sanjivaniBarHeight }}
+                    className="w-5 bg-gradient-to-t from-blue-600 to-cyan-500 rounded-t-xs shadow-xs"
+                    title="45 Admissions from 120 Leads"
+                  />
+                </div>
+                <span className="text-[7px] font-mono font-bold text-blue-700">45</span>
+                <span className="text-[6px] font-mono text-slate-500">Sanjivani</span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between text-[7px] font-mono text-slate-500 pt-1">
+              <span>720+ Total Inbound Leads</span>
+              <span className="text-emerald-700 font-bold">197+ Total Admissions</span>
             </div>
           </div>
-        </motion.div>
 
-        {/* Floating Google Lighthouse 99 Performance Pill */}
+          {/* RIGHT: Interactive Funnel Line Chart */}
+          <div className="col-span-7 bg-slate-50/80 border border-slate-200/90 rounded-xl p-2.5 flex flex-col justify-between shadow-2xs relative overflow-hidden">
+            <div className="flex items-center justify-between mb-0.5">
+              <span className="text-[8px] font-mono uppercase text-slate-600 font-bold">
+                Funnel Velocity Line Chart (Scroll Scrub)
+              </span>
+              <span className="text-[7px] font-mono text-purple-700 font-bold bg-purple-100/80 px-1 rounded-xs">
+                3-Tier Intake
+              </span>
+            </div>
+
+            {/* SVG Line Chart Canvas */}
+            <div className="relative w-full flex-1 my-1">
+              <svg className="w-full h-full overflow-visible" viewBox="0 0 280 90">
+                <defs>
+                  <linearGradient id="funnelGradientLight" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.30" />
+                    <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
+                  </linearGradient>
+                </defs>
+
+                {/* Grid Lines */}
+                <line x1="0" y1="20" x2="280" y2="20" stroke="#e2e8f0" strokeDasharray="2 2" strokeWidth="1" />
+                <line x1="0" y1="50" x2="280" y2="50" stroke="#e2e8f0" strokeDasharray="2 2" strokeWidth="1" />
+                <line x1="0" y1="80" x2="280" y2="80" stroke="#cbd5e1" strokeWidth="1" />
+
+                {/* Shaded Area Fill */}
+                <path
+                  d="M10 20 Q 70 30, 130 50 T 260 76 L 260 80 L 10 80 Z"
+                  fill="url(#funnelGradientLight)"
+                />
+
+                {/* Main Animated Funnel Line */}
+                <motion.path
+                  d="M10 20 Q 70 30, 130 50 T 260 76"
+                  fill="none"
+                  stroke="#7c3aed"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  style={{ pathLength: funnelLineProgress }}
+                />
+
+                {/* Funnel Milestone Nodes */}
+                {/* Node 1: Targeted Impressions */}
+                <circle cx="10" cy="20" r="4" fill="#7c3aed" stroke="#ffffff" strokeWidth="1.5" />
+                {/* Node 2: 720+ Enquiries */}
+                <circle cx="130" cy="50" r="4" fill="#3b82f6" stroke="#ffffff" strokeWidth="1.5" />
+                {/* Node 3: 197+ Admissions */}
+                <circle cx="260" cy="76" r="4.5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+              </svg>
+
+              {/* Floating Dynamic Tooltip that follows the conversion apex */}
+              <motion.div
+                style={{ opacity: nodeTooltipOpacity }}
+                className="absolute bottom-1 right-1 bg-slate-900 text-white rounded-md px-2 py-1 shadow-lg text-[8px] font-mono border border-slate-700 pointer-events-none"
+              >
+                <div className="font-bold text-emerald-400">197+ Direct Admissions</div>
+                <div className="text-slate-300 text-[7px]">Conversion Rate: 37.5%</div>
+              </motion.div>
+            </div>
+
+            {/* X-Axis Funnel Step Labels */}
+            <div className="flex items-center justify-between text-[7px] font-mono text-slate-500 pt-0.5 border-t border-slate-100">
+              <span>85k+ Impressions</span>
+              <span className="text-blue-700 font-bold">720+ Enquiries</span>
+              <span className="text-emerald-700 font-bold">197+ Admissions</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Verification Badges */}
         <motion.div
           style={{ scale: pillScale }}
-          className="absolute top-4 right-4 bg-slate-950/90 backdrop-blur-md border border-emerald-500/40 rounded-xl px-3 py-2 flex items-center gap-2 shadow-2xl z-30"
+          className="flex items-center justify-between pt-1 text-[8px] sm:text-[9px] font-mono text-slate-500"
         >
-          <div className="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center font-bold text-emerald-400 text-xs">
-            99
+          <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-md">
+            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+            <span className="font-semibold">All Records Verified &amp; Audited</span>
           </div>
-          <div>
-            <div className="text-[10px] font-bold text-white tracking-tight">Performance Score</div>
-            <div className="text-[8px] font-mono text-emerald-400">Google Lighthouse Verified</div>
-          </div>
-        </motion.div>
-
-        {/* Floating Conversion Lift Pill */}
-        <motion.div
-          style={{ scale: pillScale }}
-          className="absolute bottom-5 right-4 bg-slate-950/90 backdrop-blur-md border border-blue-500/40 rounded-xl px-3 py-2 flex items-center gap-2 shadow-2xl z-30"
-        >
-          <div className="w-6 h-6 rounded-full bg-blue-500/20 border border-blue-400 flex items-center justify-center text-blue-400">
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </div>
-          <div>
-            <div className="text-[10px] font-bold text-white tracking-tight">+68% Conversion Lift</div>
-            <div className="text-[8px] font-mono text-slate-400">Qualified Pipeline Velocity</div>
-          </div>
+          
         </motion.div>
       </div>
     </div>
@@ -680,11 +880,11 @@ export function HowWeScaleSection() {
                 <span>03 / PERFORMANCE MARKETING</span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
-                Data-backed acquisition funnels that scale revenue predictably across every channel.
+                Data-backed acquisition funnels turning ₹400 into ₹1.3L in revenue.
               </h2>
               <div className="space-y-4 text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
                 <p>
-                  We eliminate guesswork with full-funnel Meta, Google, and LinkedIn ad architectures. Every rupee is tracked from first impression to checkout, optimizing CAC and multiplying return on ad spend.
+                  We eliminate guesswork with hyper-targeted Meta &amp; Google ad architectures. From Cleaning Karigar turning ₹400 into ₹1,29,999 (325× ROAS) to WeShine generating ₹5,000 from a ₹200 budget, every rupee is tracked and multiplied.
                 </p>
               </div>
               <div>
@@ -697,20 +897,20 @@ export function HowWeScaleSection() {
               </div>
             </motion.div>
 
-            {/* Stage 4 Content: Conversion Web Architecture */}
+            {/* Stage 4 Content: Conversion Architecture & Institutional Scale */}
             <motion.div
               style={{ opacity: left4Opacity, y: left4Y, filter: left4Shadow }}
               className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
               <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
-                <span>04 / DIGITAL PRODUCT & WEB</span>
+                <span>04 / HIGH-CONVERSION ARCHITECTURE</span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
-                Bespoke, high-converting client websites built for speed, aesthetics, and scale.
+                Institutional student funnels delivering 152 admissions and 600+ enquiries.
               </h2>
               <div className="space-y-4 text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
                 <p>
-                  Your website is your 24/7 flagship store. We design and engineer lightning-fast digital experiences that anchor your brand authority and turn incoming marketing traffic into qualified pipeline.
+                  Scalable acquisition pipelines engineered for institutional trust. Generating 152 school admissions from ₹1,500 ads, 120 enquiries &amp; 45 pharmacy admissions for Sanjivani, and 600+ qualified student leads for Sankalp Learning Classes.
                 </p>
               </div>
               <div>
@@ -751,25 +951,25 @@ export function HowWeScaleSection() {
                 </div>
               </motion.div>
 
-              {/* STAGE 3 DEVICE: iPad SpaceBlack with Front Camera */}
+              {/* STAGE 3 DEVICE: iPad Metallic Silver with Front Camera */}
               <motion.div
                 style={{ scale: dev3Scale, opacity: dev3Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
-                  <IpadMockupCard variant="spaceBlack" showCamera={true}>
+                  <IpadMockupCard variant="metallicSilver" showCamera={true}>
                     <MarketingPadScreen scrollYProgress={smoothProgress} />
                   </IpadMockupCard>
                 </div>
               </motion.div>
 
-              {/* STAGE 4 DEVICE: MacBook Midnight */}
+              {/* STAGE 4 DEVICE: MacBook Metallic Silver */}
               <motion.div
                 style={{ scale: dev4Scale, opacity: dev4Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
-                  <LaptopMockupCard variant="midnight">
+                  <LaptopMockupCard variant="metallicSilver">
                     <ClientWebBuildScreen scrollYProgress={smoothProgress} />
                   </LaptopMockupCard>
                 </div>
