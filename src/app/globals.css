@@ -1,3 +1,56 @@
+/* Snell Roundhand Curvy Elegant Script */
+@font-face {
+  font-family: 'Snell Roundhand';
+  src: url('/fonts/snell-roundhand/SnellRoundhand-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Snell Roundhand';
+  src: url('/fonts/snell-roundhand/SnellRoundhand.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+/* Clash Display & Sacramento Font Declarations */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/clash-display/BSY64LPTT3OPLVKAZKL3AHKRWZ3D74AC.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/clash-display/JTSL5QESUXATU47LCPUNHZQBDDIWDOSW.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/clash-display/Z3MGHFHX6DCTLQ55LJYRJ5MDCZPMFZU6.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/clash-display/53RZKGODFYDW3QHTIL7IPOWTBCSUEZK7.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sacramento';
+  src: url('/fonts/sacramento/buEzpo6gcdjy0EiZMBUG0Co.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
 @import "tailwindcss";
 
 :root {
@@ -15,7 +68,9 @@
   --color-royal-blue: #1E63FF;
   --color-sky-blue: #4FA9FF;
   --color-white: #FFFFFF;
-  --font-serif: var(--font-poppins), system-ui, sans-serif;
+  --font-serif: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-script: 'Snell Roundhand', 'Sacramento', cursive;
   --font-sans: var(--font-poppins), system-ui, sans-serif;
 }
 
@@ -67,4 +122,23 @@ a, button {
 
 .animate-accordion-up {
   animation: accordion-up 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Futuristic × Organic Typography direction classes */
+.hero-title, .font-clash {
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.hero-script, .font-script {
+  font-family: 'Sacramento', cursive;
+  font-weight: 400;
+  color: #7299FF;
+  opacity: 0.88;
+  line-height: 1.1;
+  text-transform: lowercase;
 }

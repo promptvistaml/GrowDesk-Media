@@ -62,50 +62,45 @@ function StrategyMeetingScreen() {
    STAGE 2: Viral Reel Production & Sales Spike (iPhone - White Screen)
    ───────────────────────────────────────────────────────────── */
 function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {});
+    }
+  }, []);
+
   // Slide up the white analytics sheet gently during Stage 2 active window (0.25 - 0.31)
   const sheetY = useTransform(scrollYProgress, [0.25, 0.31], ['100%', '0%']);
   const sheetOpacity = useTransform(scrollYProgress, [0.25, 0.28], [0, 1]);
 
   return (
     <div className="relative size-full bg-white text-slate-900 overflow-hidden font-sans select-none">
-      {/* 2A: Reel Video Editor Screen (White UI) */}
+      {/* 2A: Reel Video Screen (White UI) */}
       <div className="relative size-full flex flex-col justify-between pt-11 pb-5 px-3">
-        {/* Top Camera HUD / Timecode */}
+        {/* Top Timecode / Status */}
         <div className="flex items-center justify-between px-1 text-[9px] font-mono text-slate-500">
-          <span className="flex items-center gap-1 text-red-600 font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-            REC 4K60
+          <span className="flex items-center gap-1 text-blue-600 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+            LIVE PROMO
           </span>
           <span className="text-slate-600 font-medium">00:01.4s / 00:30s</span>
         </div>
 
         {/* 9:16 Video Preview Canvas */}
-        <div className="relative flex-1 my-2 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
-          <img
-            src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
-            alt="Cinematic Vertical Video Production"
-            className="size-full object-cover contrast-105"
+        <div className="relative flex-1 my-2 rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-sm">
+          <video
+            ref={videoRef}
+            src="/videos/influencer_talking.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="size-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
-
-          {/* Floating Hook Retention Badge */}
-          <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-md border border-emerald-500/30 rounded-lg px-2.5 py-1 flex items-center gap-1.5 shadow-xs">
-            <TrendingUp className="w-3 h-3 text-emerald-600" />
-            <span className="text-[10px] font-mono text-emerald-700 font-semibold tracking-tight">
-              Hook Retention: 84%
-            </span>
-          </div>
-
-          {/* Centered Captions Overlay */}
-          <div className="absolute bottom-3 inset-x-2 text-center">
-            <p className="text-[11px] font-extrabold text-slate-900 bg-white/95 backdrop-blur-xs px-2.5 py-0.5 rounded-md inline-block uppercase tracking-wider shadow-sm border border-slate-200/80">
-              &quot;THE EXACT FORMULA TO 2X REVENUE&quot;
-            </p>
-          </div>
         </div>
-
-        {/* Video Editor Tracks & Animated Audio Waveform */}
-        
       </div>
 
       {/* 2B: Sliding Analytics Sheet (Crisp White Card) */}
@@ -117,29 +112,29 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
 
         <div className="flex items-center justify-between text-xs font-semibold mb-2">
           <span className="text-slate-800">Live Post-Drop Analytics</span>
-          <span className="text-emerald-600 flex items-center gap-1 text-[10px] font-mono font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-blue-600 flex items-center gap-1 text-[10px] font-mono font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
             LIVE
           </span>
         </div>
 
-        {/* Emerald Upward Spiking SVG Line Graph */}
+        {/* Blue Upward Spiking SVG Line Graph */}
         <div className="h-16 w-full my-1">
           <svg className="size-full overflow-visible" viewBox="0 0 200 60">
             <defs>
-              <linearGradient id="emeraldSpikeLight" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#10b981" stopOpacity="0.25" />
-                <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
+              <linearGradient id="blueSpikeLight" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#2563eb" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="#2563eb" stopOpacity="0.0" />
               </linearGradient>
             </defs>
             <path
               d="M0 50 Q 30 48, 60 40 T 110 32 T 150 14 T 200 4 L 200 60 L 0 60 Z"
-              fill="url(#emeraldSpikeLight)"
+              fill="url(#blueSpikeLight)"
             />
             <path
               d="M0 50 Q 30 48, 60 40 T 110 32 T 150 14 T 200 4"
               fill="none"
-              stroke="#059669"
+              stroke="#2563eb"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
@@ -160,7 +155,7 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
             <span className="text-[9px] font-mono text-slate-500 block uppercase">
               Direct Revenue
             </span>
-            <strong className="text-sm font-bold text-emerald-600 tracking-tight">
+            <strong className="text-sm font-bold text-blue-600 tracking-tight">
               ₹18.4L <span className="text-[10px] font-normal text-slate-600">(+340%)</span>
             </strong>
           </div>
@@ -178,7 +173,6 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
    ───────────────────────────────────────────────────────────── */
 function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
   // Dynamic scroll-driven interactions in window [0.43, 0.50]
-  const roasCounter = useTransform(scrollYProgress, [0.44, 0.50], ['25x', '325x']);
   const revenueCounter = useTransform(scrollYProgress, [0.44, 0.50], ['₹5,000', '₹1,29,999']);
   
   // Interactive Line Chart curve progression (0 -> 1)
@@ -198,21 +192,9 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
       {/* Top Command Center Header */}
       <div className="flex items-center justify-between pb-2 border-b border-slate-100">
         <div>
-          <div className="flex items-center gap-1.5">
-            
-            <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 tracking-tight uppercase">
-              Performance Command 
-            </h4>
-          </div>
-          <span className="text-[8px] sm:text-[9px] font-mono text-slate-500">
-            Interactive Spend vs. Revenue Multiplier Telemetry
-          </span>
-        </div>
-
-        {/* Live Status Pill with Peak ROAS */}
-        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 border border-emerald-300 rounded-full text-emerald-700 text-[10px] font-mono font-bold shadow-xs">
-          <span>PEAK ROAS: </span>
-          <motion.span className="text-emerald-800 font-extrabold">{roasCounter}</motion.span>
+          <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 tracking-tight uppercase">
+            Performance Command 
+          </h4>
         </div>
       </div>
 
@@ -228,10 +210,10 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
             <span className="text-[8px] font-mono text-slate-500">From ₹400 Ad Spend</span>
           </div>
           <div className="text-right">
-            <span className="inline-block px-1.5 py-0.5 rounded-sm bg-emerald-100 text-emerald-800 font-bold font-mono text-[9px] border border-emerald-300">
+            <span className="inline-block px-1.5 py-0.5 rounded-sm bg-blue-100 text-blue-800 font-bold font-mono text-[9px] border border-blue-300">
               325× ROAS
             </span>
-            <span className="text-[7px] font-mono text-emerald-700 block mt-0.5">+32,400% Gain</span>
+            <span className="text-[7px] font-mono text-blue-700 block mt-0.5">+32,400% Gain</span>
           </div>
         </div>
 
@@ -282,7 +264,7 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <div className="flex flex-col items-center">
                   <motion.div
                     style={{ height: weShineRevBarHeight }}
-                    className="w-4 bg-gradient-to-t from-blue-600 to-indigo-500 rounded-t-xs shadow-xs"
+                    className="w-4 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-xs shadow-xs"
                     title="₹5,000 Sales"
                   />
                   <span className="text-[6px] font-mono font-bold text-blue-700 mt-0.5">₹5k</span>
@@ -307,10 +289,10 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <div className="flex flex-col items-center">
                   <motion.div
                     style={{ height: karigarRevBarHeight }}
-                    className="w-4.5 bg-gradient-to-t from-emerald-600 to-teal-400 rounded-t-xs shadow-xs"
+                    className="w-4.5 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-xs shadow-xs"
                     title="₹1,29,999 Revenue"
                   />
-                  <span className="text-[6px] font-mono font-bold text-emerald-700 mt-0.5">₹1.3L</span>
+                  <span className="text-[6px] font-mono font-bold text-blue-700 mt-0.5">₹1.3L</span>
                 </div>
               </div>
               <span className="text-[7px] font-mono text-slate-600 font-semibold">Karigar</span>
@@ -319,7 +301,7 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
 
           <div className="flex items-center justify-between text-[7px] font-mono text-slate-500 pt-1">
             <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-slate-300 rounded-xs" /> Spend</span>
-            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-emerald-500 rounded-xs" /> Revenue (ROAS)</span>
+            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-blue-500 rounded-xs" /> Revenue (ROAS)</span>
           </div>
         </div>
 
@@ -329,7 +311,7 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
             <span className="text-[8px] font-mono uppercase text-slate-600 font-bold">
               ROAS Growth Curve (Scroll Reactive)
             </span>
-            <span className="text-[7px] font-mono text-emerald-700 font-bold bg-emerald-100/80 px-1 rounded-xs">
+            <span className="text-[7px] font-mono text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">
               Linear 325x Spike
             </span>
           </div>
@@ -339,9 +321,9 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
             <svg className="w-full h-full overflow-visible" viewBox="0 0 280 90">
               <defs>
                 <linearGradient id="roasGradientLight" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.35" />
-                  <stop offset="60%" stopColor="#06b6d4" stopOpacity="0.12" />
-                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
+                  <stop offset="0%" stopColor="#2563eb" stopOpacity="0.30" />
+                  <stop offset="60%" stopColor="#3b82f6" stopOpacity="0.12" />
+                  <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.0" />
                 </linearGradient>
               </defs>
 
@@ -360,7 +342,7 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
               <motion.path
                 d="M10 80 Q 50 78, 90 70 T 170 42 T 260 12"
                 fill="none"
-                stroke="#059669"
+                stroke="#2563eb"
                 strokeWidth="3"
                 strokeLinecap="round"
                 style={{ pathLength: lineProgress }}
@@ -372,7 +354,7 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
               {/* Point 2: WeShine 25x */}
               <circle cx="90" cy="70" r="3.5" fill="#3b82f6" stroke="#ffffff" strokeWidth="1.5" />
               {/* Point 3: Cleaning Karigar 325x Peak */}
-              <circle cx="260" cy="12" r="4.5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+              <circle cx="260" cy="12" r="4.5" fill="#2563eb" stroke="#ffffff" strokeWidth="2" />
             </svg>
 
             {/* Floating Dynamic Tooltip that appears at apex */}
@@ -380,7 +362,7 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
               style={{ opacity: tooltipOpacity, scale: tooltipScale }}
               className="absolute top-0 right-1 bg-slate-900 text-white rounded-md px-2 py-1 shadow-lg text-[8px] font-mono border border-slate-700 pointer-events-none"
             >
-              <div className="font-bold text-emerald-400">Peak: ₹1,29,999 (325×)</div>
+              <div className="font-bold text-blue-400">Peak: ₹1,29,999 (325×)</div>
               <div className="text-slate-300 text-[7px]">Spend: ₹400 • ROI: +32,400%</div>
             </motion.div>
           </div>
@@ -388,16 +370,16 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
           {/* X-Axis Labels */}
           <div className="flex items-center justify-between text-[7px] font-mono text-slate-400 pt-0.5 border-t border-slate-100">
             <span>₹200 Ad Launch</span>
-            <span>WeShine (25x)</span>
-            <span className="text-emerald-700 font-bold">Karigar (325x Peak)</span>
+            <span className="text-blue-700 font-semibold">WeShine (25x)</span>
+            <span className="text-blue-700 font-bold">Karigar (325x Peak)</span>
           </div>
         </div>
       </div>
 
       {/* Bottom Verification Strip */}
       <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-[8px] font-mono text-slate-500">
-        <span className="flex items-center gap-1 text-emerald-700 font-semibold">
-          <TrendingUp className="w-3 h-3 text-emerald-600" /> Blended CPA Reduced by 74%
+        <span className="flex items-center gap-1 text-blue-700 font-semibold">
+          <TrendingUp className="w-3 h-3 text-blue-600" /> Blended CPA Reduced by 74%
         </span>
         <span className="text-slate-400">Audited Meta &amp; Google Ads ROAS</span>
       </div>
@@ -445,7 +427,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
           <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
             <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
               <span className="font-semibold text-slate-700 truncate">School Admissions</span>
-              <span className="text-emerald-700 font-bold bg-emerald-100/80 px-1 rounded-xs">₹9.8/Adm</span>
+              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">₹9.8/Adm</span>
             </div>
             <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
               152 Admissions
@@ -469,7 +451,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
           <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
             <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
               <span className="font-semibold text-slate-700 truncate">Sankalp Classes</span>
-              <span className="text-purple-700 font-bold bg-purple-100/80 px-1 rounded-xs">₹16/Lead</span>
+              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">₹16/Lead</span>
             </div>
             <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
               600+ Students
@@ -496,11 +478,11 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <div className="h-20 flex items-end">
                   <motion.div
                     style={{ height: sankalpBarHeight }}
-                    className="w-5 bg-gradient-to-t from-purple-600 to-indigo-500 rounded-t-xs shadow-xs"
+                    className="w-5 bg-gradient-to-t from-blue-700 to-blue-500 rounded-t-xs shadow-xs"
                     title="600+ Student Data"
                   />
                 </div>
-                <span className="text-[7px] font-mono font-bold text-purple-700">600+</span>
+                <span className="text-[7px] font-mono font-bold text-blue-700">600+</span>
                 <span className="text-[6px] font-mono text-slate-500">Sankalp</span>
               </div>
 
@@ -509,11 +491,11 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <div className="h-20 flex items-end">
                   <motion.div
                     style={{ height: schoolBarHeight }}
-                    className="w-5 bg-gradient-to-t from-emerald-600 to-teal-500 rounded-t-xs shadow-xs"
+                    className="w-5 bg-gradient-to-t from-blue-600 to-cyan-500 rounded-t-xs shadow-xs"
                     title="152 Admissions"
                   />
                 </div>
-                <span className="text-[7px] font-mono font-bold text-emerald-700">152</span>
+                <span className="text-[7px] font-mono font-bold text-blue-700">152</span>
                 <span className="text-[6px] font-mono text-slate-500">School</span>
               </div>
 
@@ -533,7 +515,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
 
             <div className="flex items-center justify-between text-[7px] font-mono text-slate-500 pt-1">
               <span>720+ Total Inbound Leads</span>
-              <span className="text-emerald-700 font-bold">197+ Total Admissions</span>
+              <span className="text-blue-700 font-bold">197+ Total Admissions</span>
             </div>
           </div>
 
@@ -543,7 +525,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
               <span className="text-[8px] font-mono uppercase text-slate-600 font-bold">
                 Funnel Velocity Line Chart (Scroll Scrub)
               </span>
-              <span className="text-[7px] font-mono text-purple-700 font-bold bg-purple-100/80 px-1 rounded-xs">
+              <span className="text-[7px] font-mono text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">
                 3-Tier Intake
               </span>
             </div>
@@ -553,9 +535,9 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
               <svg className="w-full h-full overflow-visible" viewBox="0 0 280 90">
                 <defs>
                   <linearGradient id="funnelGradientLight" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.30" />
+                    <stop offset="0%" stopColor="#2563eb" stopOpacity="0.30" />
                     <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
+                    <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.0" />
                   </linearGradient>
                 </defs>
 
@@ -574,7 +556,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <motion.path
                   d="M10 20 Q 70 30, 130 50 T 260 76"
                   fill="none"
-                  stroke="#7c3aed"
+                  stroke="#2563eb"
                   strokeWidth="3"
                   strokeLinecap="round"
                   style={{ pathLength: funnelLineProgress }}
@@ -582,11 +564,11 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
 
                 {/* Funnel Milestone Nodes */}
                 {/* Node 1: Targeted Impressions */}
-                <circle cx="10" cy="20" r="4" fill="#7c3aed" stroke="#ffffff" strokeWidth="1.5" />
+                <circle cx="10" cy="20" r="4" fill="#1d4ed8" stroke="#ffffff" strokeWidth="1.5" />
                 {/* Node 2: 720+ Enquiries */}
                 <circle cx="130" cy="50" r="4" fill="#3b82f6" stroke="#ffffff" strokeWidth="1.5" />
                 {/* Node 3: 197+ Admissions */}
-                <circle cx="260" cy="76" r="4.5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                <circle cx="260" cy="76" r="4.5" fill="#2563eb" stroke="#ffffff" strokeWidth="2" />
               </svg>
 
               {/* Floating Dynamic Tooltip that follows the conversion apex */}
@@ -594,7 +576,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 style={{ opacity: nodeTooltipOpacity }}
                 className="absolute bottom-1 right-1 bg-slate-900 text-white rounded-md px-2 py-1 shadow-lg text-[8px] font-mono border border-slate-700 pointer-events-none"
               >
-                <div className="font-bold text-emerald-400">197+ Direct Admissions</div>
+                <div className="font-bold text-blue-400">197+ Direct Admissions</div>
                 <div className="text-slate-300 text-[7px]">Conversion Rate: 37.5%</div>
               </motion.div>
             </div>
@@ -603,22 +585,12 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
             <div className="flex items-center justify-between text-[7px] font-mono text-slate-500 pt-0.5 border-t border-slate-100">
               <span>85k+ Impressions</span>
               <span className="text-blue-700 font-bold">720+ Enquiries</span>
-              <span className="text-emerald-700 font-bold">197+ Admissions</span>
+              <span className="text-blue-700 font-bold">197+ Admissions</span>
             </div>
           </div>
         </div>
 
-        {/* Floating Verification Badges */}
-        <motion.div
-          style={{ scale: pillScale }}
-          className="flex items-center justify-between pt-1 text-[8px] sm:text-[9px] font-mono text-slate-500"
-        >
-          <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-md">
-            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-            <span className="font-semibold">All Records Verified &amp; Audited</span>
-          </div>
-          
-        </motion.div>
+
       </div>
     </div>
   );
@@ -684,6 +656,12 @@ export function HowWeScaleSection() {
   // Transition 2 -> 3: [0.34, 0.41]
   // Transition 3 -> 4: [0.53, 0.60]
   // Transition 4 -> 5: [0.72, 0.79]
+  // Unified Single-Canvas Dynamic Light Flare tracking across stages 01 -> 04
+  const flareX = useTransform(smoothProgress, [0, 0.25, 0.50, 0.75], ['15%', '65%', '85%', '35%']);
+  const flareY = useTransform(smoothProgress, [0, 0.25, 0.50, 0.75], ['20%', '45%', '25%', '70%']);
+  const flareScale = useTransform(smoothProgress, [0, 0.25, 0.50, 0.75], [1, 1.25, 1.1, 1.3]);
+  const flareOpacity = useTransform(smoothProgress, [0, 0.70, 0.76], [0.18, 0.18, 0]);
+
 
   // Left Column Stage Physical Vertical Scroll Motion
   // Stage 1
@@ -796,10 +774,21 @@ export function HowWeScaleSection() {
       className="relative h-[950vh] bg-[#F6F9FD]"
     >
       {/* Sticky Full Viewport Wrapper (Same Section throughout all 5 stages) */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#F6F9FD] px-6 sm:px-8 md:px-16 border-b border-blue-100/60">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#F6F9FD] px-6 sm:px-8 md:px-16">
+        {/* Unified Single-Canvas Directional Light Flare (Moves position smoothly across 01 -> 04) */}
+        <motion.div
+          style={{
+            left: flareX,
+            top: flareY,
+            scale: flareScale,
+            opacity: flareOpacity,
+          }}
+          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.22)_0%,rgba(59,130,246,0.12)_35%,rgba(96,165,250,0.04)_60%,transparent_75%)] blur-[100px] z-0"
+        />
+
         {/* Bottom-Right Soft Organic Earthen Dune Silhouette */}
         <svg
-          className="pointer-events-none absolute right-0 bottom-0 w-[55vw] max-w-[800px] h-auto text-blue-100/60 select-none z-0"
+          className="pointer-events-none absolute right-0 bottom-0 w-[55vw] max-w-[800px] h-auto text-blue-100/40 select-none z-0"
           viewBox="0 0 800 450"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
@@ -1021,7 +1010,9 @@ export function HowWeScaleSection() {
               }}
               className="absolute z-30 transform-gpu will-change-[transform,opacity]"
             >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-b from-white/[0.14] via-white/[0.04] to-white/[0.01] bg-slate-950/75 backdrop-blur-[30px] backdrop-saturate-[190%] border border-white/20 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.25),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-white/40 transition-all duration-300">
+              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
+                {/* Directional Light Flare Out */}
+                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
                 <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
                 <div className="relative z-10">
                   <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
@@ -1044,7 +1035,9 @@ export function HowWeScaleSection() {
               }}
               className="absolute z-30 transform-gpu will-change-[transform,opacity]"
             >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-b from-white/[0.14] via-white/[0.04] to-white/[0.01] bg-slate-950/75 backdrop-blur-[30px] backdrop-saturate-[190%] border border-white/20 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.25),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-white/40 transition-all duration-300">
+              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
+                {/* Directional Light Flare Out */}
+                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
                 <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
                 <div className="relative z-10">
                   <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
@@ -1067,7 +1060,9 @@ export function HowWeScaleSection() {
               }}
               className="absolute z-30 transform-gpu will-change-[transform,opacity]"
             >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-b from-white/[0.14] via-white/[0.04] to-white/[0.01] bg-slate-950/75 backdrop-blur-[30px] backdrop-saturate-[190%] border border-white/20 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.25),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-white/40 transition-all duration-300">
+              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
+                {/* Directional Light Flare Out */}
+                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
                 <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
                 <div className="relative z-10">
                   <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
@@ -1090,7 +1085,9 @@ export function HowWeScaleSection() {
               }}
               className="absolute z-30 transform-gpu will-change-[transform,opacity]"
             >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-b from-white/[0.14] via-white/[0.04] to-white/[0.01] bg-slate-950/75 backdrop-blur-[30px] backdrop-saturate-[190%] border border-white/20 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.25),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-white/40 transition-all duration-300">
+              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
+                {/* Directional Light Flare Out */}
+                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
                 <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
                 <div className="relative z-10">
                   <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">

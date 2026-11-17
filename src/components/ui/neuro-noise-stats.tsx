@@ -14,9 +14,9 @@ const DEFAULT_STATS: Stat[] = [
   { value: "600+", label: "Verified student contacts collected" },
 ];
 
-type NeuroNoiseStatsProps = React.ComponentProps<"section"> & {
+type NeuroNoiseStatsProps = Omit<React.ComponentProps<"section">, "title"> & {
   eyebrow?: string;
-  title?: string;
+  title?: React.ReactNode;
   stats?: Stat[];
 };
 
@@ -32,22 +32,26 @@ function NeuroNoiseStats({
     <section
       data-slot="neuro-noise-stats"
       className={cn(
-        "relative flex w-full flex-col gap-12 bg-black px-6 py-24 text-white md:px-12 lg:px-20  select-none",
+        "relative flex w-full flex-col gap-12 bg-black px-6 py-14 sm:py-20 text-white md:px-12 lg:px-20 select-none overflow-hidden",
         className,
       )}
       style={style}
       {...props}
     >
-      <div className="flex max-w-2xl flex-col gap-3">
-        <span className="font-mono text-xs tracking-[0.25em] uppercase text-neutral-400">
-          {eyebrow}
-        </span>
+      {/* Ambient Blue Optical Flare from Below */}
+      <div className="pointer-events-none absolute -bottom-48 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-t from-blue-600/25 via-blue-500/10 to-transparent blur-[160px] rounded-full z-0" />
+      <div className="relative z-10 flex max-w-3xl flex-col gap-3">
+        {eyebrow && (
+          <span className="font-mono text-xs tracking-[0.25em] uppercase text-neutral-400">
+            {eyebrow}
+          </span>
+        )}
         <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal leading-tight text-white tracking-tight">
           {title}
         </h2>
       </div>
 
-      <dl className="grid grid-cols-2 border-t border-white/10 lg:grid-cols-4">
+      <dl className="relative z-10 grid grid-cols-2 border-t border-white/10 lg:grid-cols-4">
         {stats.map((stat) => (
           <div
             key={stat.label}

@@ -218,21 +218,27 @@ export default function PerspectiveTunnelHero() {
                     />
                 </div>
 
-                {/* Central Anchor Typography */}
+                {/* Central Anchor Typography (Futuristic × Organic Clash Display + Sacramento) */}
                 <motion.div
                     style={{ scale: titleScale, opacity: titleOpacity }}
-                    className="pointer-events-none z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-2xl"
+                    className="pointer-events-none z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-4xl relative"
                 >
-                    <p className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-neutral-400 mb-3 sm:mb-4">
+                    <p className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-neutral-400 mb-2 sm:mb-3">
                         BRANDS   •   LEADS   •   FRANCHISES
                     </p>
-                    <h1 className="font-serif text-4xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.98] sm:leading-[0.95] text-white">
-                        SCALING
-                        <br />
-                        BRANDS.
+                    
+                    {/* Clash Display Bold Uppercase Heading */}
+                    <h1 className="font-clash text-5xl sm:text-7xl md:text-8xl lg:text-[96px] font-bold tracking-[-0.04em] leading-[0.92] text-white uppercase drop-shadow-sm">
+                        THINK BIG
                     </h1>
-                    <p className="mt-3 sm:mt-4 max-w-[34ch] sm:max-w-[38ch] text-xs sm:text-base font-light text-neutral-400">
-                        From brand positioning to daily lead generation. Scroll down to travel through our growth engine
+
+                    {/* Curvy Snell Roundhand Script with tight negative margin */}
+                    <span className="font-script text-4xl sm:text-6xl md:text-7xl lg:text-[78px] text-[#7299FF] font-bold tracking-normal opacity-95 leading-[1.0] -mt-3 sm:-mt-5 md:-mt-6 select-none lowercase">
+                        dream freely.
+                    </span>
+
+                    <p className="mt-4 sm:mt-5 max-w-2xl text-xs sm:text-base font-light text-neutral-400">
+                        From brand positioning to daily lead generation.
                     </p>
                 </motion.div>
 

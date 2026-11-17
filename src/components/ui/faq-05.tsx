@@ -37,8 +37,11 @@ const Faq05 = () => {
   };
 
   return (
-    <section data-slot="faq" className="bg-[#000000] text-white py-24 md:py-36 border-t border-white/10">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 border-y border-white/10 md:grid-cols-2 md:border-x">
+    <section data-slot="faq" className="relative overflow-hidden bg-[#000000] text-white py-24 md:py-36 border-t border-white/10">
+      {/* Ambient Blue Optical Flares */}
+      <div className="pointer-events-none absolute -top-40 right-1/4 w-[700px] h-[400px] bg-blue-600/15 blur-[160px] rounded-full z-0" />
+      <div className="pointer-events-none absolute -bottom-36 left-1/4 w-[600px] h-[360px] bg-blue-500/12 blur-[150px] rounded-full z-0" />
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 border-y border-white/10 md:grid-cols-2 md:border-x">
         <div
           data-slot="faq-intro"
           className="flex flex-col gap-4 border-b border-white/10 px-6 pt-12 pb-6 md:border-b-0 md:border-e md:px-12 md:py-16"
@@ -46,9 +49,12 @@ const Faq05 = () => {
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400">
             FAQ
           </span>
-          <h2 className="font-serif text-3xl sm:text-5xl font-normal leading-[1.08] tracking-tight text-white">
-            Questions, answered.
+          <h2 className="font-clash text-3xl sm:text-5xl font-bold leading-[0.95] tracking-[-0.035em] text-white uppercase">
+            Questions,
           </h2>
+          <span className="font-script text-4xl sm:text-6xl md:text-7xl text-[#7299FF] font-bold opacity-95 leading-[1.0] -mt-2 sm:-mt-3 select-none lowercase">
+            answered.
+          </span>
           <p className="max-w-sm text-sm font-light text-neutral-400 leading-relaxed pt-2">
             The things people ask most often. Still have questions? Reach out directly via our contact desk below.
           </p>

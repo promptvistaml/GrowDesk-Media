@@ -115,15 +115,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   return (
     <section id="connect" className="relative w-full overflow-hidden bg-[#F6F9FD] text-black py-24 md:py-36 px-6 sm:px-10 border-t border-blue-100">
+      {/* Ambient Blue Optical Flare on Light Canvas */}
+      <div className="pointer-events-none absolute -top-40 right-10 w-[700px] h-[400px] bg-blue-500/10 blur-[150px] rounded-full z-0" />
+      <div className="pointer-events-none absolute -bottom-32 left-10 w-[600px] h-[360px] bg-blue-600/8 blur-[140px] rounded-full z-0" />
       {/* Main Content Layout (Clean background without bubble animations or external backgrounds) */}
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Left Side: Statement & Direct Email */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
           <div className="space-y-4">
            
-            <h2 className="font-sans text-3xl sm:text-5xl lg:text-[46px] font-normal leading-[1.12] text-neutral-900 tracking-tight">
-              {title}
-            </h2>
+            <div>
+              <h2 style={{ color: "#000000" }} className="font-clash text-3xl sm:text-5xl lg:text-[48px] font-bold tracking-[-0.035em] text-black !text-black leading-[0.95] uppercase">
+                Turn your commercial targets into
+              </h2>
+              <div style={{ color: "#1E63FF" }} className="font-script text-4xl sm:text-6xl lg:text-[68px] text-[#1E63FF] !text-[#1E63FF] font-bold opacity-95 leading-[1.0] -mt-2 sm:-mt-3 select-none lowercase">
+                real world reality.
+              </div>
+            </div>
             <p className="text-sm text-neutral-600 font-light leading-relaxed max-w-md pt-2">
               Every mandate starts with alignment on business objectives, target metrics, and transparent communication protocols. All inquiries route directly to our official WhatsApp Business desk.
             </p>

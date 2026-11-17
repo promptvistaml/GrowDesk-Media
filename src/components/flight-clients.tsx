@@ -47,10 +47,14 @@ export function FlightClients() {
 
   return (
     <section className="bg-[#000000] text-white py-16 sm:py-20 md:py-24 overflow-hidden select-none relative z-10">
-      <div className="max-w-6xl mx-auto px-6 text-center mb-10 sm:mb-12">
-        <h3 className="font-sans text-2xl sm:text-3xl md:text-4xl text-neutral-200 font-bold tracking-tight">
-          Who we&apos;ve worked with
-        </h3>
+
+      <div className="max-w-6xl mx-auto px-6 mb-10 sm:mb-12 flex flex-col items-end text-right">
+        <h2 className="font-clash text-3xl sm:text-5xl md:text-6xl font-bold tracking-[-0.035em] text-white leading-[0.95] uppercase">
+          Who we&apos;ve
+        </h2>
+        <div className="font-script text-4xl sm:text-6xl md:text-7xl text-[#7299FF] font-bold opacity-95 leading-[1.0] -mt-2 sm:-mt-3 select-none lowercase">
+          worked with.
+        </div>
       </div>
 
       {/* Infinite Horizontal Marquee */}
@@ -74,11 +78,11 @@ export function FlightClients() {
               key={idx}
               className="flex shrink-0 items-center gap-8 sm:gap-12 group cursor-default"
             >
-              <div className="flex shrink-0 items-center justify-center h-16 sm:h-20 min-w-[90px] max-w-[220px] px-2 transition-all duration-300 group-hover:scale-105 group-hover:brightness-110">
+              <div className="flex shrink-0 items-center justify-center h-16 sm:h-20 min-w-[90px] max-w-[220px] px-2 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 opacity-85">
                 <img
                   src={client.logo}
                   alt={client.name}
-                  className="h-12 sm:h-16 w-auto max-w-[180px] object-contain pointer-events-none select-none drop-shadow-md"
+                  className="h-12 sm:h-16 w-auto max-w-[180px] object-contain pointer-events-none select-none drop-shadow-md grayscale contrast-125"
                   loading="eager"
                   decoding="sync"
                 />

@@ -20,7 +20,16 @@ export default function Home() {
       {/* Metrics Impact Section */}
       <NeuroNoiseStats
         eyebrow=""
-        title="Impact built around measurable business outcomes"
+        title={
+          <div className="flex flex-col">
+            <span className="font-clash text-2xl sm:text-4xl md:text-5xl font-bold tracking-[-0.035em] text-white leading-[0.95] uppercase">
+              Impact built around
+            </span>
+            <span className="font-script text-3xl sm:text-5xl md:text-6xl text-[#7299FF] font-bold opacity-95 leading-[1.0] -mt-2 sm:-mt-3 select-none lowercase">
+              measurable business outcomes.
+            </span>
+          </div>
+        }
         stats={[
           { value: "152", label: "School admissions in two months" },
           { value: "45+", label: "Pharmacy admissions in two months" },

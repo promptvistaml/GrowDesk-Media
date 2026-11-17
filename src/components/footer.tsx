@@ -92,10 +92,14 @@ const FOOTER_COLUMNS: FooterColumn[] = [
 export function Footer() {
   return (
     <footer className="relative w-full overflow-hidden bg-[#000000] text-white pt-16 sm:pt-20 pb-10 border-t border-neutral-900">
-      {/* Subtle blue accent glow in background */}
+      {/* Ambient Blue Optical Flares */}
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[340px] bg-gradient-to-b from-blue-600/15 via-blue-500/5 to-transparent blur-3xl opacity-80" 
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[400px] bg-blue-600/18 blur-[160px] rounded-full z-0" 
+      />
+      <div 
+        aria-hidden="true" 
+        className="pointer-events-none absolute -bottom-32 right-1/4 w-[600px] h-[340px] bg-blue-500/12 blur-[150px] rounded-full z-0" 
       />
 
       <div className="relative max-w-[1400px] mx-auto w-full px-6 sm:px-8 lg:px-12">

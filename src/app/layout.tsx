@@ -26,6 +26,14 @@ export const metadata: Metadata = {
   },
   description:
     "Flight PR advises founders, businesses, and institutions navigating commercial growth, brand building, and high-stakes inflection points.",
+  icons: {
+    icon: [
+      { url: "/images/growdesk-icon.svg", type: "image/svg+xml" },
+      { url: "/images/growdesk-w-logo.png", type: "image/png" },
+    ],
+    shortcut: "/images/growdesk-icon.svg",
+    apple: "/images/growdesk-w-logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -34,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${cormorant.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${cormorant.variable}`}>
       <body className="antialiased min-h-screen flex flex-col font-sans bg-[#000000] text-[#FFFFFF]">
         <SmoothScrollProvider>
           <Navigation />
