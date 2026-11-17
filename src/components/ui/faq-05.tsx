@@ -6,26 +6,38 @@ import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+import { FaqJsonLd } from "@/components/seo/json-ld";
+
 const FAQS: readonly { id: string; q: string; a: string }[] = [
   {
     id: "item-1",
-    q: "How quickly can we see measurable inquiries or admissions?",
-    a: "Paid lead-generation and WhatsApp campaigns typically begin generating verified inquiries within 7–14 days of launch, while compounding organic/brand growth builds significantly over 30–60 days (as seen in our 1-to-2 month client sprints).",
+    q: "How does GrowDesk Media generate verified leads and paid ad results in Chhattisgarh?",
+    a: "We engineer laser-targeted Meta Ads (Facebook & Instagram) and Google PPC campaigns connected directly to automated WhatsApp funnels. Businesses in Raipur, Bilaspur, Durg, and Bhilai typically start receiving verified inquiries within 48 to 72 hours of campaign launch.",
   },
   {
     id: "item-2",
-    q: "Do you only work with large companies?",
-    a: "No. We partner with businesses at every high-intent stage—from single food carts like Biryani and Co. and local coaching institutes to multi-branch retailers like Chandra Tiles and expanding franchises like Cleaning Karigar.",
+    q: "Do you handle complete Instagram reel production, video shoots, and copywriting?",
+    a: "Yes. Our in-house production crew travels across Chhattisgarh and Central India with 4K cinema gear to shoot viral Instagram reels, brand films, and customer testimonials, backed by psychological copywriting and daily social media channel management.",
   },
   {
     id: "item-3",
-    q: "How do I receive the leads you generate?",
-    a: "All campaign and website inquiries are routed directly to your designated pipeline or WhatsApp Business number for immediate follow-up.",
+    q: "How does your web development and SEO service help our website rank #1 on Google?",
+    a: "We engineer custom, high-speed Next.js web applications with 95+ Core Web Vitals, local schema structured data, and targeted keyword architectures that outrank competitors across Raipur, Bilaspur, Nagpur, MP, and Odisha.",
   },
   {
     id: "item-4",
-    q: "Can you build our franchise or marketing strategy from scratch?",
-    a: "Yes. Beyond digital ads, we provide ground-up business consulting, brand positioning, and franchise model architecture.",
+    q: "What business automation and WhatsApp marketing solutions does GrowDesk Media implement?",
+    a: "We deploy the official WhatsApp Business API, intelligent 24/7 AI-driven customer support chatbots, automated SMS/email sequences, and CRM integrations that qualify leads and alert your sales team in real-time.",
+  },
+  {
+    id: "item-5",
+    q: "Can you manage offline branding, outdoor billboards, and franchise expansion?",
+    a: "Yes. From prime outdoor hoardings along high-traffic corridors in Raipur and Bilaspur to complete brand identity systems and turnkey franchise blueprints (like our work with Cleaning Karigar and WeShine), we provide full 360-degree online-to-offline scale.",
+  },
+  {
+    id: "item-6",
+    q: "Which locations and cities does GrowDesk Media serve?",
+    a: "Our core footprint covers all major cities in Chhattisgarh—including Raipur, Bilaspur, Durg, Bhilai, Korba, and Rajnandgaon—as well as regional hubs across Nagpur (Maharashtra), Madhya Pradesh (Jabalpur, Bhopal, Indore), and Odisha (Bhubaneswar).",
   },
 ];
 
@@ -38,6 +50,7 @@ const Faq05 = () => {
 
   return (
     <section data-slot="faq" className="relative overflow-hidden bg-[#000000] text-white py-24 md:py-36 border-t border-white/10">
+      <FaqJsonLd faqs={FAQS.map((f) => ({ question: f.q, answer: f.a }))} />
       {/* Ambient Blue Optical Flares */}
       <div className="pointer-events-none absolute -top-40 right-1/4 w-[700px] h-[400px] bg-blue-600/15 blur-[160px] rounded-full z-0" />
       <div className="pointer-events-none absolute -bottom-36 left-1/4 w-[600px] h-[360px] bg-blue-500/12 blur-[150px] rounded-full z-0" />

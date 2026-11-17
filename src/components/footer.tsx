@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { LOCATIONS_SEO } from '@/data/seo-data';
 
 const SOCIAL_LINKS = [
   {
@@ -63,27 +64,33 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: 'Services',
     links: [
-      { label: 'Brand Strategy', href: '/services' },
-      { label: 'Performance Marketing', href: '/services' },
-      { label: 'Creative Direction', href: '/services' },
-      { label: 'Media Production', href: '/services' },
+      { label: 'Paid Ads & Lead Gen', href: '/services/paid-advertisement-lead-generation' },
+      { label: 'Social Media & Reels', href: '/services/social-media-content-creation' },
+      { label: 'Web Development & SEO', href: '/services/web-development-seo' },
+      { label: 'WhatsApp & AI Automation', href: '/services/business-automation-chatbots' },
+      { label: 'Branding & Offline', href: '/services/branding-offline-marketing' },
+      { label: 'All Services Overview', href: '/services' },
     ],
   },
   {
-    title: 'Resources',
+    title: 'Locations',
     links: [
-      { label: 'Our Work', href: '/case-studies' },
-      { label: 'Client Results', href: '/case-studies' },
-      { label: 'The Runway', href: '/services#framework' },
-      { label: 'Direct Enquiry', href: '/#connect' },
+      { label: 'Raipur, Chhattisgarh', href: '/locations/raipur' },
+      { label: 'Bilaspur, Chhattisgarh', href: '/locations/bilaspur' },
+      { label: 'Durg & Bhilai, CG', href: '/locations/durg-bhilai' },
+      { label: 'Korba, Chhattisgarh', href: '/locations/korba' },
+      { label: 'Nagpur, Maharashtra', href: '/locations/nagpur' },
+      { label: 'Madhya Pradesh (MP)', href: '/locations/madhya-pradesh' },
+      { label: 'Odisha (Bhubaneswar)', href: '/locations/odisha' },
     ],
   },
   {
     title: 'Company',
     links: [
       { label: 'Why GrowDesk', href: '/about' },
-      { label: 'Careers', href: '/#connect', badge: "we're hiring" },
-      { label: 'Contact Us', href: '/#connect' },
+      { label: 'Our Work & Case Studies', href: '/case-studies' },
+      { label: 'The Runway Process', href: '/services#framework' },
+      { label: 'Direct Enquiry', href: '/#connect' },
       { label: 'Admin Portal', href: '/admin' },
     ],
   },
@@ -113,8 +120,17 @@ export function Footer() {
             transition={{ duration: 0.35 }}
             className="flex flex-col gap-6"
           >
+            <div className="space-y-2">
+              <span className="font-serif text-xl sm:text-2xl font-normal text-white tracking-tight">
+                GrowDesk Media
+              </span>
+              <p className="text-xs font-mono text-neutral-400">
+                (Growdex Media) // Raipur &bull; Bilaspur &bull; Central India
+              </p>
+            </div>
+
             <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-sm">
-              GrowDesk Media is a strategic communications &amp; performance advisory driving measurable business velocity and market authority.
+              Central India &amp; Chhattisgarh&apos;s leading digital marketing, paid ads, SEO, and business automation agency engineered for measurable revenue velocity.
             </p>
 
             {/* Social Icons row */}
@@ -168,9 +184,27 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Giant Centered Wordmark with outline & mask fade (matching React Bits Pro Footer 8) */}
+        {/* Location Pills Row for Search Engines & Users */}
+        <div className="mt-12 pt-8 border-t border-neutral-900/80 space-y-3">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 block">
+            Regional Focus Areas:
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {LOCATIONS_SEO.map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="text-xs text-neutral-400 hover:text-blue-400 border border-neutral-900 hover:border-blue-500/40 rounded px-2.5 py-1 bg-neutral-950/60 transition-colors"
+              >
+                Marketing in {loc.city} ({loc.state})
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Giant Centered Wordmark with outline & mask fade */}
         <div
-          className="relative mt-20 sm:mt-24 w-full select-none"
+          className="relative mt-16 sm:mt-20 w-full select-none"
           aria-hidden="true"
           style={{
             fontSize: 'min(14.2vw, 190px)',
@@ -197,7 +231,7 @@ export function Footer() {
         {/* Bottom row: Copyright & Legal links */}
         <div className="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm text-neutral-500">
           <p className="tracking-wide">
-            &copy; 2026 GrowDesk Media / Strategic Communications Advisory
+            &copy; 2026 GrowDesk Media (Growdex) &bull; Raipur, Chhattisgarh, India &bull; All Rights Reserved
           </p>
 
           <div className="flex items-center gap-6">

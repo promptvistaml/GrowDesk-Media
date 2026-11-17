@@ -1,23 +1,59 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import { Footer } from '@/components/footer';
 import { FlightVerticalTabs } from '@/components/flight-vertical-tabs';
 import { WORK_PROCESS_STEPS } from '@/data/content';
+import { SERVICES_SEO, LOCATIONS_SEO, AGENCY_INFO } from '@/data/seo-data';
+import { BreadcrumbsJsonLd } from '@/components/seo/json-ld';
 
 export const metadata: Metadata = {
-  title: 'What We Do | Strategic Communications & Narrative Advisory',
+  title: 'Digital Marketing & Business Automation Services | GrowDesk Media',
   description:
-    'Our work supports leaders at inflection points—when decisions around visibility, narrative, and response carry lasting impact.',
+    'Explore GrowDesk Media’s core services: Paid Ads & Performance Lead Gen, Social Media & Reel Production, Modern Web Development, SEO, WhatsApp Automation, and Offline Branding across Raipur, Bilaspur, Durg, Bhilai, Nagpur, MP & Odisha.',
+  keywords: [
+    'digital marketing services Chhattisgarh',
+    'paid advertisement agency Raipur',
+    'lead generation company Bilaspur',
+    'social media management Durg Bhilai',
+    'Instagram reel production Chhattisgarh',
+    'web development and SEO Raipur',
+    'WhatsApp marketing agency Bilaspur',
+    'AI chatbot automation Central India',
+    'offline branding and hoardings Raipur',
+    'Growdex Media services'
+  ],
+  alternates: {
+    canonical: '/services',
+  },
+  openGraph: {
+    title: 'Digital Marketing & Business Automation Services | GrowDesk Media',
+    description:
+      'Performance marketing, viral video reels, custom web development, SEO, and WhatsApp automation engineered for real revenue across Chhattisgarh and Central India.',
+    url: `${AGENCY_INFO.url}/services`,
+    siteName: AGENCY_INFO.name,
+    images: ['/images/growdesk-w-logo.png'],
+  },
 };
 
 export default function ServicesPage() {
   return (
     <main className="min-h-screen flex flex-col bg-[#000000] text-white">
+      <BreadcrumbsJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Services', url: '/services' },
+        ]}
+      />
+
       {/* 1. Top Hero Section (Pure White Canvas #FFFFFF matching receipts background) */}
       <section className="bg-[#FFFFFF] text-[#000000] pt-20 pb-24 md:pt-32 md:pb-36 px-8 md:px-16 overflow-hidden">
         <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column / Editorial Statement */}
           <div className="lg:col-span-7 space-y-8">
+            <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 block">
+              Core Disciplines // Raipur &bull; Bilaspur &bull; Central India
+            </span>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-[54px] font-normal leading-[1.12] text-neutral-900 tracking-tight">
               Our work powers ambitious brands at inflection points—where visibility, performance ads, and automation turn into real revenue
             </h1>
@@ -42,7 +78,47 @@ export default function ServicesPage() {
       {/* 2. Interactive "What we do" Horizontal Accordion / Vertical Tabs (Pure Black #000000) */}
       <FlightVerticalTabs />
 
-      {/* 3. The Runway / Strategic Process Framework (Crisp Ice Blue Canvas blending seamlessly into white footer) */}
+      {/* 3. Dedicated Service Deep-Dives Navigation */}
+      <section className="relative bg-[#0A0A0A] py-20 px-8 md:px-16 border-t border-white/10">
+        <div className="max-w-[1300px] mx-auto space-y-12">
+          <div className="space-y-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 block">
+              Specialized Service Hubs
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-normal text-white">
+              Explore Our End-to-End Specializations
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERVICES_SEO.map((srv) => (
+              <Link
+                key={srv.slug}
+                href={`/services/${srv.slug}`}
+                className="p-6 rounded-lg bg-neutral-950/80 border border-neutral-800 hover:border-blue-500/60 transition-all duration-300 group flex flex-col justify-between space-y-5"
+              >
+                <div className="space-y-3">
+                  <span className="text-[11px] font-mono text-neutral-500 group-hover:text-blue-400 transition-colors uppercase tracking-wider block">
+                    SERVICE DEEP-DIVE
+                  </span>
+                  <h3 className="font-serif text-xl font-normal text-white group-hover:text-blue-400 transition-colors">
+                    {srv.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                    {srv.tagline}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs font-mono text-blue-400">
+                  <span>View Full Capabilities</span>
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. The Runway / Strategic Process Framework (Crisp Ice Blue Canvas blending seamlessly into white footer) */}
       <section id="framework" className="relative overflow-hidden bg-[#F6F9FD] text-[#000000] pt-24 pb-28 md:pt-36 md:pb-36 px-8 md:px-16 border-t border-blue-100">
         {/* Background Graphic Artwork: Lightened opacity with multiply blend */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
@@ -96,6 +172,26 @@ export default function ServicesPage() {
                   {step.desc}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Regional Hubs Interlinking */}
+      <section className="bg-black py-16 px-8 md:px-16 border-t border-white/10">
+        <div className="max-w-[1300px] mx-auto space-y-6">
+          <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 block">
+            Regional Locations We Serve
+          </span>
+          <div className="flex flex-wrap gap-2.5">
+            {LOCATIONS_SEO.map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="px-4 py-2 rounded-full border border-neutral-800 bg-neutral-950 text-neutral-300 text-xs font-mono hover:border-blue-500 hover:text-white transition-colors"
+              >
+                Digital Marketing in {loc.city} →
+              </Link>
             ))}
           </div>
         </div>

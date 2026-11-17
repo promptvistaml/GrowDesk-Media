@@ -55,10 +55,11 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const isServices = pathname === '/services';
+  const isServices = pathname?.startsWith('/services');
+  const isLocations = pathname?.startsWith('/locations');
   const isOurWork = pathname === '/case-studies';
   const isAbout = pathname === '/about';
-  const isLightPage = isServices || isOurWork || isAbout;
+  const isLightPage = isServices || isLocations || isOurWork || isAbout;
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -78,7 +79,7 @@ export function Navigation() {
 
   const headerBg = (isOurWork || isAbout)
     ? "bg-[#F0F5FA] text-[#000000]"
-    : isServices
+    : (isServices || isLocations)
     ? "bg-[#FFFFFF] text-[#000000]"
     : "bg-[#000000] text-white";
 
@@ -89,7 +90,7 @@ export function Navigation() {
   // Theme matching for full-screen mobile menu overlay
   const mobileOverlayBg = (isOurWork || isAbout)
     ? "bg-[#F0F5FA] text-[#000000]"
-    : isServices
+    : (isServices || isLocations)
     ? "bg-[#FFFFFF] text-[#000000]"
     : "bg-[#000000] text-white";
 
