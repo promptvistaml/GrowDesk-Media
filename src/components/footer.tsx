@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { LOCATIONS_SEO } from '@/data/seo-data';
 
 const SOCIAL_LINKS = [
   {
@@ -100,13 +99,13 @@ export function Footer() {
   return (
     <footer className="relative w-full overflow-hidden bg-[#000000] text-white pt-16 sm:pt-20 pb-10 border-t border-neutral-900">
       {/* Ambient Blue Optical Flares */}
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[400px] bg-blue-600/18 blur-[160px] rounded-full z-0" 
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[400px] bg-blue-600/18 blur-[160px] rounded-full z-0"
       />
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute -bottom-32 right-1/4 w-[600px] h-[340px] bg-blue-500/12 blur-[150px] rounded-full z-0" 
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-32 right-1/4 w-[600px] h-[340px] bg-blue-500/12 blur-[150px] rounded-full z-0"
       />
 
       <div className="relative max-w-[1400px] mx-auto w-full px-6 sm:px-8 lg:px-12">
@@ -124,9 +123,7 @@ export function Footer() {
               <span className="font-serif text-xl sm:text-2xl font-normal text-white tracking-tight">
                 GrowDesk Media
               </span>
-              <p className="text-xs font-mono text-neutral-400">
-                (Growdex Media) // Raipur &bull; Bilaspur &bull; Central India
-              </p>
+
             </div>
 
             <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-sm">
@@ -184,24 +181,6 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Location Pills Row for Search Engines & Users */}
-        <div className="mt-12 pt-8 border-t border-neutral-900/80 space-y-3">
-          <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 block">
-            Regional Focus Areas:
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {LOCATIONS_SEO.map((loc) => (
-              <Link
-                key={loc.slug}
-                href={`/locations/${loc.slug}`}
-                className="text-xs text-neutral-400 hover:text-blue-400 border border-neutral-900 hover:border-blue-500/40 rounded px-2.5 py-1 bg-neutral-950/60 transition-colors"
-              >
-                Marketing in {loc.city} ({loc.state})
-              </Link>
-            ))}
-          </div>
-        </div>
-
         {/* Giant Centered Wordmark with outline & mask fade */}
         <div
           className="relative mt-16 sm:mt-20 w-full select-none"
@@ -231,7 +210,7 @@ export function Footer() {
         {/* Bottom row: Copyright & Legal links */}
         <div className="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm text-neutral-500">
           <p className="tracking-wide">
-            &copy; 2026 GrowDesk Media (Growdex) &bull; Raipur, Chhattisgarh, India &bull; All Rights Reserved
+            &copy; 2026 GrowDesk Media India &bull; All Rights Reserved
           </p>
 
           <div className="flex items-center gap-6">
