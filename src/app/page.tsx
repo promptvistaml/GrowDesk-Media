@@ -4,7 +4,6 @@ import NeuroNoiseStats from "@/components/ui/neuro-noise-stats";
 import { FlightClients } from "@/components/flight-clients";
 import { FlightTestimonials } from "@/components/flight-testimonials";
 import { FlightAiEra } from "@/components/flight-ai-era";
-import { RegionalCoverage } from "@/components/regional-coverage";
 import Faq05 from "@/components/ui/faq-05";
 import { ContactSection } from "@/components/ui/contact";
 import { Footer } from "@/components/footer";
@@ -44,7 +43,6 @@ export default function Home() {
 
       <FlightTestimonials />
       <FlightAiEra />
-      <RegionalCoverage />
       <Faq05 />
       <ContactSection />
       <Footer />
