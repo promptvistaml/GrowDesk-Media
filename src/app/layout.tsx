@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | GrowDesk Media",
   },
   description:
-    "GrowDesk Media (Growdex) is Central India & Chhattisgarh's premier digital marketing, paid advertising, and business automation agency. Serving Raipur, Bilaspur, Durg, Bhilai, Korba, Nagpur, MP & Odisha. Meta & Google Ads, Lead Gen, Reel Production, Web Dev, SEO, WhatsApp Marketing & AI Chatbots.",
+    "GrowDesk Media is Central India & Chhattisgarh's premier digital marketing, paid advertising, and business automation agency. Serving Raipur, Bilaspur, Durg, Bhilai, Korba, Nagpur, MP & Odisha. Meta & Google Ads, Lead Gen, Reel Production, Web Dev, SEO, WhatsApp Marketing & AI Chatbots.",
   applicationName: "GrowDesk Media",
   authors: [{ name: "GrowDesk Media", url: AGENCY_INFO.url }],
   generator: "Next.js",

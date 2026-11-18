@@ -12,7 +12,7 @@ export function GlobalAgencySchema() {
     logo: `${AGENCY_INFO.url}/images/growdesk-w-logo.png`,
     image: `${AGENCY_INFO.url}/images/growdesk-w-logo.png`,
     description:
-      'GrowDesk Media (Growdex) is Central India and Chhattisgarh’s premier digital marketing, paid advertising, web development, SEO, and business automation agency. Serving Raipur, Bilaspur, Durg, Bhilai, Nagpur, MP & Odisha.',
+      'GrowDesk Media is Central India and Chhattisgarh’s premier digital marketing, paid advertising, web development, SEO, and business automation agency. Serving Raipur, Bilaspur, Durg, Bhilai, Nagpur, MP & Odisha.',
     telephone: AGENCY_INFO.phone,
     email: AGENCY_INFO.email,
     priceRange: '₹₹',
