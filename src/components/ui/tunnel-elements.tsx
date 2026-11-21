@@ -25,19 +25,18 @@ import {
 } from "lucide-react";
 
 // 1. Laptop with Live Growth Analytics Chart
-// Requirement: "In Grokx slash analytics slash live, remove the live blinking dot which is there, okay? And it should only be in blue color. Remove the green color from it, okay? That is there."
 export function LaptopGrowthCard() {
   return (
     <div className="w-[300px] sm:w-[340px] rounded-2xl bg-neutral-950/90 border border-white/15 p-4 shadow-2xl backdrop-blur-xl text-white select-none">
       {/* Top window bar */}
       <div className="flex items-center justify-between pb-3 border-b border-white/10">
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
           <span className="w-2.5 h-2.5 rounded-full bg-blue-500/80" />
-          <span className="ml-2 text-[10px] font-mono text-neutral-400">growdesk.analytics/live</span>
+          <span className="w-2.5 h-2.5 rounded-full bg-blue-400/80" />
+          <span className="w-2.5 h-2.5 rounded-full bg-blue-600/80" />
+          <span className="ml-2 text-[10px] font-mono text-blue-300">growdesk.analytics/live</span>
         </div>
-        <span className="inline-flex items-center text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">
+        <span className="inline-flex items-center text-[9px] font-mono uppercase px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/40">
           Live
         </span>
       </div>
@@ -104,7 +103,6 @@ export function LaptopGrowthCard() {
 }
 
 // 2. WhatsApp Lead Automation Chat
-// Requirement: "write it as WhatsApp bot and there should be no dot after that. One second reply is written. We don't need that, okay? Automated delivery, tell that it's fine. Make WhatsApp bot more like real WhatsApp, you know? Use the background which is WhatsApp uses and all."
 export function WhatsAppAutomationCard() {
   return (
     <div className="w-[285px] sm:w-[315px] rounded-2xl bg-[#0b141a] border border-[#202c33] shadow-2xl overflow-hidden text-white select-none">
@@ -134,26 +132,32 @@ export function WhatsAppAutomationCard() {
         </div>
       </div>
 
-      {/* WhatsApp Chat Wallpaper Background with Subtle Doodle Grid */}
+      {/* WhatsApp Chat Wallpaper Background with Subtle WhatsApp Doodles Pattern */}
       <div
-        className="p-3 space-y-2.5 text-xs relative"
+        className="p-3 space-y-2.5 text-xs relative overflow-hidden"
         style={{
           backgroundColor: "#0b141a",
           backgroundImage: `
-            radial-gradient(circle at 50% 50%, rgba(32, 44, 51, 0.45) 1px, transparent 1px)
+            radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            radial-gradient(circle at 40% 60%, rgba(0, 168, 132, 0.06) 1.5px, transparent 1.5px),
+            linear-gradient(rgba(11, 20, 26, 0.94), rgba(11, 20, 26, 0.94))
           `,
-          backgroundSize: "16px 16px",
+          backgroundSize: "24px 24px, 24px 24px, 32px 32px, 100% 100%",
         }}
       >
+        {/* Subtle Chat Doodles SVG Overlay */}
+        <div className="absolute inset-0 opacity-[0.035] pointer-events-none bg-[radial-gradient(#e9edef_1px,transparent_1px)] [background-size:12px_12px]" />
+
         {/* Date stamp pill */}
-        <div className="flex justify-center">
+        <div className="flex justify-center relative z-10">
           <span className="bg-[#182229] text-[#8696a0] text-[9px] px-2 py-0.5 rounded-md shadow-sm font-medium">
             TODAY
           </span>
         </div>
 
         {/* Incoming User Message (Dark Slate Bubble) */}
-        <div className="flex flex-col items-start max-w-[85%]">
+        <div className="flex flex-col items-start max-w-[85%] relative z-10">
           <div className="rounded-lg rounded-tl-none bg-[#202c33] text-[#e9edef] px-3 py-1.5 shadow-sm text-[11px] leading-relaxed relative">
             Hi, I want franchise details & admission fee for Raipur branch.
             <div className="flex items-center justify-end gap-1 mt-0.5">
@@ -163,7 +167,7 @@ export function WhatsAppAutomationCard() {
         </div>
 
         {/* Outgoing Automated Bot Message (Real WhatsApp Green Bubble #005c4b) */}
-        <div className="flex flex-col items-end max-w-[88%] ml-auto">
+        <div className="flex flex-col items-end max-w-[88%] ml-auto relative z-10">
           <div className="rounded-lg rounded-tr-none bg-[#005c4b] text-[#e9edef] px-3 py-1.5 shadow-sm text-[11px] leading-relaxed relative">
             Hello! 👋 Sent the complete 2026 prospectus & fee matrix to your email.
             <div className="mt-1.5 pt-1.5 border-t border-[#00745f] text-[10px] text-[#d1fae5] font-medium flex items-center gap-1">
@@ -311,44 +315,56 @@ export function StickyStrategyNote() {
 }
 
 // 5. iPhone Viral Reel Player Mockup
-// Requirement: "Then viral reel section, make it more real, okay? And the increase the height of the phone a bit. Okay, it looks a bit fake phone. Make it like a real phone aspect, okay?"
+// Flagship 19.5:9 authentic smartphone frame with video loop, realistic bezel & Instagram Reels UI
 export function MobileReelCard() {
   return (
-    <div className="w-[240px] sm:w-[260px] h-[480px] sm:h-[510px] rounded-[44px] bg-[#1a1a1a] p-[10px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.18)] select-none text-white relative flex flex-col ring-1 ring-black">
-      {/* Side volume / action buttons */}
-      <div className="absolute -left-[12px] top-24 w-[3px] h-9 bg-neutral-700 rounded-l-sm" />
-      <div className="absolute -left-[12px] top-36 w-[3px] h-9 bg-neutral-700 rounded-l-sm" />
-      <div className="absolute -right-[12px] top-28 w-[3px] h-14 bg-neutral-700 rounded-r-sm" />
+    <div className="w-[250px] sm:w-[270px] h-[520px] sm:h-[560px] rounded-[50px] bg-gradient-to-b from-[#333] via-[#1a1a1a] to-[#0d0d0d] p-[10px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.22),inset_0_1px_2px_rgba(255,255,255,0.4)] select-none text-white relative flex flex-col ring-1 ring-black/80">
+      {/* Side Hardware Buttons */}
+      <div className="absolute -left-[13px] top-24 w-[3.5px] h-8 bg-[#444] rounded-l-xs border-l border-white/20 shadow-sm" />
+      <div className="absolute -left-[13px] top-36 w-[3.5px] h-12 bg-[#444] rounded-l-xs border-l border-white/20 shadow-sm" />
+      <div className="absolute -left-[13px] top-52 w-[3.5px] h-12 bg-[#444] rounded-l-xs border-l border-white/20 shadow-sm" />
+      <div className="absolute -right-[13px] top-32 w-[3.5px] h-16 bg-[#444] rounded-r-xs border-r border-white/20 shadow-sm" />
 
-      {/* Screen Frame with proper 19.5:9 flagship aspect */}
-      <div className="relative w-full h-full rounded-[36px] overflow-hidden bg-black flex flex-col justify-between border border-neutral-800">
+      {/* Screen Frame with authentic 19.5:9 OLED aspect */}
+      <div className="relative w-full h-full rounded-[42px] overflow-hidden bg-black flex flex-col justify-between border border-neutral-800 shadow-inner">
         {/* Real Dynamic Island Pill */}
-        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-[22px] bg-black rounded-full z-30 flex items-center justify-between px-2.5 border border-neutral-900">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#0a0a0a] ring-1 ring-neutral-800" />
-          <div className="w-2 h-2 rounded-full bg-[#12284c] ring-1 ring-blue-900/50" />
+        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-[86px] h-[24px] bg-black rounded-full z-40 flex items-center justify-between px-2.5 border border-neutral-800 shadow-md">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#0a0a0a] ring-1 ring-neutral-800 flex items-center justify-center">
+            <div className="w-1 h-1 rounded-full bg-blue-950/80 shadow-[0_0_2px_#3b82f6]" />
+          </div>
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/80" />
         </div>
 
-        {/* Video Canvas Layer */}
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-950 to-black">
-          {/* Simulated live video action */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-transparent to-black" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-blue-600/20 blur-3xl rounded-full" />
+        {/* Video Canvas Layer - Autoplaying reel */}
+        <div className="absolute inset-0 bg-neutral-950">
+          <video
+            src="/videos/reel.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Subtle cinematic gradient vignette for UI contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.1] z-10" />
         </div>
 
         {/* Top Status & Audio Bar */}
-        <div className="relative z-20 pt-9 px-4 flex items-center justify-between text-[11px] font-medium text-white/90">
-          <span className="text-[10px] font-mono tracking-tight font-semibold">9:41</span>
-          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10 text-[9px]">
+        <div className="relative z-20 pt-9 px-4 flex items-center justify-between text-[11px] font-medium text-white/95">
+          <span className="text-[10px] font-mono tracking-tight font-semibold drop-shadow">9:41</span>
+          <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15 text-[9px] shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-            <span>Reels</span>
+            <span className="font-semibold">Reels</span>
           </div>
-          <div className="w-4 h-2 rounded-[3px] border border-white/60 p-[1px] flex justify-end">
+          <div className="w-4 h-2 rounded-[3px] border border-white/70 p-[1px] flex justify-end shadow-xs">
             <div className="w-2 h-full bg-white rounded-[1px]" />
           </div>
         </div>
 
         {/* Center Subtle Play Button Glow */}
-        <div className="relative z-20 self-center w-12 h-12 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl cursor-pointer hover:scale-105 transition-transform">
+        <div className="relative z-20 self-center w-12 h-12 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/25 shadow-2xl cursor-pointer hover:scale-105 transition-transform">
           <Play className="w-5 h-5 text-white fill-white ml-0.5 drop-shadow" />
         </div>
 
@@ -362,16 +378,16 @@ export function MobileReelCard() {
                   G
                 </div>
               </div>
-              <span className="text-[11px] font-bold text-white leading-none">growdesk.media</span>
-              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/20 text-white font-medium">Follow</span>
+              <span className="text-[11px] font-bold text-white leading-none drop-shadow">growdesk.media</span>
+              <span className="text-[9px] px-2 py-0.5 rounded-full bg-white/25 backdrop-blur-sm text-white font-semibold">Follow</span>
             </div>
 
-            <p className="text-[10px] text-white/95 leading-tight drop-shadow-sm font-normal">
+            <p className="text-[10px] text-white/95 leading-tight drop-shadow font-normal">
               Raipur school reaches <span className="font-bold text-sky-400">152 admissions</span> in 30 days with viral hook reels 🚀
             </p>
 
-            <div className="flex items-center gap-1.5 text-[9px] text-white/70">
-              <span className="w-2 h-2 rounded-full bg-white/50 animate-pulse" />
+            <div className="flex items-center gap-1.5 text-[9px] text-white/80 drop-shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span className="truncate">Original audio • Trending in Central India</span>
             </div>
           </div>
@@ -379,28 +395,28 @@ export function MobileReelCard() {
           {/* Right Action Icons (Like, Comment, Share, Bookmark) */}
           <div className="flex flex-col items-center gap-3 pb-1 text-white">
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-rose-500">
+              <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-rose-500 shadow-md">
                 <Heart className="w-4 h-4 fill-rose-500" />
               </div>
-              <span className="text-[9px] font-semibold mt-0.5">84.2K</span>
+              <span className="text-[9px] font-semibold mt-0.5 drop-shadow">84.2K</span>
             </div>
 
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center shadow-md">
                 <MessageSquare className="w-4 h-4" />
               </div>
-              <span className="text-[9px] font-semibold mt-0.5">1.4K</span>
+              <span className="text-[9px] font-semibold mt-0.5 drop-shadow">1.4K</span>
             </div>
 
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center shadow-md">
                 <Share2 className="w-4 h-4" />
               </div>
-              <span className="text-[9px] font-semibold mt-0.5">14.8K</span>
+              <span className="text-[9px] font-semibold mt-0.5 drop-shadow">14.8K</span>
             </div>
 
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center shadow-md">
                 <Bookmark className="w-4 h-4" />
               </div>
             </div>
@@ -408,8 +424,8 @@ export function MobileReelCard() {
         </div>
 
         {/* Bottom Home Indicator Bar */}
-        <div className="relative z-20 pb-1.5 flex justify-center">
-          <div className="w-24 h-1 bg-white/60 rounded-full" />
+        <div className="relative z-20 pb-2 flex justify-center">
+          <div className="w-24 h-1 bg-white/70 rounded-full shadow-sm" />
         </div>
       </div>
     </div>
