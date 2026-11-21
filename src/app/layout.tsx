@@ -114,6 +114,12 @@ export const metadata: Metadata = {
     shortcut: "/images/growdesk-icon.svg",
     apple: "/images/growdesk-w-logo.png",
   },
+  verification: {
+    google: "google1e7fafba2321333f.html",
+    other: {
+      "google-site-verification": ["1e7fafba2321333f", "google1e7fafba2321333f.html"],
+    },
+  },
   other: {
     "geo.region": "IN-CT",
     "geo.placename": "Raipur, Chhattisgarh, India",
