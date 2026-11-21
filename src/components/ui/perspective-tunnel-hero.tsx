@@ -11,21 +11,33 @@ import {
     MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import {
+    LaptopGrowthCard,
+    WhatsAppAutomationCard,
+    AnalyticsPieCard,
+    StickyStrategyNote,
+    MobileReelCard,
+    AdsPerformanceCard,
+    EcommerceBrowserCard,
+    FranchiseMapCard,
+    ClientReviewCard,
+} from "./tunnel-elements";
 
-const IMAGES = [
-    { src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80", title: "Enterprise Growth" },
-    { src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80", title: "Franchise Scale" },
-    { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", title: "Performance Ads" },
-    { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", title: "152 Admissions" },
-    { src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80", title: "Brand Positioning" },
-    { src: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80", title: "2x Sales Velocity" },
-    { src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80", title: "Commercial Reach" },
-    { src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80", title: "600+ Leads Pipeline" },
-    { src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80", title: "WhatsApp Automation" },
+const TUNNEL_ELEMENTS = [
+    { component: LaptopGrowthCard, id: "laptop-growth" },
+    { component: WhatsAppAutomationCard, id: "whatsapp-crm" },
+    { component: AnalyticsPieCard, id: "analytics-pie" },
+    { component: StickyStrategyNote, id: "sticky-strategy" },
+    { component: MobileReelCard, id: "mobile-reel" },
+    { component: AdsPerformanceCard, id: "ads-performance" },
+    { component: EcommerceBrowserCard, id: "ecommerce-browser" },
+    { component: FranchiseMapCard, id: "franchise-map" },
+    { component: ClientReviewCard, id: "client-review" },
 ];
 
 interface TunnelCardData {
-    item: { src: string; title: string };
+    component: React.ComponentType;
+    id: string;
     angleCos: number;
     angleSin: number;
     radiusFactorX: number;
@@ -34,18 +46,19 @@ interface TunnelCardData {
     index: number;
 }
 
-const TUNNEL_CARDS: TunnelCardData[] = IMAGES.map((item, i) => {
+const TUNNEL_CARDS: TunnelCardData[] = TUNNEL_ELEMENTS.map((item, i) => {
     const goldenAngle = i * 137.5 * (Math.PI / 180);
     const radiusFactorX = 0.28 + (i % 3) * 0.08;
     const radiusFactorY = 0.26 + (i % 2) * 0.09;
 
     return {
-        item,
+        component: item.component,
+        id: item.id,
         angleCos: Math.cos(goldenAngle),
         angleSin: Math.sin(goldenAngle),
         radiusFactorX,
         radiusFactorY,
-        rotationZ: (i % 2 === 0 ? 1 : -1) * (3 + (i % 5) * 2),
+        rotationZ: (i % 2 === 0 ? 1 : -1) * (2 + (i % 4) * 1.5),
         index: i,
     };
 });
@@ -98,9 +111,7 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
 
     const opacity = useTransform(localProgress, [0, 0.15, 0.85, 0.98], [0, 1, 1, 0]);
 
-    const cardWidth = stage.isMobile
-        ? Math.max(130, Math.min(180, stage.width * 0.38))
-        : Math.max(180, Math.min(270, stage.width * 0.18));
+    const scale = useTransform(localProgress, [0, 0.5, 1], [0.75, 1, 1.08]);
 
     const baseX = card.angleCos * (stage.width * card.radiusFactorX);
     const baseY = card.angleSin * (stage.height * card.radiusFactorY);
@@ -115,29 +126,19 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
         }
     );
 
+    const Component = card.component;
+
     return (
         <motion.div
             style={{
-                width: cardWidth,
                 transform,
                 opacity,
+                scale,
                 zIndex: card.index + 1,
             }}
-            className="pointer-events-auto absolute left-1/2 top-1/2 aspect-[4/5] will-change-transform select-none cursor-pointer"
+            className="pointer-events-auto absolute left-1/2 top-1/2 will-change-transform select-none cursor-pointer filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] hover:drop-shadow-[0_25px_50px_rgba(30,99,255,0.3)] transition-[filter] duration-300"
         >
-            <div className="group relative h-full w-full overflow-hidden rounded-2xl bg-neutral-900 shadow-2xl shadow-black/90 ring-1 ring-white/10 transition-all duration-500 hover:ring-white/40">
-                <img
-                    src={card.item.src}
-                    alt={card.item.title}
-                    draggable={false}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-4 sm:p-5">
-                    <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-white drop-shadow-md">
-                        {card.item.title}
-                    </span>
-                </div>
-            </div>
+            <Component />
         </motion.div>
     );
 }
@@ -226,7 +227,7 @@ export default function PerspectiveTunnelHero() {
                     <p className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-neutral-400 mb-2 sm:mb-3">
                         BRANDS   •   LEADS   •   FRANCHISES
                     </p>
-                    
+
                     {/* Clash Display Bold Uppercase Heading */}
                     <h1 className="font-clash text-5xl sm:text-7xl md:text-8xl lg:text-[96px] font-bold tracking-[-0.04em] leading-[0.92] text-white uppercase drop-shadow-sm">
                         THINK BIG
@@ -242,7 +243,7 @@ export default function PerspectiveTunnelHero() {
                     </p>
                 </motion.div>
 
-                
+
 
                 {/* 3D Z-Space Plane */}
                 <div

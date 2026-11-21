@@ -25,7 +25,7 @@ export function FlightManifesto() {
 
           <div className="space-y-5 text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
             <p>
-              Flight advises founders and executives at critical inflection points—launches, fundraising, rapid growth, M&amp;A, breakthrough campaigns, public scrutiny, and leadership transitions.
+              GrowDesk Media advises founders and executives at critical inflection points—launches, fundraising, rapid growth, M&amp;A, breakthrough campaigns, public scrutiny, and leadership transitions.
             </p>
             <p>
               We shape narrative, align visibility with business strategy, and ensure communications decisions support favorable, long-term outcomes.

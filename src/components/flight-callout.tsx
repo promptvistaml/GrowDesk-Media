@@ -12,7 +12,7 @@ export function FlightCallout() {
 
         <div>
           <Link
-            href="/contact"
+            href="/#connect"
             className="inline-block border border-white text-white hover:bg-white hover:text-black font-sans text-xs uppercase tracking-widest px-8 py-4 transition-all duration-300 font-medium"
           >
             Work with us &rarr;

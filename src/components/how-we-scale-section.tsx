@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
@@ -22,6 +22,7 @@ import {
   LaptopMockupCard,
   PhoneMockupCard,
   IpadMockupCard,
+  DesktopMac3DCard,
 } from '@/components/mockups';
 
 /* ─────────────────────────────────────────────────────────────
@@ -71,50 +72,50 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
     }
   }, []);
 
-  // Slide up the white analytics sheet gently during Stage 2 active window (0.25 - 0.31)
-  const sheetY = useTransform(scrollYProgress, [0.25, 0.31], ['100%', '0%']);
-  const sheetOpacity = useTransform(scrollYProgress, [0.25, 0.28], [0, 1]);
+  // Slide up the white analytics sheet gently during Stage 2 active window (0.24 - 0.34)
+  const sheetY = useTransform(scrollYProgress, [0.24, 0.34], ['100%', '0%']);
+  const sheetOpacity = useTransform(scrollYProgress, [0.24, 0.29], [0, 1]);
 
   return (
-    <div className="relative size-full bg-white text-slate-900 overflow-hidden font-sans select-none">
-      {/* 2A: Reel Video Screen (White UI) */}
-      <div className="relative size-full flex flex-col justify-between pt-11 pb-5 px-3">
-        {/* Top Timecode / Status */}
-        <div className="flex items-center justify-between px-1 text-[9px] font-mono text-slate-500">
-          <span className="flex items-center gap-1 text-blue-600 font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-            LIVE PROMO
-          </span>
-          <span className="text-slate-600 font-medium">00:01.4s / 00:30s</span>
-        </div>
+    <div className="relative size-full bg-black text-slate-900 overflow-hidden font-sans select-none">
+      {/* 2A: Full-Viewport Reel Video Background */}
+      <video
+        ref={videoRef}
+        src="/videos/reel.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 size-full object-cover"
+      />
 
-        {/* 9:16 Video Preview Canvas */}
-        <div className="relative flex-1 my-2 rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-sm">
-          <video
-            ref={videoRef}
-            src="/videos/influencer_talking.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="size-full object-cover"
-          />
-        </div>
+      {/* Subtle top vignette for badge readability */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 via-black/25 to-transparent z-10" />
+
+      {/* Top Floating Badge: Engagement / Reel Growth */}
+      <div className="relative z-20 flex items-center justify-between pt-10 pb-2 px-4">
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white tracking-wide shadow-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+          Reel Growth
+        </span>
+        <span className="px-2 py-0.5 rounded-full bg-black/50 backdrop-blur-md text-[9px] font-mono text-white/80">
+          00:01.4s / 00:30s
+        </span>
       </div>
 
-      {/* 2B: Sliding Analytics Sheet (Crisp White Card) */}
+      {/* 2B: Sliding Analytics Sheet - Stretches full width (left-0 right-0 bottom-0) */}
       <motion.div
         style={{ y: sheetY, opacity: sheetOpacity }}
-        className="absolute inset-x-2 bottom-2 rounded-2xl bg-white/98 backdrop-blur-md border border-slate-200/90 p-3.5 shadow-2xl z-30"
+        className="absolute inset-x-0 bottom-0 rounded-t-3xl bg-white/95 backdrop-blur-xl border-t border-slate-200/90 px-4 pt-3.5 pb-6 shadow-2xl z-30"
       >
-        <div className="w-10 h-1 bg-slate-300 rounded-full mx-auto mb-2" />
+        <div className="w-10 h-1 bg-slate-300 rounded-full mx-auto mb-2.5" />
 
         <div className="flex items-center justify-between text-xs font-semibold mb-2">
           <span className="text-slate-800">Live Post-Drop Analytics</span>
           <span className="text-blue-600 flex items-center gap-1 text-[10px] font-mono font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-            LIVE
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            ENGAGEMENT
           </span>
         </div>
 
@@ -172,20 +173,20 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
    • WeShine Beauty n Salon: ₹200 Ad Budget → ₹3,500 - ₹5,000 Sales (25× ROAS)
    ───────────────────────────────────────────────────────────── */
 function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Dynamic scroll-driven interactions in window [0.43, 0.50]
-  const revenueCounter = useTransform(scrollYProgress, [0.44, 0.50], ['₹5,000', '₹1,29,999']);
+  // Dynamic scroll-driven interactions in Stage 3 active window [0.50, 0.68]
+  const revenueCounter = useTransform(scrollYProgress, [0.52, 0.65], ['₹5,000', '₹1,29,999']);
   
   // Interactive Line Chart curve progression (0 -> 1)
-  const lineProgress = useTransform(scrollYProgress, [0.43, 0.50], [0, 1]);
-  const tooltipOpacity = useTransform(scrollYProgress, [0.46, 0.50], [0, 1]);
-  const tooltipScale = useTransform(scrollYProgress, [0.46, 0.50], [0.8, 1]);
+  const lineProgress = useTransform(scrollYProgress, [0.50, 0.65], [0, 1]);
+  const tooltipOpacity = useTransform(scrollYProgress, [0.58, 0.66], [0, 1]);
+  const tooltipScale = useTransform(scrollYProgress, [0.58, 0.66], [0.8, 1]);
 
   // Interactive Bar Chart heights (rise with scroll)
-  const spendBar1Height = useTransform(scrollYProgress, [0.43, 0.46], ['0%', '14%']);
-  const karigarRevBarHeight = useTransform(scrollYProgress, [0.44, 0.50], ['0%', '100%']);
+  const spendBar1Height = useTransform(scrollYProgress, [0.50, 0.58], ['0%', '14%']);
+  const karigarRevBarHeight = useTransform(scrollYProgress, [0.51, 0.66], ['0%', '100%']);
   
-  const spendBar2Height = useTransform(scrollYProgress, [0.43, 0.46], ['0%', '12%']);
-  const weShineRevBarHeight = useTransform(scrollYProgress, [0.44, 0.49], ['0%', '64%']);
+  const spendBar2Height = useTransform(scrollYProgress, [0.50, 0.57], ['0%', '12%']);
+  const weShineRevBarHeight = useTransform(scrollYProgress, [0.51, 0.64], ['0%', '64%']);
 
   return (
     <div className="relative size-full bg-white text-slate-900 overflow-hidden font-sans p-3.5 sm:p-4 flex flex-col justify-between select-none">
@@ -395,13 +396,13 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
    • Sankalp Learning Classes: ₹10,000 spend → 600+ student enquiries data
    ───────────────────────────────────────────────────────────── */
 function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
-  // Scroll reactive transforms in active window [0.62, 0.70]
-  const funnelLineProgress = useTransform(scrollYProgress, [0.63, 0.70], [0, 1]);
-  const sankalpBarHeight = useTransform(scrollYProgress, [0.63, 0.69], ['0%', '100%']);
-  const schoolBarHeight = useTransform(scrollYProgress, [0.64, 0.70], ['0%', '84%']);
-  const sanjivaniBarHeight = useTransform(scrollYProgress, [0.63, 0.68], ['0%', '62%']);
-  const pillScale = useTransform(scrollYProgress, [0.66, 0.71], [0.92, 1]);
-  const nodeTooltipOpacity = useTransform(scrollYProgress, [0.66, 0.70], [0, 1]);
+  // Scroll reactive transforms in Stage 4 active window [0.76, 0.96]
+  const funnelLineProgress = useTransform(scrollYProgress, [0.77, 0.93], [0, 1]);
+  const sankalpBarHeight = useTransform(scrollYProgress, [0.77, 0.91], ['0%', '100%']);
+  const schoolBarHeight = useTransform(scrollYProgress, [0.78, 0.93], ['0%', '84%']);
+  const sanjivaniBarHeight = useTransform(scrollYProgress, [0.77, 0.90], ['0%', '62%']);
+  const pillScale = useTransform(scrollYProgress, [0.81, 0.94], [0.92, 1]);
+  const nodeTooltipOpacity = useTransform(scrollYProgress, [0.82, 0.94], [0, 1]);
 
   return (
     <div className="relative size-full bg-white text-slate-900 overflow-hidden font-sans select-none flex flex-col justify-between">
@@ -597,42 +598,25 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   BUSINESS PILLARS DATA (STAGE 5)
-   1. Organic Branding — Build identity, trust and audience
-   2. Performance Marketing — Generate leads, sales and measurable results
-   3. Automation & Technology — Improve efficiency and automate operations
-   4. Franchise Scaling — Build systems and expand the business
-   ───────────────────────────────────────────────────────────── */
-const BUSINESS_PILLARS = [
-  {
-    title: 'Organic Branding',
-    subtitle: 'Build identity, trust and audience',
-  },
-  {
-    title: 'Performance Marketing',
-    subtitle: 'Generate leads, sales and measurable results',
-  },
-  {
-    title: 'Automation & Technology',
-    subtitle: 'Improve efficiency and automate operations',
-  },
-  {
-    title: 'Franchise Scaling',
-    subtitle: 'Build systems and expand the business',
-  },
-];
-
-/* ─────────────────────────────────────────────────────────────
    MAIN COMPONENT: HowWeScaleSection
-   Single unified sticky scroll-jacked section (h-[950vh]) on #F6F9FD.
+   Single unified sticky scroll-jacked section across stages 01 to 04 on #F6F9FD.
    - Stage 1: MacBook Titanium (Strategic Advisory)
    - Stage 2: iPhone Titanium (Short-Form & Content Engine)
    - Stage 3: iPad SpaceBlack (Performance Marketing)
-   - Stage 4: MacBook Midnight (Digital Product & Web)
-   - Stage 5: Big Hand holding Smartphone & 4 Pop-out Photorealistic Glass Cards
+   - Stage 4: Desktop Mac Monitor (Institutional Scale & Web)
    ───────────────────────────────────────────────────────────── */
 export function HowWeScaleSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Track single unified scroll progress across 950vh container
   const { scrollYProgress } = useScroll({
@@ -640,11 +624,11 @@ export function HowWeScaleSection() {
     offset: ['start start', 'end end'],
   });
 
-  // Smooth, gentle easing spring physics for 120fps fluid transitions
+  // Smooth, calm easing spring physics: high damping & mass so animations transition gently without rushing
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 60,
-    damping: 24,
-    mass: 0.16,
+    stiffness: 40,
+    damping: 38,
+    mass: 0.35,
     restDelta: 0.0001,
   });
 
@@ -652,33 +636,33 @@ export function HowWeScaleSection() {
   const progressBarHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
 
   // Shared synchronized milestones for Stages 1 to 4:
-  // Transition 1 -> 2: [0.15, 0.22]
-  // Transition 2 -> 3: [0.34, 0.41]
-  // Transition 3 -> 4: [0.53, 0.60]
-  // Transition 4 -> 5: [0.72, 0.79]
-  // Unified Single-Canvas Dynamic Light Flare tracking across stages 01 -> 04
-  const flareX = useTransform(smoothProgress, [0, 0.25, 0.50, 0.75], ['15%', '65%', '85%', '35%']);
-  const flareY = useTransform(smoothProgress, [0, 0.25, 0.50, 0.75], ['20%', '45%', '25%', '70%']);
-  const flareScale = useTransform(smoothProgress, [0, 0.25, 0.50, 0.75], [1, 1.25, 1.1, 1.3]);
-  const flareOpacity = useTransform(smoothProgress, [0, 0.70, 0.76], [0.18, 0.18, 0]);
+  // Stage 1 active: [0, 0.20], transition: [0.20, 0.30]
+  // Stage 2 active: [0.30, 0.45], transition: [0.45, 0.55]
+  // Stage 3 active: [0.55, 0.70], transition: [0.70, 0.80]
+  // Stage 4 active: [0.80, 1.00]
+  
+  // Dynamic Corner Light Flares tracking smoothly across stages
+  const flareX = useTransform(smoothProgress, [0, 0.35, 0.65, 1], ['10%', '85%', '90%', '15%']);
+  const flareY = useTransform(smoothProgress, [0, 0.35, 0.65, 1], ['15%', '25%', '60%', '75%']);
+  const flareScale = useTransform(smoothProgress, [0, 0.35, 0.65, 1], [1, 1.25, 1.1, 1.2]);
+  const flareOpacity = useTransform(smoothProgress, [0, 0.5, 1], [0.22, 0.25, 0.22]);
 
-
-  // Left Column Stage Physical Vertical Scroll Motion
-  // Stage 1
-  const left1Y = useTransform(smoothProgress, [0, 0.15, 0.22], ['0%', '0%', '-125%']);
-  const left1Opacity = useTransform(smoothProgress, [0, 0.15, 0.22], [1, 1, 0]);
+  // Left Column Stage Physical Vertical Scroll Motion (Sticky, docked stage presentations)
+  // Stage 1: Docks comfortably at 0%, then glides out slowly
+  const left1Y = useTransform(smoothProgress, [0, 0.18, 0.25], ['0%', '0%', '-50px']);
+  const left1Opacity = useTransform(smoothProgress, [0, 0.18, 0.25], [1, 1, 0]);
   const left1Shadow = useTransform(
     smoothProgress,
-    [0, 0.15, 0.22],
+    [0, 0.18, 0.25],
     ['drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 20px 25px rgba(15,23,42,0.14))']
   );
 
-  // Stage 2
-  const left2Y = useTransform(smoothProgress, [0.15, 0.22, 0.34, 0.41], ['125%', '0%', '0%', '-125%']);
-  const left2Opacity = useTransform(smoothProgress, [0.15, 0.22, 0.34, 0.41], [0, 1, 1, 0]);
+  // Stage 2: Glides in, locks at 0% for reading, then glides out slowly
+  const left2Y = useTransform(smoothProgress, [0.20, 0.27, 0.44, 0.50], ['50px', '0%', '0%', '-50px']);
+  const left2Opacity = useTransform(smoothProgress, [0.20, 0.27, 0.44, 0.50], [0, 1, 1, 0]);
   const left2Shadow = useTransform(
     smoothProgress,
-    [0.15, 0.22, 0.34, 0.41],
+    [0.20, 0.27, 0.44, 0.50],
     [
       'drop-shadow(0 20px 25px rgba(15,23,42,0.14))',
       'drop-shadow(0 0 0 rgba(0,0,0,0))',
@@ -687,12 +671,12 @@ export function HowWeScaleSection() {
     ]
   );
 
-  // Stage 3
-  const left3Y = useTransform(smoothProgress, [0.34, 0.41, 0.53, 0.60], ['125%', '0%', '0%', '-125%']);
-  const left3Opacity = useTransform(smoothProgress, [0.34, 0.41, 0.53, 0.60], [0, 1, 1, 0]);
+  // Stage 3: Glides in, locks at 0% for reading, then glides out slowly
+  const left3Y = useTransform(smoothProgress, [0.46, 0.53, 0.70, 0.76], ['50px', '0%', '0%', '-50px']);
+  const left3Opacity = useTransform(smoothProgress, [0.46, 0.53, 0.70, 0.76], [0, 1, 1, 0]);
   const left3Shadow = useTransform(
     smoothProgress,
-    [0.34, 0.41, 0.53, 0.60],
+    [0.46, 0.53, 0.70, 0.76],
     [
       'drop-shadow(0 20px 25px rgba(15,23,42,0.14))',
       'drop-shadow(0 0 0 rgba(0,0,0,0))',
@@ -701,81 +685,50 @@ export function HowWeScaleSection() {
     ]
   );
 
-  // Stage 4
-  const left4Y = useTransform(smoothProgress, [0.53, 0.60, 0.72, 0.79], ['125%', '0%', '0%', '-125%']);
-  const left4Opacity = useTransform(smoothProgress, [0.53, 0.60, 0.72, 0.79], [0, 1, 1, 0]);
+  // Stage 4: Glides in and stays locked for conclusive reading
+  const left4Y = useTransform(smoothProgress, [0.72, 0.79, 0.95, 1], ['50px', '0%', '0%', '0%']);
+  const left4Opacity = useTransform(smoothProgress, [0.72, 0.79, 0.95, 1], [0, 1, 1, 1]);
   const left4Shadow = useTransform(
     smoothProgress,
-    [0.53, 0.60, 0.72, 0.79],
-    ['drop-shadow(0 20px 25px rgba(15,23,42,0.14))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 20px 25px rgba(15,23,42,0.14))']
+    [0.72, 0.79, 0.95, 1],
+    ['drop-shadow(0 20px 25px rgba(15,23,42,0.14))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))']
   );
 
-  // Right Device Morph & Scale Transforms (Stages 1-4)
-  // Device 1: MacBook Titanium (Stage 1)
-  const dev1Scale = useTransform(smoothProgress, [0, 0.15, 0.22], [1, 1, 0.92]);
-  const dev1Opacity = useTransform(smoothProgress, [0, 0.15, 0.22], [1, 1, 0]);
+  // Right Device Morph, Translation & Scale Transforms (Stages 1-4)
+  // Device 1: MacBook Titanium (Stage 1) - Slides gracefully from right side, slowly exits
+  const dev1X = useTransform(smoothProgress, [0, 0.08, 0.18, 0.25], ['140px', '0px', '0px', '-40px']);
+  const dev1Scale = useTransform(smoothProgress, [0, 0.08, 0.18, 0.25], [0.94, 1, 1, 0.90]);
+  const dev1Opacity = useTransform(smoothProgress, [0, 0.06, 0.18, 0.25], [0.2, 1, 1, 0]);
 
-  // Device 2: iPhone Titanium (Stage 2)
-  const dev2Scale = useTransform(smoothProgress, [0.15, 0.22, 0.34, 0.41], [0.92, 1, 1, 0.92]);
-  const dev2Opacity = useTransform(smoothProgress, [0.15, 0.22, 0.34, 0.41], [0, 1, 1, 0]);
+  // Device 2: iPhone Titanium (Stage 2) - Enters gently from upright (top-right) and slowly recedes behind
+  const dev2Y = useTransform(smoothProgress, [0.20, 0.27, 0.44, 0.50], ['-140px', '0px', '0px', '30px']);
+  const dev2X = useTransform(smoothProgress, [0.20, 0.27, 0.44, 0.50], ['80px', '0px', '0px', '-20px']);
+  const dev2Scale = useTransform(smoothProgress, [0.20, 0.27, 0.44, 0.50], [0.92, 1, 1, 0.88]);
+  const dev2Opacity = useTransform(smoothProgress, [0.20, 0.27, 0.44, 0.50], [0, 1, 1, 0]);
 
-  // Device 3: iPad SpaceBlack (Stage 3)
-  const dev3Scale = useTransform(smoothProgress, [0.34, 0.41, 0.53, 0.60], [0.92, 1, 1, 0.92]);
-  const dev3Opacity = useTransform(smoothProgress, [0.34, 0.41, 0.53, 0.60], [0, 1, 1, 0]);
+  // Device 3: iPad Pro SpaceBlack (Stage 3) - Substantial tablet presence with slow, graceful morph
+  const dev3Y = useTransform(smoothProgress, [0.46, 0.53, 0.70, 0.76], ['60px', '0px', '0px', '-25px']);
+  const dev3Scale = useTransform(smoothProgress, [0.46, 0.53, 0.70, 0.76], [0.92, 1, 1, 0.90]);
+  const dev3Opacity = useTransform(smoothProgress, [0.46, 0.53, 0.70, 0.76], [0, 1, 1, 0]);
 
-  // Device 4: MacBook Midnight (Stage 4)
-  const dev4Scale = useTransform(smoothProgress, [0.53, 0.60, 0.72, 0.79], [0.92, 1, 1, 0.90]);
-  const dev4Opacity = useTransform(smoothProgress, [0.53, 0.60, 0.72, 0.79], [0, 1, 1, 0]);
-
-  // 2-Column Grid Container overall opacity (fades out smoothly to yield to Stage 5)
-  const twoColOpacity = useTransform(smoothProgress, [0.73, 0.79], [1, 0]);
-  const twoColPointerEvents = useTransform(smoothProgress, (val) => (val >= 0.78 ? 'none' : 'auto'));
-
-  // ─────────────────────────────────────────────────────────
-  // STAGE 5: The 4 Business Pillars Hand Architecture
-  // In that same sticky viewport, after the 4th scroll ends, the hand appears!
-  // ─────────────────────────────────────────────────────────
-  const stage5Opacity = useTransform(smoothProgress, [0.75, 0.82], [0, 1]);
-  const stage5PointerEvents = useTransform(smoothProgress, (val) => (val >= 0.76 ? 'auto' : 'none'));
-
-  // Hand entrance & floating presence (Scroll 0.76 -> 0.83)
-  const handY = useTransform(smoothProgress, [0.76, 0.83], ['14%', '0%']);
-  const handScale = useTransform(smoothProgress, [0.76, 0.83], [0.93, 1]);
-
-  // Four Pillar Frosted Glass Cards: Pop out from the phone screen to their settled corners
-  // Card 1: Organic Branding (Top-Left)
-  const c1X = useTransform(smoothProgress, [0.80, 0.91], ['0px', '-430px']);
-  const c1Y = useTransform(smoothProgress, [0.80, 0.91], ['0px', '-190px']);
-  const c1Scale = useTransform(smoothProgress, [0.80, 0.89], [0.25, 1]);
-  const c1Opacity = useTransform(smoothProgress, [0.80, 0.87], [0, 1]);
-
-  // Card 2: Performance Marketing (Top-Right)
-  const c2X = useTransform(smoothProgress, [0.81, 0.92], ['0px', '400px']);
-  const c2Y = useTransform(smoothProgress, [0.81, 0.92], ['0px', '-170px']);
-  const c2Scale = useTransform(smoothProgress, [0.81, 0.90], [0.25, 1]);
-  const c2Opacity = useTransform(smoothProgress, [0.81, 0.88], [0, 1]);
-
-  // Card 3: Automation & Technology (Bottom-Left)
-  const c3X = useTransform(smoothProgress, [0.82, 0.93], ['0px', '-440px']);
-  const c3Y = useTransform(smoothProgress, [0.82, 0.93], ['0px', '190px']);
-  const c3Scale = useTransform(smoothProgress, [0.82, 0.91], [0.25, 1]);
-  const c3Opacity = useTransform(smoothProgress, [0.82, 0.89], [0, 1]);
-
-  // Card 4: Franchise Scaling (Bottom-Right)
-  const c4X = useTransform(smoothProgress, [0.83, 0.94], ['0px', '380px']);
-  const c4Y = useTransform(smoothProgress, [0.83, 0.94], ['0px', '190px']);
-  const c4Scale = useTransform(smoothProgress, [0.83, 0.92], [0.25, 1]);
-  const c4Opacity = useTransform(smoothProgress, [0.83, 0.90], [0, 1]);
+  // Device 4: Mac Desktop Monitor (Stage 4) - Desktop Mac monitor with aluminum stand
+  const dev4Y = useTransform(smoothProgress, [0.72, 0.79, 0.95, 1], ['70px', '0px', '0px', '0px']);
+  const dev4Scale = useTransform(smoothProgress, [0.72, 0.79, 0.95, 1], [0.92, 1, 1, 1]);
+  const dev4Opacity = useTransform(smoothProgress, [0.72, 0.79, 0.95, 1], [0, 1, 1, 1]);
 
   return (
     <div
       ref={containerRef}
       id="how-we-scale"
-      className="relative h-[950vh] bg-[#F6F9FD]"
+      className="relative h-[550vh] bg-[#F6F9FD]"
     >
-      {/* Sticky Full Viewport Wrapper (Same Section throughout all 5 stages) */}
+      {/* Sticky Full Viewport Wrapper (Same Section throughout all 4 stages) */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#F6F9FD] px-6 sm:px-8 md:px-16">
-        {/* Unified Single-Canvas Directional Light Flare (Moves position smoothly across 01 -> 04) */}
+        {/* Corner Light Flares (Top-Left & Bottom-Right) */}
+        <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(30,99,255,0.18)_0%,rgba(79,169,255,0.08)_40%,transparent_70%)] blur-[90px] z-0" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.20)_0%,rgba(59,130,246,0.10)_45%,transparent_70%)] blur-[100px] z-0" />
+
+        {/* Dynamic Tracking Light Flare */}
         <motion.div
           style={{
             left: flareX,
@@ -783,7 +736,7 @@ export function HowWeScaleSection() {
             scale: flareScale,
             opacity: flareOpacity,
           }}
-          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.22)_0%,rgba(59,130,246,0.12)_35%,rgba(96,165,250,0.04)_60%,transparent_75%)] blur-[100px] z-0"
+          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(30,99,255,0.20)_0%,rgba(79,169,255,0.10)_35%,rgba(96,165,250,0.04)_60%,transparent_75%)] blur-[95px] z-0"
         />
 
         {/* Bottom-Right Soft Organic Earthen Dune Silhouette */}
@@ -796,18 +749,14 @@ export function HowWeScaleSection() {
           <path d="M0 450C220 400 360 260 520 280C680 300 740 200 800 180V450H0Z" />
         </svg>
 
-       
-
         {/* ─────────────────────────────────────────────────────────────
             STAGES 1 to 4: 2-Column Grid Container (Editorial + Devices)
-            Fades out cleanly after Stage 4 ends to yield to Stage 5
             ───────────────────────────────────────────────────────────── */}
-        <motion.div
-          style={{ opacity: twoColOpacity, pointerEvents: twoColPointerEvents as any }}
+        <div
           className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center w-full"
         >
           {/* Left Column (6 cols): Editorial Typography */}
-          <div className="lg:col-span-6 relative h-[82vh] min-h-[580px] max-h-[740px] flex items-center justify-center overflow-hidden w-full [mask-image:linear-gradient(to_bottom,transparent_0%,black_6%,black_94%,transparent_100%)]">
+          <div className="lg:col-span-6 relative h-[36vh] sm:h-[40vh] lg:h-[82vh] min-h-[220px] lg:min-h-[580px] max-h-[300px] lg:max-h-[740px] flex items-center justify-center overflow-hidden w-full [mask-image:linear-gradient(to_bottom,transparent_0%,black_6%,black_94%,transparent_100%)]">
             {/* Stage 1 Content: Strategic Foundations */}
             <motion.div
               style={{ opacity: left1Opacity, y: left1Y, filter: left1Shadow }}
@@ -826,7 +775,7 @@ export function HowWeScaleSection() {
               </div>
               <div>
                 <Link
-                  href="/work"
+                  href="/case-studies"
                   className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-8 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
                 >
                   <span className="relative z-10">VIEW SELECTED WORK →</span>
@@ -914,11 +863,11 @@ export function HowWeScaleSection() {
           </div>
 
           {/* Right Column (6 cols): Interactive Hardware Showcase */}
-          <div className="lg:col-span-6 relative h-[82vh] min-h-[580px] max-h-[740px] flex items-center justify-center lg:justify-end">
-            <div className="relative w-full max-w-[620px] h-[360px] sm:h-[420px] md:h-[480px] flex items-center justify-center">
-              {/* STAGE 1 DEVICE: MacBook Titanium with Autoplaying Video */}
+          <div className="lg:col-span-6 relative h-[48vh] sm:h-[50vh] lg:h-[82vh] min-h-[300px] lg:min-h-[580px] max-h-[460px] lg:max-h-[740px] flex items-center justify-center lg:justify-end">
+            <div className="relative w-full max-w-[620px] h-[280px] sm:h-[360px] md:h-[420px] lg:h-[480px] flex items-center justify-center">
+              {/* STAGE 1 DEVICE: MacBook Titanium - Enters smoothly from the right side */}
               <motion.div
-                style={{ scale: dev1Scale, opacity: dev1Opacity }}
+                style={{ x: dev1X, scale: dev1Scale, opacity: dev1Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
@@ -928,9 +877,9 @@ export function HowWeScaleSection() {
                 </div>
               </motion.div>
 
-              {/* STAGE 2 DEVICE: iPhone Titanium with Dynamic Island */}
+              {/* STAGE 2 DEVICE: iPhone Titanium - Enters from upright (top-right) and recedes cleanly */}
               <motion.div
-                style={{ scale: dev2Scale, opacity: dev2Opacity }}
+                style={{ x: dev2X, y: dev2Y, scale: dev2Scale, opacity: dev2Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto scale-105 sm:scale-110">
@@ -940,9 +889,9 @@ export function HowWeScaleSection() {
                 </div>
               </motion.div>
 
-              {/* STAGE 3 DEVICE: iPad Metallic Silver with Front Camera */}
+              {/* STAGE 3 DEVICE: iPad Metallic Silver - Expansive tablet presence */}
               <motion.div
-                style={{ scale: dev3Scale, opacity: dev3Opacity }}
+                style={{ y: dev3Y, scale: dev3Scale, opacity: dev3Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
@@ -952,155 +901,20 @@ export function HowWeScaleSection() {
                 </div>
               </motion.div>
 
-              {/* STAGE 4 DEVICE: MacBook Metallic Silver */}
+              {/* STAGE 4 DEVICE: Desktop Mac Monitor (iMac / Studio Display with Aluminum Stand) */}
               <motion.div
-                style={{ scale: dev4Scale, opacity: dev4Opacity }}
+                style={{ y: dev4Y, scale: dev4Scale, opacity: dev4Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto">
-                  <LaptopMockupCard variant="metallicSilver">
+                  <DesktopMac3DCard variant="metallicSilver">
                     <ClientWebBuildScreen scrollYProgress={smoothProgress} />
-                  </LaptopMockupCard>
+                  </DesktopMac3DCard>
                 </div>
               </motion.div>
             </div>
           </div>
-        </motion.div>
-
-        {/* ─────────────────────────────────────────────────────────────
-            STAGE 5: In that same section, after the 4th scroll ends:
-            The Hand Appears & The 4 Business Pillars Pop Out
-            ───────────────────────────────────────────────────────────── */}
-        <motion.div
-          style={{ opacity: stage5Opacity, pointerEvents: stage5PointerEvents as any }}
-          className="absolute inset-0 z-20 flex items-center justify-center"
-        >
-          <div className="relative w-full max-w-7xl h-screen flex items-center justify-center px-4">
-            {/* BIG HAND & SMARTPHONE CONTAINER */}
-            <motion.div
-              style={{
-                y: handY,
-                scale: handScale,
-              }}
-              className="relative flex items-center justify-center transform-gpu will-change-transform z-10 pointer-events-none"
-            >
-              {/* Hand Image - Dominant flagship proportions */}
-              <div className="relative w-[520px] sm:w-[740px] md:w-[940px] lg:w-[1120px] xl:w-[1260px]">
-                <img
-                  src="/images/hand-holding-smartphone-feathered.png"
-                  alt="Hand holding smartphone displaying GrowDesk business pillars"
-                  className="w-full h-auto object-contain select-none drop-shadow-[0_40px_90px_rgba(15,23,42,0.18)]"
-                  draggable={false}
-                />
-
-                {/* Seamless feather blur overlay matching #F6F9FD so wrist cut is 100% invisible */}
-                <div className="absolute -left-20 bottom-0 w-80 h-80 bg-gradient-to-tr from-[#F6F9FD] via-[#F6F9FD]/95 to-transparent blur-3xl pointer-events-none" />
-                <div className="absolute left-0 bottom-0 w-64 h-64 bg-[#F6F9FD]/90 blur-2xl pointer-events-none" />
-              </div>
-            </motion.div>
-
-            {/* THE 4 BUSINESS PILLARS: Photorealistic Frosted Glass */}
-            {/* PILLAR 1: Organic Branding (Top-Left) */}
-            <motion.div
-              style={{
-                x: c1X,
-                y: c1Y,
-                scale: c1Scale,
-                opacity: c1Opacity,
-              }}
-              className="absolute z-30 transform-gpu will-change-[transform,opacity]"
-            >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
-                {/* Directional Light Flare Out */}
-                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
-                <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
-                <div className="relative z-10">
-                  <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
-                    {BUSINESS_PILLARS[0].title}
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-300/85 font-normal leading-relaxed mt-2">
-                    {BUSINESS_PILLARS[0].subtitle}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* PILLAR 2: Performance Marketing (Top-Right) */}
-            <motion.div
-              style={{
-                x: c2X,
-                y: c2Y,
-                scale: c2Scale,
-                opacity: c2Opacity,
-              }}
-              className="absolute z-30 transform-gpu will-change-[transform,opacity]"
-            >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
-                {/* Directional Light Flare Out */}
-                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
-                <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
-                <div className="relative z-10">
-                  <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
-                    {BUSINESS_PILLARS[1].title}
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-300/85 font-normal leading-relaxed mt-2">
-                    {BUSINESS_PILLARS[1].subtitle}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* PILLAR 3: Automation & Technology (Bottom-Left) */}
-            <motion.div
-              style={{
-                x: c3X,
-                y: c3Y,
-                scale: c3Scale,
-                opacity: c3Opacity,
-              }}
-              className="absolute z-30 transform-gpu will-change-[transform,opacity]"
-            >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
-                {/* Directional Light Flare Out */}
-                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
-                <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
-                <div className="relative z-10">
-                  <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
-                    {BUSINESS_PILLARS[2].title}
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-300/85 font-normal leading-relaxed mt-2">
-                    {BUSINESS_PILLARS[2].subtitle}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* PILLAR 4: Franchise Scaling (Bottom-Right) */}
-            <motion.div
-              style={{
-                x: c4X,
-                y: c4Y,
-                scale: c4Scale,
-                opacity: c4Opacity,
-              }}
-              className="absolute z-30 transform-gpu will-change-[transform,opacity]"
-            >
-              <div className="group relative w-[280px] sm:w-[330px] lg:w-[370px] overflow-hidden rounded-[24px] bg-gradient-to-br from-blue-900/40 via-slate-950/80 to-slate-950/90 backdrop-blur-[30px] backdrop-saturate-[190%] border border-blue-400/30 p-6 sm:p-7 shadow-[0_30px_70px_rgba(15,23,42,0.35),inset_0_1.5px_1px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.06)] hover:border-blue-400/60 transition-all duration-300">
-                {/* Directional Light Flare Out */}
-                <div className="pointer-events-none absolute -top-16 -left-16 w-44 h-44 bg-blue-500/25 blur-[45px] rounded-full z-0" />
-                <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-white/[0.22] via-transparent to-transparent opacity-80" />
-                <div className="relative z-10">
-                  <h3 className="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
-                    {BUSINESS_PILLARS[3].title}
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-300/85 font-normal leading-relaxed mt-2">
-                    {BUSINESS_PILLARS[3].subtitle}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

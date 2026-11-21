@@ -38,8 +38,9 @@ function NeuroNoiseStats({
       style={style}
       {...props}
     >
-      {/* Ambient Blue Optical Flare from Below */}
-      <div className="pointer-events-none absolute -bottom-48 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-t from-blue-600/25 via-blue-500/10 to-transparent blur-[160px] rounded-full z-0" />
+      {/* Ambient Blue Corner Light Flares (Inspired by LightRays chromatic dispersion) */}
+      <div className="pointer-events-none absolute -top-40 -right-20 w-[600px] h-[500px] bg-[radial-gradient(circle_at_top_right,rgba(30,99,255,0.22)_0%,rgba(79,169,255,0.1)_35%,transparent_70%)] blur-[100px] rounded-full z-0" />
+      <div className="pointer-events-none absolute -bottom-48 -left-20 w-[700px] h-[500px] bg-[radial-gradient(circle_at_bottom_left,rgba(30,99,255,0.20)_0%,rgba(37,99,235,0.08)_40%,transparent_70%)] blur-[120px] rounded-full z-0" />
       <div className="relative z-10 flex max-w-3xl flex-col gap-3">
         {eyebrow && (
           <span className="font-mono text-xs tracking-[0.25em] uppercase text-neutral-400">

@@ -270,7 +270,7 @@ export function MarketingEndToEndSection() {
                     </div>
                     <div className="margin-15">
                       <div className="button-flex">
-                        <Link href="/contact" className="button-main first w-variant-1bb29a39-8460-9957-ca7d-509c3fade0ee w-inline-block">
+                        <Link href="/#connect" className="button-main first w-variant-1bb29a39-8460-9957-ca7d-509c3fade0ee w-inline-block">
                           <div className="button-text">learn more</div>
                           <div className="button-icon-wrapper">
                             <div className="button-arrow hover w-embed">
@@ -505,7 +505,7 @@ export function MadeForMissionSection() {
                 </div>
                 <div className="margin-40">
                   <div className="button-flex center-mobile">
-                    <Link href="/contact" className="button-main first w-inline-block">
+                    <Link href="/#connect" className="button-main first w-inline-block">
                       <div className="button-text">Contact us</div>
                       <div className="button-icon-wrapper">
                         <div className="button-arrow hover w-embed"><ArrowRightIcon /></div>
@@ -571,7 +571,7 @@ export function MadeForMissionSection() {
                     <div>
                       <div className="pricing-bottom-flex">
                         <h2 className="pricing-large">Custom<span className="month-small">/ month</span></h2>
-                        <Link href="/contact" className="button w-inline-block">
+                        <Link href="/#connect" className="button w-inline-block">
                           <div className="button-border"></div>
                           <div className="button-inner">
                             <div className="button-txt">Get Started</div>
@@ -614,7 +614,7 @@ export function MadeForMissionSection() {
                     <div>
                       <div className="pricing-bottom-flex">
                         <h2 className="pricing-large">Enterprise<span className="month-small">/ annually</span></h2>
-                        <Link href="/contact" className="button w-inline-block">
+                        <Link href="/#connect" className="button w-inline-block">
                           <div className="button-border"></div>
                           <div className="button-inner">
                             <div className="button-txt">Get Started</div>

@@ -71,7 +71,7 @@ export function CaseStudiesLedger() {
 
               <div className="pt-6 mt-6 border-t border-[#E2E8F0] flex justify-end">
                 <Link
-                  href="/contact"
+                  href="/#connect"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1E63FF] hover:text-[#0B1F4D]"
                 >
                   <span>Inquire for Similar Growth</span>
