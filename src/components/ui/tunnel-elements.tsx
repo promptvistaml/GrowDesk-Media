@@ -317,6 +317,39 @@ export function StickyStrategyNote() {
 // 5. iPhone Viral Reel Player Mockup
 // Flagship 19.5:9 authentic smartphone frame with video loop, realistic bezel & Instagram Reels UI
 export function MobileReelCard() {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const promise = video.play();
+            if (promise !== undefined) promise.catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="w-[250px] sm:w-[270px] h-[520px] sm:h-[560px] rounded-[50px] bg-gradient-to-b from-[#333] via-[#1a1a1a] to-[#0d0d0d] p-[10px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.22),inset_0_1px_2px_rgba(255,255,255,0.4)] select-none text-white relative flex flex-col ring-1 ring-black/80">
       {/* Side Hardware Buttons */}
@@ -336,15 +369,15 @@ export function MobileReelCard() {
         </div>
 
         {/* Video Canvas Layer - Autoplaying reel */}
-        <div className="absolute inset-0 bg-neutral-950">
+        <div className="absolute inset-0 bg-neutral-950 pointer-events-none">
           <video
+            ref={videoRef}
             src="/videos/reel.mp4"
-            autoPlay
             loop
             muted
             playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           />
           {/* Subtle cinematic gradient vignette for UI contrast */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none" />
@@ -352,7 +385,7 @@ export function MobileReelCard() {
         </div>
 
         {/* Top Status & Audio Bar */}
-        <div className="relative z-20 pt-9 px-4 flex items-center justify-between text-[11px] font-medium text-white/95">
+        <div className="relative z-20 pt-9 px-4 flex items-center justify-between text-[11px] font-medium text-white/95 pointer-events-none">
           <span className="text-[10px] font-mono tracking-tight font-semibold drop-shadow">9:41</span>
           <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15 text-[9px] shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
@@ -361,11 +394,6 @@ export function MobileReelCard() {
           <div className="w-4 h-2 rounded-[3px] border border-white/70 p-[1px] flex justify-end shadow-xs">
             <div className="w-2 h-full bg-white rounded-[1px]" />
           </div>
-        </div>
-
-        {/* Center Subtle Play Button Glow */}
-        <div className="relative z-20 self-center w-12 h-12 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/25 shadow-2xl cursor-pointer hover:scale-105 transition-transform">
-          <Play className="w-5 h-5 text-white fill-white ml-0.5 drop-shadow" />
         </div>
 
         {/* Instagram / Reels Floating UI Layer */}

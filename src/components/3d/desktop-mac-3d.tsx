@@ -109,7 +109,6 @@ export const DesktopMac3DCard = forwardRef<
           className={cn(
             'relative w-[280px] min-[380px]:w-[320px] sm:w-[460px] md:w-[540px] lg:w-[590px] xl:w-[630px] max-w-[90vw]',
             'rounded-[18px] sm:rounded-[22px] p-[2px] sm:p-[2.5px] pb-0',
-            'shadow-[0_30px_70px_-15px_rgba(0,0,0,0.55),0_15px_30px_rgba(0,0,0,0.3)]',
             frame.outerSheen
           )}
           style={{
@@ -179,7 +178,7 @@ export const DesktopMac3DCard = forwardRef<
           {/* Vertical Aluminum Stem with Cable Pass-through */}
           <div
             className={cn(
-              'relative w-14 sm:w-18 md:w-20 h-14 sm:h-18 md:h-20 shadow-md flex items-center justify-center border-x',
+              'relative w-14 sm:w-18 md:w-20 h-14 sm:h-18 md:h-20 flex items-center justify-center border-x',
               frame.stand
             )}
           >
@@ -193,7 +192,7 @@ export const DesktopMac3DCard = forwardRef<
           {/* Horizontal Aluminum Desk Foot (Resting on table) */}
           <div
             className={cn(
-              'relative w-36 sm:w-48 md:w-56 h-3 sm:h-3.5 rounded-b-md shadow-[0_15px_30px_rgba(0,0,0,0.45)] border-t border-white/50',
+              'relative w-36 sm:w-48 md:w-56 h-3 sm:h-3.5 rounded-b-md border-t border-white/50',
               frame.stand
             )}
             style={{
@@ -204,17 +203,6 @@ export const DesktopMac3DCard = forwardRef<
             <div className={cn('absolute inset-0', frame.standHighlight)} />
           </div>
         </div>
-
-        {/* ─────────────────────────────────────────────────────────────
-            3. GROUND CONTACT SHADOW
-            ───────────────────────────────────────────────────────────── */}
-        <div
-          className="pointer-events-none absolute -bottom-4 inset-x-4 h-8 rounded-full bg-black/60 blur-lg transition-opacity duration-500"
-          style={{
-            transform: `translateZ(-25px) scale(${isHovered ? 1.04 : 1})`,
-            opacity: isHovered ? 0.75 : 0.55,
-          }}
-        />
       </div>
     </div>
   );

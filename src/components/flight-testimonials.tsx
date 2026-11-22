@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export function FlightTestimonials() {
@@ -133,11 +134,13 @@ export function FlightTestimonials() {
             transition={{ duration: 0.85, ease: 'easeOut' }}
             className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[300px] sm:min-h-[380px] md:min-h-[420px] flex flex-col justify-end p-5 sm:p-8 md:p-10 shadow-2xl group transition-all duration-300 hover:scale-[1.01] bg-[#0c0e12]"
           >
-            <img
+            <Image
               src="/our-work/IMG_2513.jpg"
               alt="Gyanoday Vidya Sanskar School"
-              className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none select-none"
-              loading="eager"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-top pointer-events-none select-none"
+              priority={false}
             />
             {/* Ambient Gradient to ensure high-contrast readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
@@ -160,11 +163,13 @@ export function FlightTestimonials() {
             transition={{ duration: 0.85, ease: 'easeOut' }}
             className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[300px] sm:min-h-[380px] md:min-h-[420px] flex flex-col justify-end p-5 sm:p-8 md:p-10 shadow-2xl group transition-all duration-300 hover:scale-[1.01] bg-[#0c0e12]"
           >
-            <img
+            <Image
               src="/our-work/weshinebeautynsalon.png"
               alt="WeShine Beauty & Salon / Cleaning Karigar"
-              className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none select-none"
-              loading="eager"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-top pointer-events-none select-none"
+              priority={false}
             />
             {/* Ambient Gradient to ensure high-contrast readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
@@ -220,7 +225,7 @@ export function FlightTestimonials() {
                 </div>
 
                 <p className="text-xs sm:text-sm md:text-base font-normal text-neutral-900 leading-snug">
-                  Marketing and promotional campaigns driving immediate business outcomes.
+                  promotional campaigns driving business outcomes.
                 </p>
 
                 {/* Metrics */}

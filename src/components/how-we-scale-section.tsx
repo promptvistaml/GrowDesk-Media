@@ -34,27 +34,48 @@ function StrategyMeetingScreen() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {});
-    }
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    // IntersectionObserver ensures video decodes and streams only when visible on screen
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const promise = video.play();
+            if (promise !== undefined) promise.catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <div className="relative size-full bg-slate-950 overflow-hidden font-sans select-none">
+    <div className="relative size-full bg-slate-950 overflow-hidden font-sans select-none pointer-events-none">
       {/* Autoplaying Loop Video ("Trust. Partnership. Security.") */}
       <video
         ref={videoRef}
         src="/videos/scroll_video.mp4"
-        autoPlay
         loop
         muted
         playsInline
-        preload="auto"
-        className="size-full object-cover"
+        preload="metadata"
+        className="size-full object-cover pointer-events-none"
       />
-
-     
-      
     </div>
   );
 }
@@ -67,9 +88,34 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {});
-    }
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    // IntersectionObserver ensures video decodes and streams only when visible on screen
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const promise = video.play();
+            if (promise !== undefined) promise.catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   // Slide up the white analytics sheet gently during Stage 2 active window (0.24 - 0.34)
@@ -77,17 +123,16 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
   const sheetOpacity = useTransform(scrollYProgress, [0.24, 0.29], [0, 1]);
 
   return (
-    <div className="relative size-full bg-black text-slate-900 overflow-hidden font-sans select-none">
+    <div className="relative size-full bg-black text-slate-900 overflow-hidden font-sans select-none pointer-events-none">
       {/* 2A: Full-Viewport Reel Video Background */}
       <video
         ref={videoRef}
         src="/videos/reel.mp4"
-        autoPlay
         loop
         muted
         playsInline
-        preload="auto"
-        className="absolute inset-0 size-full object-cover"
+        preload="metadata"
+        className="absolute inset-0 size-full object-cover pointer-events-none"
       />
 
       {/* Subtle top vignette for badge readability */}
@@ -692,7 +737,7 @@ export function HowWeScaleSection() {
   const left4Shadow = useTransform(
     smoothProgress,
     [0.72, 0.79, 0.95, 1],
-    ['drop-shadow(0 20px 25px rgba(15,23,42,0.14))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))']
+    ['drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))', 'drop-shadow(0 0 0 rgba(0,0,0,0))']
   );
 
   // Right Device Morph, Translation & Scale Transforms (Stages 1-4)
