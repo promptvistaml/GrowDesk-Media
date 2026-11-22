@@ -159,8 +159,8 @@ export const Laptop3DCard = forwardRef<HTMLDivElement, Laptop3DCardProps>(
               ───────────────────────────────────────────────────────────── */}
           <div
             className={cn(
-              'relative w-[320px] sm:w-[420px] md:w-[500px] lg:w-[540px] xl:w-[580px]',
-              'rounded-t-[20px] p-[2.5px] pb-0',
+              'relative w-[280px] min-[380px]:w-[320px] sm:w-[420px] md:w-[500px] lg:w-[540px] xl:w-[580px] max-w-[90vw]',
+              'rounded-t-[16px] sm:rounded-t-[20px] p-[2px] sm:p-[2.5px] pb-0',
               'shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6),0_10px_20px_-5px_rgba(0,0,0,0.4)]',
               'transition-all duration-300',
               frame.lidSheen
@@ -220,8 +220,8 @@ export const Laptop3DCard = forwardRef<HTMLDivElement, Laptop3DCardProps>(
               ───────────────────────────────────────────────────────────── */}
           <div
             className={cn(
-              'relative h-5 sm:h-6 md:h-7 lg:h-8 w-[360px] sm:w-[480px] md:w-[570px] lg:w-[610px] xl:w-[660px]',
-              'rounded-b-[22px] p-[2px] pt-0',
+              'relative h-4 min-[380px]:h-5 sm:h-6 md:h-7 lg:h-8 w-[310px] min-[380px]:w-[360px] sm:w-[480px] md:w-[570px] lg:w-[610px] xl:w-[660px] max-w-[96vw]',
+              'rounded-b-[18px] sm:rounded-b-[22px] p-[2px] pt-0',
               'shadow-[0_20px_40px_rgba(0,0,0,0.5),0_35px_80px_rgba(0,0,0,0.35)]',
               frame.baseLip
             )}

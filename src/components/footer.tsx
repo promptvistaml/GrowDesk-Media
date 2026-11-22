@@ -59,45 +59,36 @@ interface FooterColumn {
   links: FooterLinkItem[];
 }
 
-const FOOTER_COLUMNS: FooterColumn[] = [
-  {
-    title: 'Services',
-    links: [
-      { label: 'Paid Ads & Lead Gen', href: '/services/paid-advertisement-lead-generation' },
-      { label: 'Social Media & Reels', href: '/services/social-media-content-creation' },
-      { label: 'Web Development & SEO', href: '/services/web-development-seo' },
-      { label: 'WhatsApp & AI Automation', href: '/services/business-automation-chatbots' },
-      { label: 'Branding & Offline', href: '/services/branding-offline-marketing' },
-      { label: 'All Services Overview', href: '/services' },
-    ],
-  },
-  {
-    title: 'Locations',
-    links: [
-      { label: 'Raipur, Chhattisgarh', href: '/locations/raipur' },
-      { label: 'Bilaspur, Chhattisgarh', href: '/locations/bilaspur' },
-      { label: 'Durg & Bhilai, CG', href: '/locations/durg-bhilai' },
-      { label: 'Korba, Chhattisgarh', href: '/locations/korba' },
-      { label: 'Nagpur, Maharashtra', href: '/locations/nagpur' },
-      { label: 'Madhya Pradesh (MP)', href: '/locations/madhya-pradesh' },
-      { label: 'Odisha (Bhubaneswar)', href: '/locations/odisha' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'Why GrowDesk', href: '/about' },
-      { label: 'Our Work & Case Studies', href: '/case-studies' },
-      { label: 'The Runway Process', href: '/services#framework' },
-      { label: 'Direct Enquiry', href: '/#connect' },
-      { label: 'Admin Portal', href: '/admin' },
-    ],
-  },
+const SERVICES_LINKS: FooterLinkItem[] = [
+  { label: 'Paid Ads & Lead Gen', href: '/services/paid-advertisement-lead-generation' },
+  { label: 'Social Media & Reels', href: '/services/social-media-content-creation' },
+  { label: 'Web Development & SEO', href: '/services/web-development-seo' },
+  { label: 'WhatsApp & AI Automation', href: '/services/business-automation-chatbots' },
+  { label: 'Branding & Offline', href: '/services/branding-offline-marketing' },
+  { label: 'All Services Overview', href: '/services' },
+];
+
+const COMPANY_LINKS: FooterLinkItem[] = [
+  { label: 'Why GrowDesk', href: '/about' },
+  { label: 'Our Work & Case Studies', href: '/case-studies' },
+  { label: 'The Runway Process', href: '/services#framework' },
+  { label: 'Direct Enquiry', href: '/#connect' },
+  { label: 'Admin Portal', href: '/admin' },
+];
+
+const SEO_LOCATIONS: FooterLinkItem[] = [
+  { label: 'Raipur, Chhattisgarh', href: '/locations/raipur' },
+  { label: 'Bilaspur, Chhattisgarh', href: '/locations/bilaspur' },
+  { label: 'Durg & Bhilai, CG', href: '/locations/durg-bhilai' },
+  { label: 'Korba, Chhattisgarh', href: '/locations/korba' },
+  { label: 'Nagpur, Maharashtra', href: '/locations/nagpur' },
+  { label: 'Madhya Pradesh (MP)', href: '/locations/madhya-pradesh' },
+  { label: 'Odisha (Bhubaneswar)', href: '/locations/odisha' },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden bg-[#000000] text-white pt-16 sm:pt-20 pb-10 border-t border-neutral-900">
+    <footer className="relative w-full overflow-hidden bg-[#000000] text-white pt-12 sm:pt-20 pb-8 sm:pb-10 border-t border-neutral-900">
       {/* Ambient Blue Optical Flares */}
       <div
         aria-hidden="true"
@@ -108,30 +99,45 @@ export function Footer() {
         className="pointer-events-none absolute -bottom-32 right-1/4 w-[600px] h-[340px] bg-blue-500/12 blur-[150px] rounded-full z-0"
       />
 
-      <div className="relative max-w-[1400px] mx-auto w-full px-6 sm:px-8 lg:px-12">
-        {/* Top Grid: Brand & Description + 3 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr] gap-10 lg:gap-12">
-          {/* Brand info & Social icons */}
+      <div className="relative max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-12">
+        {/* Top Grid: Brand & Description + 2 Main Columns (Services, Company) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] gap-8 lg:gap-14">
+          {/* Brand info & Contact details */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.35 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-4 sm:gap-6"
           >
-            <div className="space-y-2">
+            <div className="space-y-1">
               <span className="font-serif text-xl sm:text-2xl font-normal text-white tracking-tight">
                 GrowDesk Media
               </span>
-
             </div>
 
-            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-sm">
-              Central India &amp; Chhattisgarh&apos;s leading digital marketing, paid ads, SEO, and business automation agency engineered for measurable revenue velocity.
-            </p>
+            {/* Address & Headquarters */}
+            <div className="space-y-1.5 text-xs sm:text-sm text-neutral-300">
+              <div className="flex items-start gap-2">
+                <span className="text-blue-400 font-mono text-[11px] uppercase tracking-wider font-semibold">HQ:</span>
+                <p className="leading-snug">
+                  VIP Road, Near Telibandha, Raipur, Chhattisgarh — 492001
+                </p>
+              </div>
+              <div className="flex items-center gap-2 pt-0.5">
+                <span className="text-blue-400 font-mono text-[11px] uppercase tracking-wider font-semibold">Contact:</span>
+                <a href="tel:+919406031522" className="text-neutral-300 hover:text-blue-400 transition-colors font-mono">
+                  94060 31522
+                </a>
+                <span className="text-neutral-600">&bull;</span>
+                <a href="mailto:growdeskmedia@gmail.com" className="text-neutral-300 hover:text-blue-400 transition-colors font-mono">
+                  growdeskmedia@gmail.com
+                </a>
+              </div>
+            </div>
 
             {/* Social Icons row */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2.5 pt-1">
               {SOCIAL_LINKS.map((item) => (
                 <a
                   key={item.key}
@@ -139,7 +145,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.label}
-                  className="w-9 h-9 rounded-md border border-neutral-800 bg-neutral-950/70 text-neutral-300 flex items-center justify-center hover:border-blue-500/60 hover:text-blue-400 hover:bg-blue-950/20 transition-all duration-200"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-neutral-800 bg-neutral-950/70 text-neutral-300 flex items-center justify-center hover:border-blue-500/60 hover:text-blue-400 hover:bg-blue-950/20 transition-all duration-200"
                 >
                   {item.icon}
                 </a>
@@ -147,38 +153,70 @@ export function Footer() {
             </div>
           </motion.div>
 
-          {/* Link Columns with top subtle border divider */}
-          {FOOTER_COLUMNS.map((col, idx) => (
+          {/* 2 Clean Columns: Services & Company (Side by side on mobile / tablet) */}
+          <div className="grid grid-cols-2 gap-6 sm:gap-8 md:col-span-1 lg:col-span-2">
+            {/* Services Column */}
             <motion.div
-              key={col.title}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: 0.05 * (idx + 1) }}
-              className="flex flex-col gap-3 lg:border-t lg:border-neutral-800/80 lg:pt-5"
+              transition={{ duration: 0.35, delay: 0.05 }}
+              className="flex flex-col gap-2.5 sm:gap-3 lg:border-t lg:border-neutral-800/80 lg:pt-5"
             >
-              <h4 className="text-base sm:text-lg font-semibold text-white tracking-tight">
-                {col.title}
+              <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white tracking-tight">
+                Services
               </h4>
-              <ul className="flex flex-col gap-2">
-                {col.links.map((link) => (
+              <ul className="flex flex-col gap-1.5 sm:gap-2">
+                {SERVICES_LINKS.map((link) => (
                   <li key={link.label} className="flex items-center gap-2">
                     <Link
                       href={link.href}
-                      className="text-sm text-neutral-400 hover:text-blue-400 transition-colors duration-200"
+                      className="text-xs sm:text-sm text-neutral-400 hover:text-blue-400 transition-colors duration-200 leading-snug"
                     >
                       {link.label}
                     </Link>
-                    {link.badge && (
-                      <span className="px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-mono tracking-wider uppercase">
-                        {link.badge}
-                      </span>
-                    )}
                   </li>
                 ))}
               </ul>
             </motion.div>
-          ))}
+
+            {/* Company Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: 0.1 }}
+              className="flex flex-col gap-2.5 sm:gap-3 lg:border-t lg:border-neutral-800/80 lg:pt-5"
+            >
+              <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white tracking-tight">
+                Company
+              </h4>
+              <ul className="flex flex-col gap-1.5 sm:gap-2">
+                {COMPANY_LINKS.map((link) => (
+                  <li key={link.label} className="flex items-center gap-2">
+                    <Link
+                      href={link.href}
+                      className="text-xs sm:text-sm text-neutral-400 hover:text-blue-400 transition-colors duration-200 leading-snug"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* SEO Location Crawl Links (Preserved cleanly for search engine indexing without visual clutter) */}
+        <div className="sr-only" aria-hidden="true">
+          <h5>Service Locations in Central India</h5>
+          <ul>
+            {SEO_LOCATIONS.map((loc) => (
+              <li key={loc.href}>
+                <Link href={loc.href}>{loc.label}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Giant Centered Wordmark with outline & mask fade */}

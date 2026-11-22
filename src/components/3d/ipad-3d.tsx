@@ -116,8 +116,8 @@ export const Ipad3DCard = forwardRef<HTMLDivElement, Ipad3DCardProps>(
           {/* Outer Aluminum Bezel (Substantially sized iPad Pro) */}
           <div
             className={cn(
-              'relative w-[360px] sm:w-[480px] md:w-[550px] lg:w-[600px] xl:w-[640px] aspect-[4/3]',
-              'rounded-[34px] sm:rounded-[38px] p-[3px]',
+              'relative w-[280px] min-[380px]:w-[320px] sm:w-[480px] md:w-[550px] lg:w-[600px] xl:w-[640px] max-w-[90vw] aspect-[4/3]',
+              'rounded-[26px] sm:rounded-[38px] p-[2.5px] sm:p-[3px]',
               'shadow-[0_25px_60px_-15px_rgba(0,0,0,0.55),0_10px_25px_rgba(0,0,0,0.3)]',
               frame.outerSheen
             )}

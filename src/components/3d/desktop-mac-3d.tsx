@@ -107,8 +107,8 @@ export const DesktopMac3DCard = forwardRef<
             ───────────────────────────────────────────────────────────── */}
         <div
           className={cn(
-            'relative w-[340px] sm:w-[460px] md:w-[540px] lg:w-[590px] xl:w-[630px]',
-            'rounded-[22px] p-[2.5px] pb-0',
+            'relative w-[280px] min-[380px]:w-[320px] sm:w-[460px] md:w-[540px] lg:w-[590px] xl:w-[630px] max-w-[90vw]',
+            'rounded-[18px] sm:rounded-[22px] p-[2px] sm:p-[2.5px] pb-0',
             'shadow-[0_30px_70px_-15px_rgba(0,0,0,0.55),0_15px_30px_rgba(0,0,0,0.3)]',
             frame.outerSheen
           )}

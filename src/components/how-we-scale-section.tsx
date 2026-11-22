@@ -94,12 +94,12 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 via-black/25 to-transparent z-10" />
 
       {/* Top Floating Badge: Engagement / Reel Growth */}
-      <div className="relative z-20 flex items-center justify-between pt-10 pb-2 px-4">
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white tracking-wide shadow-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-          Reel Growth
+      <div className="relative z-20 flex items-center justify-between pt-9 pb-2 px-3">
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[9px] font-mono font-semibold text-white tracking-wide shadow-sm whitespace-nowrap">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+          <span>Reel Growth</span>
         </span>
-        <span className="px-2 py-0.5 rounded-full bg-black/50 backdrop-blur-md text-[9px] font-mono text-white/80">
+        <span className="px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-md text-[8px] font-mono text-white/80 whitespace-nowrap">
           00:01.4s / 00:30s
         </span>
       </div>
@@ -107,20 +107,20 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
       {/* 2B: Sliding Analytics Sheet - Stretches full width (left-0 right-0 bottom-0) */}
       <motion.div
         style={{ y: sheetY, opacity: sheetOpacity }}
-        className="absolute inset-x-0 bottom-0 rounded-t-3xl bg-white/95 backdrop-blur-xl border-t border-slate-200/90 px-4 pt-3.5 pb-6 shadow-2xl z-30"
+        className="absolute inset-x-0 bottom-0 rounded-t-2xl sm:rounded-t-3xl bg-white/95 backdrop-blur-xl border-t border-slate-200/90 px-3 pt-2.5 pb-5 shadow-2xl z-30"
       >
-        <div className="w-10 h-1 bg-slate-300 rounded-full mx-auto mb-2.5" />
+        <div className="w-8 h-1 bg-slate-300 rounded-full mx-auto mb-2" />
 
-        <div className="flex items-center justify-between text-xs font-semibold mb-2">
+        <div className="flex items-center justify-between text-[11px] font-semibold mb-1.5 whitespace-nowrap">
           <span className="text-slate-800">Live Post-Drop Analytics</span>
-          <span className="text-blue-600 flex items-center gap-1 text-[10px] font-mono font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+          <span className="text-blue-600 flex items-center gap-1 text-[9px] font-mono font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
             ENGAGEMENT
           </span>
         </div>
 
         {/* Blue Upward Spiking SVG Line Graph */}
-        <div className="h-16 w-full my-1">
+        <div className="h-12 sm:h-16 w-full my-1">
           <svg className="size-full overflow-visible" viewBox="0 0 200 60">
             <defs>
               <linearGradient id="blueSpikeLight" x1="0" y1="0" x2="0" y2="1">
@@ -142,23 +142,24 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
           </svg>
         </div>
 
-        {/* High-Impact Numerical Telemetry */}
-        <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+        {/* High-Impact Numerical Telemetry (Always clean single-line numbers) */}
+        <div className="grid grid-cols-2 gap-2 pt-1.5 border-t border-slate-100">
           <div>
-            <span className="text-[9px] font-mono text-slate-500 block uppercase">
+            <span className="text-[8px] font-mono text-slate-500 block uppercase whitespace-nowrap">
               Reel Views
             </span>
-            <strong className="text-sm font-bold text-slate-900 tracking-tight">
+            <div className="text-xs sm:text-sm font-bold text-slate-900 tracking-tight whitespace-nowrap">
               1.4M+
-            </strong>
+            </div>
           </div>
           <div>
-            <span className="text-[9px] font-mono text-slate-500 block uppercase">
+            <span className="text-[8px] font-mono text-slate-500 block uppercase whitespace-nowrap">
               Direct Revenue
             </span>
-            <strong className="text-sm font-bold text-blue-600 tracking-tight">
-              ₹18.4L <span className="text-[10px] font-normal text-slate-600">(+340%)</span>
-            </strong>
+            <div className="text-xs sm:text-sm font-bold text-blue-600 tracking-tight whitespace-nowrap flex items-baseline gap-1">
+              <span>₹18.4L</span>
+              <span className="text-[9px] font-normal text-slate-500">(+340%)</span>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -200,38 +201,38 @@ function MarketingPadScreen({ scrollYProgress }: { scrollYProgress: any }) {
       </div>
 
       {/* Top 2 KPI Cards */}
-      <div className="grid grid-cols-2 gap-2 my-1">
+      <div className="grid grid-cols-2 gap-1.5 sm:gap-2 my-1">
         {/* Cleaning Karigar */}
-        <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 flex items-center justify-between shadow-2xs">
+        <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-1.5 sm:p-2 flex items-center justify-between shadow-2xs">
           <div>
-            <span className="text-[8px] font-mono text-slate-500 block uppercase font-medium">Cleaning Karigar</span>
-            <motion.div className="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight">
+            <span className="text-[7px] sm:text-[8px] font-mono text-slate-500 block uppercase font-medium">Cleaning Karigar</span>
+            <motion.div className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
               {revenueCounter}
             </motion.div>
-            <span className="text-[8px] font-mono text-slate-500">From ₹400 Ad Spend</span>
+            <span className="text-[7px] sm:text-[8px] font-mono text-slate-500 whitespace-nowrap">From ₹400 Spend</span>
           </div>
           <div className="text-right">
-            <span className="inline-block px-1.5 py-0.5 rounded-sm bg-blue-100 text-blue-800 font-bold font-mono text-[9px] border border-blue-300">
+            <span className="inline-block px-1 sm:px-1.5 py-0.5 rounded-sm bg-blue-100 text-blue-800 font-bold font-mono text-[7px] sm:text-[9px] border border-blue-300 whitespace-nowrap">
               325× ROAS
             </span>
-            <span className="text-[7px] font-mono text-blue-700 block mt-0.5">+32,400% Gain</span>
+            <span className="text-[6px] sm:text-[7px] font-mono text-blue-700 block mt-0.5 whitespace-nowrap">+32,400%</span>
           </div>
         </div>
 
         {/* WeShine Beauty */}
-        <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 flex items-center justify-between shadow-2xs">
+        <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-1.5 sm:p-2 flex items-center justify-between shadow-2xs">
           <div>
-            <span className="text-[8px] font-mono text-slate-500 block uppercase font-medium">WeShine Salon</span>
-            <div className="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight">
-              ₹3,500 – ₹5,000
+            <span className="text-[7px] sm:text-[8px] font-mono text-slate-500 block uppercase font-medium">WeShine Salon</span>
+            <div className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-900 tracking-tight whitespace-nowrap">
+              ₹3.5k – ₹5k
             </div>
-            <span className="text-[8px] font-mono text-slate-500">From ₹200 Ad Budget</span>
+            <span className="text-[7px] sm:text-[8px] font-mono text-slate-500 whitespace-nowrap">From ₹200 Budget</span>
           </div>
           <div className="text-right">
-            <span className="inline-block px-1.5 py-0.5 rounded-sm bg-blue-100 text-blue-800 font-bold font-mono text-[9px] border border-blue-300">
+            <span className="inline-block px-1 sm:px-1.5 py-0.5 rounded-sm bg-blue-100 text-blue-800 font-bold font-mono text-[7px] sm:text-[9px] border border-blue-300 whitespace-nowrap">
               25× ROAS
             </span>
-            <span className="text-[7px] font-mono text-blue-700 block mt-0.5">+2,400% Gain</span>
+            <span className="text-[6px] sm:text-[7px] font-mono text-blue-700 block mt-0.5 whitespace-nowrap">+2,400%</span>
           </div>
         </div>
       </div>
@@ -423,41 +424,41 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
       {/* Main Dashboard Canvas (White Theme) */}
       <div className="relative flex-1 p-3.5 sm:p-4 flex flex-col justify-between overflow-hidden">
         {/* Top 3 KPI Cards */}
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
           {/* Card 1: Gyanoday Vidya Sanskar School */}
-          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
-            <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
-              <span className="font-semibold text-slate-700 truncate">School Admissions</span>
-              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">₹9.8/Adm</span>
+          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-1.5 sm:p-2 shadow-2xs">
+            <div className="flex items-center justify-between text-[7px] sm:text-[8px] font-mono text-slate-500 mb-0.5">
+              <span className="font-semibold text-slate-700 truncate">School Intake</span>
+              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs whitespace-nowrap">₹9.8/Adm</span>
             </div>
-            <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
-              152 Admissions
+            <strong className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-900 block tracking-tight whitespace-nowrap">
+              152 Admits
             </strong>
-            <span className="text-[8px] font-mono text-slate-500">₹1,500 Ad (₹4,999 pkg)</span>
+            <span className="text-[6.5px] sm:text-[8px] font-mono text-slate-500 whitespace-nowrap">₹1.5k Ad Spend</span>
           </div>
 
           {/* Card 2: Sanjivani Institute of Pharmacy */}
-          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
-            <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
-              <span className="font-semibold text-slate-700 truncate">Sanjivani Pharmacy</span>
-              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">37.5% Conv</span>
+          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-1.5 sm:p-2 shadow-2xs">
+            <div className="flex items-center justify-between text-[7px] sm:text-[8px] font-mono text-slate-500 mb-0.5">
+              <span className="font-semibold text-slate-700 truncate">Sanjivani</span>
+              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs whitespace-nowrap">37.5% Conv</span>
             </div>
-            <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
-              45 Admissions
+            <strong className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-900 block tracking-tight whitespace-nowrap">
+              45 Admits
             </strong>
-            <span className="text-[8px] font-mono text-slate-500">120 Leads on ₹1,999 Ad</span>
+            <span className="text-[6.5px] sm:text-[8px] font-mono text-slate-500 whitespace-nowrap">120 Leads</span>
           </div>
 
           {/* Card 3: Sankalp Learning Classes */}
-          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
-            <div className="flex items-center justify-between text-[8px] font-mono text-slate-500 mb-0.5">
-              <span className="font-semibold text-slate-700 truncate">Sankalp Classes</span>
-              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs">₹16/Lead</span>
+          <div className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-1.5 sm:p-2 shadow-2xs">
+            <div className="flex items-center justify-between text-[7px] sm:text-[8px] font-mono text-slate-500 mb-0.5">
+              <span className="font-semibold text-slate-700 truncate">Sankalp</span>
+              <span className="text-blue-700 font-bold bg-blue-100/80 px-1 rounded-xs whitespace-nowrap">₹16/Lead</span>
             </div>
-            <strong className="text-xs sm:text-sm font-extrabold text-slate-900 block tracking-tight">
-              600+ Students
+            <strong className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-900 block tracking-tight whitespace-nowrap">
+              600+ Leads
             </strong>
-            <span className="text-[8px] font-mono text-slate-500">Enquiries on ₹10k Spend</span>
+            <span className="text-[6.5px] sm:text-[8px] font-mono text-slate-500 whitespace-nowrap">₹10k Spend</span>
           </div>
         </div>
 
@@ -723,7 +724,7 @@ export function HowWeScaleSection() {
       className="relative h-[550vh] bg-[#F6F9FD]"
     >
       {/* Sticky Full Viewport Wrapper (Same Section throughout all 4 stages) */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#F6F9FD] px-6 sm:px-8 md:px-16">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#F6F9FD] px-4 sm:px-8 md:px-16">
         {/* Corner Light Flares (Top-Left & Bottom-Right) */}
         <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(30,99,255,0.18)_0%,rgba(79,169,255,0.08)_40%,transparent_70%)] blur-[90px] z-0" />
         <div className="pointer-events-none absolute -bottom-40 -right-40 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.20)_0%,rgba(59,130,246,0.10)_45%,transparent_70%)] blur-[100px] z-0" />
@@ -753,22 +754,22 @@ export function HowWeScaleSection() {
             STAGES 1 to 4: 2-Column Grid Container (Editorial + Devices)
             ───────────────────────────────────────────────────────────── */}
         <div
-          className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center w-full"
+          className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-14 items-center w-full"
         >
           {/* Left Column (6 cols): Editorial Typography */}
-          <div className="lg:col-span-6 relative h-[36vh] sm:h-[40vh] lg:h-[82vh] min-h-[220px] lg:min-h-[580px] max-h-[300px] lg:max-h-[740px] flex items-center justify-center overflow-hidden w-full [mask-image:linear-gradient(to_bottom,transparent_0%,black_6%,black_94%,transparent_100%)]">
+          <div className="lg:col-span-6 relative h-[38vh] sm:h-[40vh] lg:h-[82vh] min-h-[200px] lg:min-h-[580px] max-h-[320px] lg:max-h-[740px] flex items-center justify-center overflow-hidden w-full [mask-image:linear-gradient(to_bottom,transparent_0%,black_6%,black_94%,transparent_100%)]">
             {/* Stage 1 Content: Strategic Foundations */}
             <motion.div
               style={{ opacity: left1Opacity, y: left1Y, filter: left1Shadow }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
+              className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>01 / STRATEGIC ADVISORY</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
                 Strategic management for moments where visibility, trust, and narrative shape business outcomes.
               </h2>
-              <div className="space-y-4 text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
                 <p>
                   We advise founders and enterprises at critical inflection points—market launches, rapid scaling, brand positioning, and digital transformation. We align visibility with core business strategy to drive long-term outcomes.
                 </p>
@@ -776,7 +777,7 @@ export function HowWeScaleSection() {
               <div>
                 <Link
                   href="/case-studies"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-8 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
+                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
                 >
                   <span className="relative z-10">VIEW SELECTED WORK →</span>
                 </Link>
@@ -786,15 +787,15 @@ export function HowWeScaleSection() {
             {/* Stage 2 Content: Viral Reel Production */}
             <motion.div
               style={{ opacity: left2Opacity, y: left2Y, filter: left2Shadow }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
+              className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>02 / SHORT-FORM & CONTENT ENGINE</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
                 High-retention Reels engineered to turn passive scrollers into paying customers.
               </h2>
-              <div className="space-y-4 text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
                 <p>
                   From hook scripting and multi-cam production to algorithmic distribution, we craft vertical video assets that capture attention in the first 1.5 seconds and compound into direct revenue.
                 </p>
@@ -802,7 +803,7 @@ export function HowWeScaleSection() {
               <div>
                 <Link
                   href="/services"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-8 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
+                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
                 >
                   <span className="relative z-10">EXPLORE CONTENT STUDIO →</span>
                 </Link>
@@ -812,15 +813,15 @@ export function HowWeScaleSection() {
             {/* Stage 3 Content: Omnichannel Marketing */}
             <motion.div
               style={{ opacity: left3Opacity, y: left3Y, filter: left3Shadow }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
+              className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>03 / PERFORMANCE MARKETING</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
                 Data-backed acquisition funnels turning ₹400 into ₹1.3L in revenue.
               </h2>
-              <div className="space-y-4 text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
                 <p>
                   We eliminate guesswork with hyper-targeted Meta &amp; Google ad architectures. From Cleaning Karigar turning ₹400 into ₹1,29,999 (325× ROAS) to WeShine generating ₹5,000 from a ₹200 budget, every rupee is tracked and multiplied.
                 </p>
@@ -828,7 +829,7 @@ export function HowWeScaleSection() {
               <div>
                 <Link
                   href="/case-studies"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-8 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
+                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
                 >
                   <span className="relative z-10">SEE GROWTH METRICS →</span>
                 </Link>
@@ -838,15 +839,15 @@ export function HowWeScaleSection() {
             {/* Stage 4 Content: Conversion Architecture & Institutional Scale */}
             <motion.div
               style={{ opacity: left4Opacity, y: left4Y, filter: left4Shadow }}
-              className="absolute inset-0 flex flex-col justify-center space-y-6 transform-gpu will-change-[transform,opacity,filter]"
+              className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
                 <span>04 / HIGH-CONVERSION ARCHITECTURE</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
                 Institutional student funnels delivering 152 admissions and 600+ enquiries.
               </h2>
-              <div className="space-y-4 text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
                 <p>
                   Scalable acquisition pipelines engineered for institutional trust. Generating 152 school admissions from ₹1,500 ads, 120 enquiries &amp; 45 pharmacy admissions for Sanjivani, and 600+ qualified student leads for Sankalp Learning Classes.
                 </p>
@@ -854,7 +855,7 @@ export function HowWeScaleSection() {
               <div>
                 <Link
                   href="/#connect"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-8 py-3.5 text-[11px] font-mono uppercase tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
+                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
                 >
                   <span className="relative z-10">LAUNCH YOUR PROJECT →</span>
                 </Link>
@@ -863,14 +864,14 @@ export function HowWeScaleSection() {
           </div>
 
           {/* Right Column (6 cols): Interactive Hardware Showcase */}
-          <div className="lg:col-span-6 relative h-[48vh] sm:h-[50vh] lg:h-[82vh] min-h-[300px] lg:min-h-[580px] max-h-[460px] lg:max-h-[740px] flex items-center justify-center lg:justify-end">
-            <div className="relative w-full max-w-[620px] h-[280px] sm:h-[360px] md:h-[420px] lg:h-[480px] flex items-center justify-center">
+          <div className="lg:col-span-6 relative h-[42vh] sm:h-[48vh] lg:h-[82vh] min-h-[230px] sm:min-h-[280px] lg:min-h-[580px] max-h-[420px] lg:max-h-[740px] flex items-center justify-center lg:justify-end">
+            <div className="relative w-full max-w-[620px] h-[210px] min-[380px]:h-[240px] sm:h-[360px] md:h-[420px] lg:h-[480px] flex items-center justify-center">
               {/* STAGE 1 DEVICE: MacBook Titanium - Enters smoothly from the right side */}
               <motion.div
                 style={{ x: dev1X, scale: dev1Scale, opacity: dev1Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
-                <div className="pointer-events-auto">
+                <div className="pointer-events-auto scale-[0.80] min-[380px]:scale-[0.88] sm:scale-100">
                   <LaptopMockupCard variant="titanium">
                     <StrategyMeetingScreen />
                   </LaptopMockupCard>
@@ -882,7 +883,7 @@ export function HowWeScaleSection() {
                 style={{ x: dev2X, y: dev2Y, scale: dev2Scale, opacity: dev2Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
-                <div className="pointer-events-auto scale-105 sm:scale-110">
+                <div className="pointer-events-auto scale-[0.78] min-[380px]:scale-[0.84] sm:scale-105 sm:scale-110">
                   <PhoneMockupCard variant="titanium" showDynamicIsland={true}>
                     <ReelEditorScreen scrollYProgress={smoothProgress} />
                   </PhoneMockupCard>
@@ -894,7 +895,7 @@ export function HowWeScaleSection() {
                 style={{ y: dev3Y, scale: dev3Scale, opacity: dev3Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
-                <div className="pointer-events-auto">
+                <div className="pointer-events-auto scale-[0.78] min-[380px]:scale-[0.85] sm:scale-100">
                   <IpadMockupCard variant="metallicSilver" showCamera={true}>
                     <MarketingPadScreen scrollYProgress={smoothProgress} />
                   </IpadMockupCard>
@@ -906,7 +907,7 @@ export function HowWeScaleSection() {
                 style={{ y: dev4Y, scale: dev4Scale, opacity: dev4Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
-                <div className="pointer-events-auto">
+                <div className="pointer-events-auto scale-[0.78] min-[380px]:scale-[0.85] sm:scale-100">
                   <DesktopMac3DCard variant="metallicSilver">
                     <ClientWebBuildScreen scrollYProgress={smoothProgress} />
                   </DesktopMac3DCard>

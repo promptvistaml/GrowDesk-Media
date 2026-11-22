@@ -114,57 +114,56 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   ];
 
   return (
-    <section id="connect" className="relative w-full overflow-hidden bg-[#F6F9FD] text-black py-24 md:py-36 px-6 sm:px-10 border-t border-blue-100">
+    <section id="connect" className="relative w-full overflow-hidden bg-[#F6F9FD] text-black py-12 sm:py-20 md:py-32 px-4 sm:px-8 border-t border-blue-100">
       {/* Ambient Blue Optical Flare on Light Canvas */}
       <div className="pointer-events-none absolute -top-40 right-10 w-[700px] h-[400px] bg-blue-500/10 blur-[150px] rounded-full z-0" />
       <div className="pointer-events-none absolute -bottom-32 left-10 w-[600px] h-[360px] bg-blue-600/8 blur-[140px] rounded-full z-0" />
       {/* Main Content Layout (Clean background without bubble animations or external backgrounds) */}
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
         {/* Left Side: Statement & Direct Email */}
-        <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
-          <div className="space-y-4">
-           
+        <div className="lg:col-span-5 flex flex-col justify-between space-y-4 sm:space-y-6">
+          <div className="space-y-2 sm:space-y-3">
             <div>
-              <h2 style={{ color: "#000000" }} className="font-clash text-3xl sm:text-5xl lg:text-[48px] font-bold tracking-[-0.035em] text-black !text-black leading-[0.95] uppercase">
+              <h2 style={{ color: "#000000" }} className="font-clash text-2xl sm:text-4xl lg:text-[44px] font-bold tracking-[-0.035em] text-black !text-black leading-[0.95] uppercase">
                 Turn your commercial targets into
               </h2>
-              <div style={{ color: "#1E63FF" }} className="font-script text-4xl sm:text-6xl lg:text-[68px] text-[#1E63FF] !text-[#1E63FF] font-bold opacity-95 leading-[1.0] -mt-2 sm:-mt-3 select-none lowercase">
+              <div style={{ color: "#1E63FF" }} className="font-script text-3xl sm:text-5xl lg:text-[62px] text-[#1E63FF] !text-[#1E63FF] font-bold opacity-95 leading-[1.0] -mt-1 sm:-mt-2 select-none lowercase">
                 real world reality.
               </div>
             </div>
-            <p className="text-sm text-neutral-600 font-light leading-relaxed max-w-md pt-2">
+            <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed max-w-md pt-1 sm:pt-2">
               Every mandate starts with alignment on business objectives, target metrics, and transparent communication protocols. All inquiries route directly to our official WhatsApp Business desk.
             </p>
           </div>
 
-          <div className="space-y-3 border-t border-neutral-200 pt-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="space-y-2.5 border-t border-neutral-200 pt-4 sm:pt-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               <div>
-                <p className="font-mono text-xs uppercase tracking-wider text-neutral-400">Direct Email</p>
-                <a href={`mailto:${contactEmail}`} className="text-sm font-mono text-neutral-900 hover:text-blue-600 transition-colors">
+                <p className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-neutral-400">Direct Email</p>
+                <a href={`mailto:${contactEmail}`} className="text-xs sm:text-sm font-mono text-neutral-900 hover:text-blue-600 transition-colors">
                   {contactEmail}
                 </a>
               </div>
               <div>
-                <p className="font-mono text-xs uppercase tracking-wider text-neutral-400">Direct Phone / WhatsApp</p>
-                <a href="tel:+919406031522" className="text-sm font-mono text-neutral-900 hover:text-blue-600 transition-colors">
+                <p className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-neutral-400">Direct Phone / WhatsApp</p>
+                <a href="tel:+919406031522" className="text-xs sm:text-sm font-mono text-neutral-900 hover:text-blue-600 transition-colors">
                   +91 94060 31522
                 </a>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 pt-3">
-              <span className="font-mono text-xs uppercase text-neutral-400">CHANNELS:</span>
+            <div className="flex items-center space-x-2.5 pt-2">
+              <span className="font-mono text-[10px] sm:text-xs uppercase text-neutral-400">CHANNELS:</span>
               {socialLinks.map((link) => (
                 <a
                   key={link.id}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-neutral-300 hover:border-black flex items-center justify-center transition-colors bg-white p-1.5"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-neutral-300 hover:border-black flex items-center justify-center transition-colors bg-white p-1"
                   aria-label={link.name}
                 >
-                  <img src={link.iconSrc} alt={link.name} className="h-3.5 w-3.5 object-contain" />
+                  <img src={link.iconSrc} alt={link.name} className="h-3 w-3 sm:h-3.5 sm:w-3.5 object-contain" />
                 </a>
               ))}
             </div>
@@ -172,15 +171,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         </div>
 
         {/* Right Side: Contact Form */}
-        <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-xl shadow-lg border border-neutral-200">
-          <h3 className="font-serif text-2xl font-normal text-neutral-900 mb-6">{displayMainMessage}</h3>
+        <div className="lg:col-span-7 bg-white p-4 sm:p-8 rounded-xl shadow-md border border-neutral-200">
+          <h3 className="font-serif text-xl sm:text-2xl font-normal text-neutral-900 mb-4 sm:mb-6">{displayMainMessage}</h3>
 
           {submitted ? (
-            <div className="text-center py-8 space-y-4">
-              <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="text-center py-6 space-y-3">
+              <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h4 className="font-serif text-2xl text-neutral-900">Inquiry Received</h4>
+              <h4 className="font-serif text-xl sm:text-2xl text-neutral-900">Inquiry Received</h4>
               <p className="text-xs text-neutral-600 max-w-sm mx-auto">
                 Thank you! Your growth brief has been recorded. Click below to continue on our WhatsApp desk.
               </p>
@@ -189,7 +188,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-3 rounded text-xs font-semibold uppercase tracking-wider shadow transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-5 py-2.5 rounded text-xs font-semibold uppercase tracking-wider shadow transition-colors"
                 >
                   <MessageCircle className="w-4 h-4 fill-current" />
                   <span>Open Official WhatsApp</span>
@@ -197,43 +196,43 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <p className="text-xs font-mono uppercase tracking-wider text-neutral-400">Leave us a brief message</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-neutral-400">Leave us a brief message</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="space-y-1 sm:space-y-1.5">
                   <Label htmlFor="name" className="text-xs font-medium">Your name *</Label>
-                  <Input id="name" name="name" placeholder="Full name" value={formData.name} onChange={handleChange} required className="bg-neutral-50/50" />
+                  <Input id="name" name="name" placeholder="Full name" value={formData.name} onChange={handleChange} required className="bg-neutral-50/50 text-xs sm:text-sm h-9 sm:h-10" />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-1.5">
                   <Label htmlFor="email" className="text-xs font-medium">Email / WhatsApp Number *</Label>
-                  <Input id="email" name="email" placeholder="Phone or email" value={formData.email} onChange={handleChange} required className="bg-neutral-50/50" />
+                  <Input id="email" name="email" placeholder="Phone or email" value={formData.email} onChange={handleChange} required className="bg-neutral-50/50 text-xs sm:text-sm h-9 sm:h-10" />
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1 sm:space-y-1.5">
                 <Label htmlFor="message" className="text-xs font-medium">Briefly describe your project / growth target</Label>
                 <Textarea
                   id="message"
                   name="message"
                   placeholder="Tell us about your goals (e.g. school admissions, 2x sales, multi-city franchise expansion)..."
-                  className="min-h-[85px] bg-neutral-50/50"
+                  className="min-h-[70px] sm:min-h-[85px] bg-neutral-50/50 text-xs sm:text-sm"
                   value={formData.message}
                   onChange={handleChange}
                   required
                 />
               </div>
 
-              <div className="space-y-3">
-                <p className="text-xs font-mono uppercase tracking-wider text-neutral-400">I&apos;m looking for...</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="space-y-2">
+                <p className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-neutral-400">I&apos;m looking for...</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {projectTypeOptions.map((option) => (
-                    <div key={option} className="flex items-center space-x-2">
+                    <div key={option} className="flex items-center space-x-1.5">
                       <Checkbox
                         id={option.replace(/\s/g, '-').toLowerCase()}
                         checked={formData.projectType.includes(option)}
                         onCheckedChange={(checked) => handleCheckboxChange(option, checked as boolean)}
                       />
-                      <Label htmlFor={option.replace(/\s/g, '-').toLowerCase()} className="text-xs font-light text-neutral-700 cursor-pointer">
+                      <Label htmlFor={option.replace(/\s/g, '-').toLowerCase()} className="text-[11px] sm:text-xs font-light text-neutral-700 cursor-pointer">
                         {option}
                       </Label>
                     </div>
@@ -244,7 +243,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-black text-white hover:bg-neutral-800 text-xs font-mono uppercase tracking-widest py-6"
+                className="w-full bg-black text-white hover:bg-neutral-800 text-[11px] sm:text-xs font-mono uppercase tracking-widest py-4 sm:py-5"
               >
                 {loading ? 'Transmitting...' : 'Send Message & Route to WhatsApp'}
               </Button>

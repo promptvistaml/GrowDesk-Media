@@ -49,7 +49,7 @@ const Faq05 = () => {
   };
 
   return (
-    <section data-slot="faq" className="relative overflow-hidden bg-[#000000] text-white py-24 md:py-36 border-t border-white/10">
+    <section data-slot="faq" className="relative overflow-hidden bg-[#000000] text-white py-14 sm:py-24 md:py-36 border-t border-white/10">
       <FaqJsonLd faqs={FAQS.map((f) => ({ question: f.q, answer: f.a }))} />
       {/* Ambient Blue Optical Flares */}
       <div className="pointer-events-none absolute -top-40 right-1/4 w-[700px] h-[400px] bg-blue-600/15 blur-[160px] rounded-full z-0" />
@@ -57,25 +57,25 @@ const Faq05 = () => {
       <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 border-y border-white/10 md:grid-cols-2 md:border-x">
         <div
           data-slot="faq-intro"
-          className="flex flex-col gap-4 border-b border-white/10 px-6 pt-12 pb-6 md:border-b-0 md:border-e md:px-12 md:py-16"
+          className="flex flex-col gap-2 sm:gap-4 border-b border-white/10 px-5 pt-8 pb-5 sm:px-6 sm:pt-12 sm:pb-6 md:border-b-0 md:border-e md:px-12 md:py-16"
         >
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-neutral-400">
             FAQ
           </span>
-          <h2 className="font-clash text-3xl sm:text-5xl font-bold leading-[0.95] tracking-[-0.035em] text-white uppercase">
+          <h2 className="font-clash text-2xl sm:text-4xl md:text-5xl font-bold leading-[0.95] tracking-[-0.035em] text-white uppercase">
             Questions,
           </h2>
-          <span className="font-script text-4xl sm:text-6xl md:text-7xl text-[#7299FF] font-bold opacity-95 leading-[1.0] -mt-2 sm:-mt-3 select-none lowercase">
+          <span className="font-script text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#7299FF] font-bold opacity-95 leading-[1.0] -mt-1 sm:-mt-3 select-none lowercase">
             answered.
           </span>
-          <p className="max-w-sm text-sm font-light text-neutral-400 leading-relaxed pt-2">
+          <p className="max-w-sm text-xs sm:text-sm font-light text-neutral-400 leading-relaxed pt-1 sm:pt-2">
             The things people ask most often. Still have questions? Reach out directly via our contact desk below.
           </p>
         </div>
 
         <div
           data-slot="faq-list"
-          className="flex flex-col justify-center px-6 py-6 md:px-10"
+          className="flex flex-col justify-center px-4 py-3 sm:px-6 sm:py-6 md:px-10"
         >
           <div className="w-full">
             {FAQS.map((item) => {
@@ -86,9 +86,9 @@ const Faq05 = () => {
                     type="button"
                     onClick={() => toggleItem(item.id)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between py-5 font-normal text-left text-base sm:text-lg text-white transition-colors duration-200 hover:text-neutral-300 group"
+                    className="flex w-full items-center justify-between py-3.5 sm:py-5 font-normal text-left text-sm sm:text-base md:text-lg text-white transition-colors duration-200 hover:text-neutral-300 group"
                   >
-                    <span className="pr-4">{item.q}</span>
+                    <span className="pr-3 sm:pr-4">{item.q}</span>
                     <ChevronDown
                       className={cn(
                         "h-4 w-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] text-neutral-400 group-hover:text-white",
@@ -110,7 +110,7 @@ const Faq05 = () => {
                         }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-5 pt-1 text-sm font-light text-neutral-400 leading-relaxed">
+                        <div className="pb-3.5 pt-0.5 sm:pb-5 sm:pt-1 text-xs sm:text-sm font-light text-neutral-400 leading-relaxed">
                           {item.a}
                         </div>
                       </motion.div>
