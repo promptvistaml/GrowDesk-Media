@@ -7,33 +7,33 @@ import { motion } from 'framer-motion';
 
 export function FlightTestimonials() {
   return (
-    <section className="relative overflow-hidden bg-[#000000] text-white py-14 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 select-none border-t border-b border-white/10 font-sans">
+    <section className="relative overflow-hidden bg-[#000000] text-white py-10 sm:py-14 md:py-16 px-4 sm:px-6 md:px-8 select-none border-t border-b border-white/10 font-sans min-h-screen flex flex-col justify-center">
       {/* Ambient Blue Corner Optical Flares (Left & Right corner dispersion) */}
       <div className="pointer-events-none absolute -top-40 -left-32 w-[700px] h-[500px] bg-[radial-gradient(circle_at_top_left,rgba(30,99,255,0.22)_0%,rgba(79,169,255,0.1)_35%,transparent_70%)] blur-[120px] rounded-full z-0" />
       <div className="pointer-events-none absolute top-1/2 -right-32 -translate-y-1/2 w-[650px] h-[550px] bg-[radial-gradient(circle_at_right,rgba(37,99,235,0.20)_0%,rgba(30,99,255,0.08)_40%,transparent_70%)] blur-[130px] rounded-full z-0" />
       <div className="pointer-events-none absolute -bottom-36 -left-20 w-[600px] h-[450px] bg-[radial-gradient(circle_at_bottom_left,rgba(30,99,255,0.18)_0%,transparent_70%)] blur-[120px] rounded-full z-0" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto w-full">
         {/* Header Section */}
-        <div className="text-center mb-8 sm:mb-14 md:mb-18">
-          <h2 className="font-clash text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] text-white leading-[0.95] max-w-3xl mx-auto uppercase">
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h2 className="font-clash text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.035em] text-white leading-[0.95] max-w-3xl mx-auto uppercase">
             They trust us to turn<br />
             bold concepts into
           </h2>
-          <div className="font-script text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#7299FF] font-bold opacity-95 leading-[1.0] -mt-1 sm:-mt-3 select-none lowercase">
+          <div className="font-script text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#7299FF] font-bold opacity-95 leading-[1.0] -mt-1 sm:-mt-2 select-none lowercase">
             real world wins.
           </div>
         </div>
 
         {/* 2x2 Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 items-stretch">
           {/* Card 1 (Top Left): Royal Blue Metric Card - Enters from Left */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 flex flex-col justify-between min-h-[300px] sm:min-h-[380px] md:min-h-[420px] shadow-2xl transition-all duration-300 hover:shadow-blue-600/30 hover:scale-[1.01] relative overflow-hidden group bg-gradient-to-br from-[#1E50FF]/90 via-[#1030D0]/85 to-[#081878]/90 backdrop-blur-xl border border-blue-400/20"
+            className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 flex flex-col justify-between min-h-[220px] sm:min-h-[250px] md:min-h-[270px] shadow-2xl transition-all duration-300 hover:shadow-blue-600/30 hover:scale-[1.01] relative overflow-hidden group bg-gradient-to-br from-[#1E50FF]/90 via-[#1030D0]/85 to-[#081878]/90 backdrop-blur-xl border border-blue-400/20"
           >
             {/* Internal Optical Flare */}
             <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 bg-blue-400/30 blur-[70px] rounded-full z-0" />

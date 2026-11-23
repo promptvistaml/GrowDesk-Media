@@ -111,26 +111,22 @@ export function Footer() {
             className="flex flex-col gap-4 sm:gap-6"
           >
             <div className="space-y-1">
-              <span className="font-serif text-xl sm:text-2xl font-normal text-white tracking-tight">
+              <span className="font-clash text-xl sm:text-2xl font-bold uppercase text-white tracking-tight">
                 GrowDesk Media
               </span>
             </div>
 
             {/* Address & Headquarters */}
-            <div className="space-y-1.5 text-xs sm:text-sm text-neutral-300">
-              <div className="flex items-start gap-2">
-                <span className="text-blue-400 font-mono text-[11px] uppercase tracking-wider font-semibold">HQ:</span>
-                <p className="leading-snug">
-                  VIP Road, Near Telibandha, Raipur, Chhattisgarh — 492001
-                </p>
-              </div>
-              <div className="flex items-center gap-2 pt-0.5">
-                <span className="text-blue-400 font-mono text-[11px] uppercase tracking-wider font-semibold">Contact:</span>
-                <a href="tel:+919406031522" className="text-neutral-300 hover:text-blue-400 transition-colors font-mono">
-                  94060 31522
+            <div className="space-y-2 text-xs sm:text-sm text-neutral-300 font-sans">
+              <p className="leading-snug text-neutral-300">
+                VIP Road, Near Telibandha, Raipur, Chhattisgarh — 492001
+              </p>
+              <div className="flex flex-wrap items-center gap-2 pt-0.5 text-neutral-400">
+                <a href="tel:+919406031522" className="text-neutral-300 hover:text-blue-400 transition-colors">
+                  +91 94060 31522
                 </a>
                 <span className="text-neutral-600">&bull;</span>
-                <a href="mailto:growdeskmedia@gmail.com" className="text-neutral-300 hover:text-blue-400 transition-colors font-mono">
+                <a href="mailto:growdeskmedia@gmail.com" className="text-neutral-300 hover:text-blue-400 transition-colors">
                   growdeskmedia@gmail.com
                 </a>
               </div>

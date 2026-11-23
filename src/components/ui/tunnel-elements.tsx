@@ -466,24 +466,27 @@ export function AdsPerformanceCard() {
     <div className="w-[280px] sm:w-[310px] rounded-2xl bg-neutral-950/90 border border-blue-600/30 p-4 shadow-2xl backdrop-blur-xl text-white select-none">
       <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center text-white">
-            <Target className="w-3.5 h-3.5" />
+          {/* Authentic Meta Infinity Logo */}
+          <div className="w-6 h-6 rounded-md bg-[#0064E0] flex items-center justify-center text-white p-1 shadow-xs">
+            <svg
+              className="w-full h-full fill-current"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16.924 3.003c-2.072 0-3.924 1.25-4.924 3.013-1-1.763-2.852-3.013-4.924-3.013-3.87 0-7.076 3.498-7.076 7.828 0 4.316 3.206 7.834 7.076 7.834 2.115 0 3.99-1.282 4.98-3.084.99 1.802 2.865 3.084 4.98 3.084 3.87 0 7.044-3.518 7.044-7.834 0-4.33-3.174-7.828-7.156-7.828zm-9.848 12.98c-2.482 0-4.498-2.31-4.498-5.152s2.016-5.146 4.498-5.146c1.782 0 3.328 1.185 4.024 2.894l.21.52.212-.52c.696-1.709 2.242-2.894 4.024-2.894 2.508 0 4.544 2.304 4.544 5.146 0 2.842-2.036 5.152-4.544 5.152-1.782 0-3.328-1.185-4.024-2.894l-.212-.52-.21.52c-.696 1.709-2.242 2.894-4.024 2.894z" />
+            </svg>
           </div>
           <div>
             <h4 className="text-xs font-semibold">Meta Ads Manager</h4>
-            <p className="text-[9px] text-neutral-400 font-mono">Central India Conversion Set</p>
           </div>
         </div>
-        <span className="inline-flex items-center gap-1 text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Active
-        </span>
       </div>
 
       <div className="mt-3 grid grid-cols-2 gap-2 text-left">
         <div className="p-2 rounded-lg bg-neutral-900/80 border border-white/5">
           <span className="text-[9px] font-mono text-neutral-400">Cost Per Lead (CPL)</span>
           <p className="text-base font-bold text-white font-clash mt-0.5">₹42.50</p>
-          <span className="text-[9px] text-emerald-400 font-mono">-62% vs avg</span>
+          <span className="text-[9px] text-blue-400 font-mono">-62% vs avg</span>
         </div>
         <div className="p-2 rounded-lg bg-neutral-900/80 border border-white/5">
           <span className="text-[9px] font-mono text-neutral-400">Verified Inquiries</span>
@@ -494,7 +497,7 @@ export function AdsPerformanceCard() {
 
       <div className="mt-2.5 flex items-center justify-between text-[10px] font-mono text-neutral-400 pt-2 border-t border-white/5">
         <span>Daily Spend: ₹2,500</span>
-        <span className="text-emerald-400 font-semibold flex items-center gap-0.5">
+        <span className="text-blue-400 font-semibold flex items-center gap-0.5">
           ROAS: 5.6x <ArrowUpRight className="w-3 h-3" />
         </span>
       </div>
@@ -505,50 +508,55 @@ export function AdsPerformanceCard() {
 // 7. Minimalist E-Commerce Browser Window
 export function EcommerceBrowserCard() {
   return (
-    <div className="w-[290px] sm:w-[320px] rounded-2xl bg-neutral-950/90 border border-white/15 p-3.5 shadow-2xl backdrop-blur-xl text-white select-none">
+    <div className="w-[290px] sm:w-[320px] rounded-2xl bg-neutral-950/95 border border-blue-500/25 p-3.5 shadow-2xl backdrop-blur-xl text-white select-none">
       {/* Browser Bar */}
       <div className="flex items-center gap-2 pb-2.5 border-b border-white/10">
         <div className="flex gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+          <span className="w-2.5 h-2.5 rounded-full bg-slate-600" />
+          <span className="w-2.5 h-2.5 rounded-full bg-slate-500" />
+          <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
         </div>
-        <div className="flex-1 flex items-center justify-center bg-neutral-900 rounded-md py-0.5 px-2 text-[9px] font-mono text-neutral-400 gap-1 border border-white/5">
+        <div className="flex-1 flex items-center justify-center bg-neutral-900 rounded-md py-0.5 px-2 text-[9px] font-mono text-neutral-300 gap-1 border border-white/5">
           <Globe className="w-2.5 h-2.5 text-blue-400" /> brand-store.in/checkout
         </div>
       </div>
 
-      {/* Storefront Dashboard Header */}
-      <div className="mt-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/30">
+      {/* Storefront Dashboard Visual Preview & Conversion Banner */}
+      <div className="mt-3 rounded-xl bg-gradient-to-br from-blue-950/60 to-neutral-900/90 border border-blue-500/30 p-2.5 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md">
             <ShoppingCart className="w-4 h-4" />
           </div>
           <div>
-            <p className="text-[10px] text-neutral-400 font-mono">Store Conversion</p>
-            <h4 className="text-sm font-bold text-white">4.8% CVR (2.2x industry)</h4>
+            <span className="text-[9px] font-mono uppercase tracking-wider text-blue-300">Fast Checkout</span>
+            <h4 className="text-sm font-bold text-white font-clash mt-0.5">4.8% CVR (2.2× boost)</h4>
           </div>
+        </div>
+        <div className="text-right">
+          <span className="text-[10px] font-mono text-blue-400 font-bold bg-blue-500/20 px-2 py-0.5 rounded-md border border-blue-400/30">
+            0.8s load
+          </span>
         </div>
       </div>
 
-      {/* Progress Bars */}
-      <div className="mt-3 space-y-1.5 text-[10px] font-mono">
+      {/* Conversion Metric Meters (Clean White & Blue palette) */}
+      <div className="mt-3 space-y-2 text-[10px] font-mono">
         <div>
-          <div className="flex justify-between text-neutral-400 mb-0.5">
-            <span>Checkout Speed</span>
-            <span className="text-emerald-400">0.8s</span>
+          <div className="flex justify-between text-neutral-300 mb-1">
+            <span>Instant Checkout Speed</span>
+            <span className="text-white font-semibold">0.8s (Top 1%)</span>
           </div>
           <div className="w-full h-1.5 bg-neutral-800 rounded-full overflow-hidden">
-            <div className="h-full bg-emerald-500 rounded-full w-[94%]" />
+            <div className="h-full bg-blue-500 rounded-full w-[94%]" />
           </div>
         </div>
         <div>
-          <div className="flex justify-between text-neutral-400 mb-0.5">
+          <div className="flex justify-between text-neutral-300 mb-1">
             <span>Abandoned Cart Recovery</span>
-            <span className="text-blue-400">38% via WhatsApp</span>
+            <span className="text-blue-300 font-semibold">38% via WhatsApp</span>
           </div>
           <div className="w-full h-1.5 bg-neutral-800 rounded-full overflow-hidden">
-            <div className="h-full bg-blue-500 rounded-full w-[68%]" />
+            <div className="h-full bg-white rounded-full w-[68%]" />
           </div>
         </div>
       </div>
@@ -557,7 +565,6 @@ export function EcommerceBrowserCard() {
 }
 
 // 8. Franchise / Regional Map Scale Hub
-// Requirement: "And then the thing is this franchise expansion thing, make it in light mode, okay? Not dark mode."
 export function FranchiseMapCard() {
   const hubs = ["Raipur", "Bilaspur", "Bhilai", "Nagpur"];
   return (
@@ -569,9 +576,6 @@ export function FranchiseMapCard() {
           </div>
           <h4 className="text-xs font-bold text-neutral-900">Franchise Expansion</h4>
         </div>
-        <span className="text-[10px] font-mono font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200/60">
-          4 Active Hubs
-        </span>
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
@@ -603,18 +607,18 @@ export function FranchiseMapCard() {
   );
 }
 
-// 9. Verified Client Review & Trust Badge
+// 9. Client Review Card
 export function ClientReviewCard() {
   return (
-    <div className="w-[260px] sm:w-[280px] rounded-2xl bg-neutral-950/90 border border-amber-500/25 p-4 shadow-2xl backdrop-blur-xl text-white select-none">
+    <div className="w-[260px] sm:w-[280px] rounded-2xl bg-neutral-950/90 border border-blue-500/25 p-4 shadow-2xl backdrop-blur-xl text-white select-none">
       <div className="flex items-center justify-between pb-2 border-b border-white/10">
         <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
           ))}
         </div>
-        <span className="text-[9px] font-mono text-neutral-400 flex items-center gap-1">
-          <Sparkles className="w-2.5 h-2.5 text-blue-400" /> 5.0 Rating
+        <span className="text-[9px] font-mono text-neutral-400">
+          5.0 Rating
         </span>
       </div>
 
@@ -624,10 +628,9 @@ export function ClientReviewCard() {
 
       <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono">
         <div>
-          <p className="font-semibold text-white">Franchise Director</p>
-          <p className="text-[9px] text-neutral-400">Education Group • CG</p>
+          <p className="font-semibold text-white">Admissions &amp; Growth Head</p>
+          <p className="text-[9px] text-blue-400">Cleaning Karigar</p>
         </div>
-        <span className="text-blue-400 font-semibold">Verified Client</span>
       </div>
     </div>
   );

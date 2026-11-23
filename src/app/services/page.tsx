@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Footer } from '@/components/footer';
 import { FlightVerticalTabs } from '@/components/flight-vertical-tabs';
 import { WORK_PROCESS_STEPS } from '@/data/content';
-import { SERVICES_SEO, LOCATIONS_SEO, AGENCY_INFO } from '@/data/seo-data';
+import { SERVICES_SEO, AGENCY_INFO } from '@/data/seo-data';
 import { BreadcrumbsJsonLd } from '@/components/seo/json-ld';
 
 export const metadata: Metadata = {
@@ -172,26 +172,6 @@ export default function ServicesPage() {
                   {step.desc}
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Regional Hubs Interlinking */}
-      <section className="bg-black py-16 px-8 md:px-16 border-t border-white/10">
-        <div className="max-w-[1300px] mx-auto space-y-6">
-          <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 block">
-            Regional Locations We Serve
-          </span>
-          <div className="flex flex-wrap gap-2.5">
-            {LOCATIONS_SEO.map((loc) => (
-              <Link
-                key={loc.slug}
-                href={`/locations/${loc.slug}`}
-                className="px-4 py-2 rounded-full border border-neutral-800 bg-neutral-950 text-neutral-300 text-xs font-mono hover:border-blue-500 hover:text-white transition-colors"
-              >
-                Digital Marketing in {loc.city} →
-              </Link>
             ))}
           </div>
         </div>

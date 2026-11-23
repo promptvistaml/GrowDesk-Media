@@ -1,7 +1,6 @@
 import PerspectiveTunnelHero from "@/components/ui/perspective-tunnel-hero";
 import { HowWeScaleSection } from "@/components/how-we-scale-section";
 import NeuroNoiseStats from "@/components/ui/neuro-noise-stats";
-import { FlightClients } from "@/components/flight-clients";
 import { FlightTestimonials } from "@/components/flight-testimonials";
 import { FlightAiEra } from "@/components/flight-ai-era";
 import Faq05 from "@/components/ui/faq-05";
@@ -13,9 +12,6 @@ export default function Home() {
     <main className="min-h-screen flex flex-col bg-[#000000]">
       {/* 3D Perspective Tunnel Hero Sequence */}
       <PerspectiveTunnelHero />
-
-      {/* Client Marquee: Placed directly after landing page hero */}
-      <FlightClients />
 
       {/* Metrics Impact Section */}
       <NeuroNoiseStats
@@ -38,10 +34,11 @@ export default function Home() {
         ]}
       />
 
-      {/* Sticky Scroll-Jacked About Us & Business Pillars Showcase (Same #F6F9FD Background) */}
+      {/* Sticky Scroll-Jacked About Us & Business Pillars Showcase */}
       <HowWeScaleSection />
 
       <FlightTestimonials />
+
       <FlightAiEra />
       <Faq05 />
       <ContactSection />

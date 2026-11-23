@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import Link from 'next/link';
+import OrbitBorderButton from '@/components/ui/orbit-border-button';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   TrendingUp,
@@ -73,7 +73,7 @@ function StrategyMeetingScreen() {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         className="size-full object-cover pointer-events-none"
       />
     </div>
@@ -131,7 +131,7 @@ function ReelEditorScreen({ scrollYProgress }: { scrollYProgress: any }) {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         className="absolute inset-0 size-full object-cover pointer-events-none"
       />
 
@@ -525,7 +525,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <div className="h-20 flex items-end">
                   <motion.div
                     style={{ height: sankalpBarHeight }}
-                    className="w-5 bg-gradient-to-t from-blue-700 to-blue-500 rounded-t-xs shadow-xs"
+                    className="w-5 bg-blue-600 rounded-t-xs shadow-xs"
                     title="600+ Student Data"
                   />
                 </div>
@@ -538,7 +538,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <div className="h-20 flex items-end">
                   <motion.div
                     style={{ height: schoolBarHeight }}
-                    className="w-5 bg-gradient-to-t from-blue-600 to-cyan-500 rounded-t-xs shadow-xs"
+                    className="w-5 bg-blue-500 rounded-t-xs shadow-xs"
                     title="152 Admissions"
                   />
                 </div>
@@ -551,7 +551,7 @@ function ClientWebBuildScreen({ scrollYProgress }: { scrollYProgress: any }) {
                 <div className="h-20 flex items-end">
                   <motion.div
                     style={{ height: sanjivaniBarHeight }}
-                    className="w-5 bg-gradient-to-t from-blue-600 to-cyan-500 rounded-t-xs shadow-xs"
+                    className="w-5 bg-blue-400 rounded-t-xs shadow-xs"
                     title="45 Admissions from 120 Leads"
                   />
                 </div>
@@ -670,11 +670,11 @@ export function HowWeScaleSection() {
     offset: ['start start', 'end end'],
   });
 
-  // Smooth, calm easing spring physics: high damping & mass so animations transition gently without rushing
+  // Direct, low-latency spring physics: responsive and snappy without double-lag
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 40,
-    damping: 38,
-    mass: 0.35,
+    stiffness: 90,
+    damping: 26,
+    mass: 0.12,
     restDelta: 0.0001,
   });
 
@@ -741,10 +741,9 @@ export function HowWeScaleSection() {
   );
 
   // Right Device Morph, Translation & Scale Transforms (Stages 1-4)
-  // Device 1: MacBook Titanium (Stage 1) - Slides gracefully from right side, slowly exits
-  const dev1X = useTransform(smoothProgress, [0, 0.08, 0.18, 0.25], ['140px', '0px', '0px', '-40px']);
-  const dev1Scale = useTransform(smoothProgress, [0, 0.08, 0.18, 0.25], [0.94, 1, 1, 0.90]);
-  const dev1Opacity = useTransform(smoothProgress, [0, 0.06, 0.18, 0.25], [0.2, 1, 1, 0]);
+  // Device 1: MacBook Titanium (Stage 1) - Static initial position, gently fades out as stage transitions
+  const dev1Scale = useTransform(smoothProgress, [0, 0.18, 0.25], [1, 1, 0.90]);
+  const dev1Opacity = useTransform(smoothProgress, [0, 0.18, 0.25], [1, 1, 0]);
 
   // Device 2: iPhone Titanium (Stage 2) - Enters gently from upright (top-right) and slowly recedes behind
   const dev2Y = useTransform(smoothProgress, [0.20, 0.27, 0.44, 0.50], ['-140px', '0px', '0px', '30px']);
@@ -766,13 +765,13 @@ export function HowWeScaleSection() {
     <div
       ref={containerRef}
       id="how-we-scale"
-      className="relative h-[550vh] bg-[#F6F9FD]"
+      className="relative h-[380vh] bg-[#CBD5E1]"
     >
       {/* Sticky Full Viewport Wrapper (Same Section throughout all 4 stages) */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#F6F9FD] px-4 sm:px-8 md:px-16">
-        {/* Corner Light Flares (Top-Left & Bottom-Right) */}
-        <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(30,99,255,0.18)_0%,rgba(79,169,255,0.08)_40%,transparent_70%)] blur-[90px] z-0" />
-        <div className="pointer-events-none absolute -bottom-40 -right-40 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.20)_0%,rgba(59,130,246,0.10)_45%,transparent_70%)] blur-[100px] z-0" />
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#CBD5E1] px-4 sm:px-8 md:px-16">
+        {/* Subtle Ambient Flares */}
+        <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(30,99,255,0.12)_0%,rgba(79,169,255,0.05)_40%,transparent_70%)] blur-[90px] z-0" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.14)_0%,rgba(59,130,246,0.06)_45%,transparent_70%)] blur-[100px] z-0" />
 
         {/* Dynamic Tracking Light Flare */}
         <motion.div
@@ -782,12 +781,12 @@ export function HowWeScaleSection() {
             scale: flareScale,
             opacity: flareOpacity,
           }}
-          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(30,99,255,0.20)_0%,rgba(79,169,255,0.10)_35%,rgba(96,165,250,0.04)_60%,transparent_75%)] blur-[95px] z-0"
+          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(30,99,255,0.12)_0%,rgba(79,169,255,0.06)_35%,rgba(96,165,250,0.02)_60%,transparent_75%)] blur-[95px] z-0"
         />
 
         {/* Bottom-Right Soft Organic Earthen Dune Silhouette */}
         <svg
-          className="pointer-events-none absolute right-0 bottom-0 w-[55vw] max-w-[800px] h-auto text-blue-100/40 select-none z-0"
+          className="pointer-events-none absolute right-0 bottom-0 w-[55vw] max-w-[800px] h-auto text-slate-400/20 select-none z-0"
           viewBox="0 0 800 450"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
@@ -808,24 +807,36 @@ export function HowWeScaleSection() {
               style={{ opacity: left1Opacity, y: left1Y, filter: left1Shadow }}
               className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-blue-700 font-normal uppercase">
                 <span>01 / STRATEGIC ADVISORY</span>
               </div>
-              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-sans text-lg sm:text-2xl lg:text-[32px] xl:text-[36px] font-normal leading-[1.2] text-black tracking-tight max-w-lg line-clamp-4">
                 Strategic management for moments where visibility, trust, and narrative shape business outcomes.
               </h2>
-              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-1.5 text-xs sm:text-sm text-neutral-600/90 font-light leading-relaxed max-w-lg">
                 <p>
                   We advise founders and enterprises at critical inflection points—market launches, rapid scaling, brand positioning, and digital transformation. We align visibility with core business strategy to drive long-term outcomes.
                 </p>
               </div>
               <div>
-                <Link
-                  href="/case-studies"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
-                >
-                  <span className="relative z-10">VIEW SELECTED WORK →</span>
-                </Link>
+                <OrbitBorderButton
+                  link="/case-studies"
+                  label="VIEW SELECTED WORK →"
+                  padding="10px 22px"
+                  colors={{ fill: "#CBD5E1", textColor: "#000000" }}
+                  border={{
+                    borderColor: "rgba(59, 130, 246, 0.4)",
+                    borderStyle: "solid",
+                    borderWidth: 1.5,
+                  }}
+                  stroke={{
+                    size: 30,
+                    color: "#3B82F6",
+                    speed: 50,
+                    direction: "ccw",
+                    hoverFill: 100,
+                  }}
+                />
               </div>
             </motion.div>
 
@@ -834,24 +845,36 @@ export function HowWeScaleSection() {
               style={{ opacity: left2Opacity, y: left2Y, filter: left2Shadow }}
               className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-blue-700 font-normal uppercase">
                 <span>02 / SHORT-FORM & CONTENT ENGINE</span>
               </div>
-              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-sans text-lg sm:text-2xl lg:text-[32px] xl:text-[36px] font-normal leading-[1.2] text-black tracking-tight max-w-lg">
                 High-retention Reels engineered to turn passive scrollers into paying customers.
               </h2>
-              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-1.5 text-xs sm:text-sm text-neutral-600/90 font-light leading-relaxed max-w-lg">
                 <p>
                   From hook scripting and multi-cam production to algorithmic distribution, we craft vertical video assets that capture attention in the first 1.5 seconds and compound into direct revenue.
                 </p>
               </div>
               <div>
-                <Link
-                  href="/services"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
-                >
-                  <span className="relative z-10">EXPLORE CONTENT STUDIO →</span>
-                </Link>
+                <OrbitBorderButton
+                  link="/services"
+                  label="EXPLORE CONTENT STUDIO →"
+                  padding="10px 22px"
+                  colors={{ fill: "#CBD5E1", textColor: "#000000" }}
+                  border={{
+                    borderColor: "rgba(59, 130, 246, 0.4)",
+                    borderStyle: "solid",
+                    borderWidth: 1.5,
+                  }}
+                  stroke={{
+                    size: 30,
+                    color: "#3B82F6",
+                    speed: 50,
+                    direction: "ccw",
+                    hoverFill: 100,
+                  }}
+                />
               </div>
             </motion.div>
 
@@ -860,24 +883,36 @@ export function HowWeScaleSection() {
               style={{ opacity: left3Opacity, y: left3Y, filter: left3Shadow }}
               className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-blue-700 font-normal uppercase">
                 <span>03 / PERFORMANCE MARKETING</span>
               </div>
-              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-sans text-lg sm:text-2xl lg:text-[32px] xl:text-[36px] font-normal leading-[1.2] text-black tracking-tight max-w-lg">
                 Data-backed acquisition funnels turning ₹400 into ₹1.3L in revenue.
               </h2>
-              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-1.5 text-xs sm:text-sm text-neutral-600/90 font-light leading-relaxed max-w-lg">
                 <p>
                   We eliminate guesswork with hyper-targeted Meta &amp; Google ad architectures. From Cleaning Karigar turning ₹400 into ₹1,29,999 (325× ROAS) to WeShine generating ₹5,000 from a ₹200 budget, every rupee is tracked and multiplied.
                 </p>
               </div>
               <div>
-                <Link
-                  href="/case-studies"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
-                >
-                  <span className="relative z-10">SEE GROWTH METRICS →</span>
-                </Link>
+                <OrbitBorderButton
+                  link="/case-studies"
+                  label="SEE GROWTH METRICS →"
+                  padding="10px 22px"
+                  colors={{ fill: "#CBD5E1", textColor: "#000000" }}
+                  border={{
+                    borderColor: "rgba(59, 130, 246, 0.4)",
+                    borderStyle: "solid",
+                    borderWidth: 1.5,
+                  }}
+                  stroke={{
+                    size: 30,
+                    color: "#3B82F6",
+                    speed: 50,
+                    direction: "ccw",
+                    hoverFill: 100,
+                  }}
+                />
               </div>
             </motion.div>
 
@@ -886,24 +921,36 @@ export function HowWeScaleSection() {
               style={{ opacity: left4Opacity, y: left4Y, filter: left4Shadow }}
               className="absolute inset-0 flex flex-col justify-center space-y-2.5 sm:space-y-4 lg:space-y-6 transform-gpu will-change-[transform,opacity,filter]"
             >
-              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-slate-500 uppercase">
+              <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono tracking-widest text-blue-700 font-normal uppercase">
                 <span>04 / HIGH-CONVERSION ARCHITECTURE</span>
               </div>
-              <h2 className="font-serif text-xl sm:text-3xl lg:text-[44px] xl:text-[48px] font-normal leading-[1.12] text-neutral-900 tracking-tight max-w-xl">
+              <h2 className="font-sans text-lg sm:text-2xl lg:text-[32px] xl:text-[36px] font-normal leading-[1.2] text-black tracking-tight max-w-lg">
                 Institutional student funnels delivering 152 admissions and 600+ enquiries.
               </h2>
-              <div className="space-y-2 text-xs sm:text-sm lg:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
+              <div className="space-y-1.5 text-xs sm:text-sm text-neutral-600/90 font-light leading-relaxed max-w-lg">
                 <p>
                   Scalable acquisition pipelines engineered for institutional trust. Generating 152 school admissions from ₹1,500 ads, 120 enquiries &amp; 45 pharmacy admissions for Sanjivani, and 600+ qualified student leads for Sankalp Learning Classes.
                 </p>
               </div>
               <div>
-                <Link
-                  href="/#connect"
-                  className="relative inline-block overflow-hidden rounded-none border border-black/80 bg-white text-black px-4 sm:px-8 py-2 sm:py-3.5 text-[9px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs transition-colors duration-300 before:absolute before:inset-0 before:bg-black before:origin-bottom before:scale-y-0 before:transition-transform before:duration-300 before:ease-out hover:before:scale-y-100 hover:text-white"
-                >
-                  <span className="relative z-10">LAUNCH YOUR PROJECT →</span>
-                </Link>
+                <OrbitBorderButton
+                  link="/#connect"
+                  label="LAUNCH YOUR PROJECT →"
+                  padding="10px 22px"
+                  colors={{ fill: "#CBD5E1", textColor: "#000000" }}
+                  border={{
+                    borderColor: "rgba(59, 130, 246, 0.4)",
+                    borderStyle: "solid",
+                    borderWidth: 1.5,
+                  }}
+                  stroke={{
+                    size: 30,
+                    color: "#3B82F6",
+                    speed: 50,
+                    direction: "ccw",
+                    hoverFill: 100,
+                  }}
+                />
               </div>
             </motion.div>
           </div>
@@ -911,9 +958,9 @@ export function HowWeScaleSection() {
           {/* Right Column (6 cols): Interactive Hardware Showcase */}
           <div className="lg:col-span-6 relative h-[42vh] sm:h-[48vh] lg:h-[82vh] min-h-[230px] sm:min-h-[280px] lg:min-h-[580px] max-h-[420px] lg:max-h-[740px] flex items-center justify-center lg:justify-end">
             <div className="relative w-full max-w-[620px] h-[210px] min-[380px]:h-[240px] sm:h-[360px] md:h-[420px] lg:h-[480px] flex items-center justify-center">
-              {/* STAGE 1 DEVICE: MacBook Titanium - Enters smoothly from the right side */}
+              {/* STAGE 1 DEVICE: MacBook Titanium - Centered in place without side entry */}
               <motion.div
-                style={{ x: dev1X, scale: dev1Scale, opacity: dev1Opacity }}
+                style={{ scale: dev1Scale, opacity: dev1Opacity }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none transform-gpu will-change-[transform,opacity]"
               >
                 <div className="pointer-events-auto scale-[0.80] min-[380px]:scale-[0.88] sm:scale-100">
